@@ -1,7 +1,11 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="13122.16" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="BYZ-38-t0r">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="14460.31" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="BYZ-38-t0r">
+    <device id="retina5_9" orientation="portrait">
+        <adaptation id="fullscreen"/>
+    </device>
     <dependencies>
-        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="13104.12"/>
+        <deployment identifier="iOS"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="14460.20"/>
         <capability name="Safe area layout guides" minToolsVersion="9.0"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
@@ -9,16 +13,113 @@
         <!--View Controller-->
         <scene sceneID="tne-QT-ifu">
             <objects>
-                <viewController id="BYZ-38-t0r" customClass="ViewController" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController storyboardIdentifier="homeViewControllerID" id="BYZ-38-t0r" customClass="ViewController" customModule="Weeker" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="8bC-Xf-vdC">
-                        <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
+                        <rect key="frame" x="0.0" y="0.0" width="375" height="812"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <collectionView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" dataMode="prototypes" translatesAutoresizingMaskIntoConstraints="NO" id="HDO-06-gOf">
+                                <rect key="frame" x="0.0" y="202" width="375" height="576"/>
+                                <color key="backgroundColor" white="0.66666666666666663" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                <collectionViewFlowLayout key="collectionViewLayout" minimumLineSpacing="10" minimumInteritemSpacing="10" id="03C-0d-Iso">
+                                    <size key="itemSize" width="50" height="50"/>
+                                    <size key="headerReferenceSize" width="0.0" height="0.0"/>
+                                    <size key="footerReferenceSize" width="0.0" height="0.0"/>
+                                    <inset key="sectionInset" minX="0.0" minY="0.0" maxX="0.0" maxY="0.0"/>
+                                </collectionViewFlowLayout>
+                                <cells>
+                                    <collectionViewCell opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" reuseIdentifier="CellIdentifier" id="ZQc-pS-C06">
+                                        <rect key="frame" x="0.0" y="0.0" width="100" height="100"/>
+                                        <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                        <view key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" insetsLayoutMarginsFromSafeArea="NO">
+                                            <rect key="frame" x="0.0" y="0.0" width="100" height="100"/>
+                                            <autoresizingMask key="autoresizingMask"/>
+                                        </view>
+                                        <size key="customSize" width="100" height="100"/>
+                                    </collectionViewCell>
+                                </cells>
+                                <connections>
+                                    <outlet property="dataSource" destination="BYZ-38-t0r" id="3LA-aO-Ghl"/>
+                                    <outlet property="delegate" destination="BYZ-38-t0r" id="aL9-ee-7x0"/>
+                                </connections>
+                            </collectionView>
+                        </subviews>
                         <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                        <constraints>
+                            <constraint firstItem="HDO-06-gOf" firstAttribute="leading" secondItem="8bC-Xf-vdC" secondAttribute="leading" id="7w8-fm-tvR"/>
+                            <constraint firstItem="HDO-06-gOf" firstAttribute="top" secondItem="6Tk-OE-BBY" secondAttribute="top" constant="158" id="Crg-hg-04M"/>
+                            <constraint firstAttribute="trailing" secondItem="HDO-06-gOf" secondAttribute="trailing" id="KeH-W4-JC4"/>
+                            <constraint firstItem="HDO-06-gOf" firstAttribute="bottom" secondItem="6Tk-OE-BBY" secondAttribute="bottom" id="OpA-FA-779"/>
+                        </constraints>
                         <viewLayoutGuide key="safeArea" id="6Tk-OE-BBY"/>
                     </view>
+                    <connections>
+                        <outlet property="collectionView" destination="HDO-06-gOf" id="nqL-gG-2Ip"/>
+                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="dkx-z0-nzr" sceneMemberID="firstResponder"/>
             </objects>
+            <point key="canvasLocation" x="349.60000000000002" y="-195.07389162561577"/>
+        </scene>
+        <!--Select Date of Birth-->
+        <scene sceneID="9Wq-yV-N1v">
+            <objects>
+                <viewController modalPresentationStyle="overFullScreen" id="fPE-g0-tkc" customClass="DOBViewController" customModule="Weeker" customModuleProvider="target" sceneMemberID="viewController">
+                    <view key="view" contentMode="scaleToFill" id="4D9-x3-IRj">
+                        <rect key="frame" x="0.0" y="0.0" width="375" height="812"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <datePicker contentMode="scaleToFill" contentHorizontalAlignment="fill" contentVerticalAlignment="fill" datePickerMode="date" minuteInterval="1" translatesAutoresizingMaskIntoConstraints="NO" id="fEM-Cs-L3a">
+                                <rect key="frame" x="16" y="88" width="343" height="690"/>
+                                <date key="date" timeIntervalSinceReferenceDate="565316447.61423194">
+                                    <!--2018-12-01 00:20:47 +0000-->
+                                </date>
+                                <date key="maximumDate" timeIntervalSinceReferenceDate="536410800">
+                                    <!--2017-12-31 11:00:00 +0000-->
+                                </date>
+                            </datePicker>
+                        </subviews>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                        <constraints>
+                            <constraint firstItem="fEM-Cs-L3a" firstAttribute="trailing" secondItem="4D9-x3-IRj" secondAttribute="trailingMargin" id="H3k-6g-vwh"/>
+                            <constraint firstItem="fEM-Cs-L3a" firstAttribute="bottom" secondItem="7QF-DX-JQc" secondAttribute="bottom" id="ntR-7q-po5"/>
+                            <constraint firstItem="fEM-Cs-L3a" firstAttribute="top" secondItem="7QF-DX-JQc" secondAttribute="top" id="o5W-Vo-99i"/>
+                            <constraint firstItem="fEM-Cs-L3a" firstAttribute="leading" secondItem="4D9-x3-IRj" secondAttribute="leadingMargin" id="vdD-vl-hTo"/>
+                        </constraints>
+                        <viewLayoutGuide key="safeArea" id="7QF-DX-JQc"/>
+                    </view>
+                    <navigationItem key="navigationItem" title="Select Date of Birth" id="GcV-Zp-AIz">
+                        <barButtonItem key="rightBarButtonItem" systemItem="save" id="Lnd-0Q-jVJ">
+                            <connections>
+                                <action selector="saveButtonPushed:" destination="fPE-g0-tkc" id="uBc-ft-gTr"/>
+                            </connections>
+                        </barButtonItem>
+                    </navigationItem>
+                    <connections>
+                        <outlet property="dateOfBirthPicker" destination="fEM-Cs-L3a" id="MSx-Tc-NtT"/>
+                    </connections>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="Sm8-6R-34E" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="1886.1328124999998" y="-195.46120058565151"/>
+        </scene>
+        <!--Navigation Controller-->
+        <scene sceneID="A2f-al-TVf">
+            <objects>
+                <navigationController storyboardIdentifier="DOBViewControllerID" automaticallyAdjustsScrollViewInsets="NO" id="57f-hE-bV7" sceneMemberID="viewController">
+                    <toolbarItems/>
+                    <navigationBar key="navigationBar" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" id="k3q-2X-iEE">
+                        <rect key="frame" x="0.0" y="44" width="375" height="44"/>
+                        <autoresizingMask key="autoresizingMask"/>
+                    </navigationBar>
+                    <nil name="viewControllers"/>
+                    <connections>
+                        <segue destination="fPE-g0-tkc" kind="relationship" relationship="rootViewController" id="fdO-XA-qU3"/>
+                    </connections>
+                </navigationController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="sjF-Em-NRC" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="1160.7421875" y="-195.46120058565151"/>
         </scene>
     </scenes>
 </document>
