@@ -12,6 +12,7 @@ let reuseIdentifier = "CellIdentifier"
 
 class ViewController: UIViewController, UICollectionViewDataSource, UICollectionViewDelegate, UICollectionViewDelegateFlowLayout {
     @IBOutlet var collectionView: UICollectionView!
+    var decreasingAlpha = CGFloat()
     
     let columnLayout = ColumnFlowLayout(
         cellsPerRow: 52,
@@ -25,36 +26,27 @@ class ViewController: UIViewController, UICollectionViewDataSource, UICollection
         collectionView?.collectionViewLayout = columnLayout
         collectionView?.contentInsetAdjustmentBehavior = .always
         collectionView?.register(UICollectionViewCell.self, forCellWithReuseIdentifier: "Cell")
-        print("lmao")
     }
     
     override func viewDidLoad() {
         super.viewDidLoad()
         
         
-        print(UserDefaults.standard.value(forKey: "DOB"))
+        print(UserDefaults.standard.value(forKey: "DOB") as! Date)
     }
     
     func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
         return 52
     }
     
-    
-    
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
+        decreasingAlpha = CGFloat(90 - indexPath.section)/90
+
         let cell = collectionView.dequeueReusableCell(withReuseIdentifier: "Cell", for: indexPath)
+        
         cell.backgroundColor = randomColor()
-        
-//        let title = UILabel(frame: CGRect(x: 0, y: 0, width: cell.bounds.size.width, height: cell.bounds.size.height))
-//        title.textColor = .black
-//        title.text = "\(count)"
-//        title.textAlignment = .center
-//        title.adjustsFontSizeToFitWidth = true
-//        title.adjustsFontForContentSizeCategory = true
-//        cell.contentView.addSubview(title)
-//        count += 1
-        
-        print(indexPath)
+
+        print("row \(indexPath[0]), column \(indexPath[1])")
         
         return cell
     }
@@ -70,7 +62,8 @@ class ViewController: UIViewController, UICollectionViewDataSource, UICollection
         let red = CGFloat(drand48())
         let green = CGFloat(drand48())
         let blue = CGFloat(drand48())
-        return UIColor(red: red, green: green, blue: blue, alpha: 1.0)
+        
+        return UIColor(red: red, green: green, blue: blue, alpha: decreasingAlpha)
     }
 }
 
