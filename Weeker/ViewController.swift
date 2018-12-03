@@ -8,21 +8,21 @@
 
 import UIKit
 
-let reuseIdentifier = "CellIdentifier"
-
 class ViewController: UIViewController, UICollectionViewDataSource, UICollectionViewDelegate, UICollectionViewDelegateFlowLayout {
     @IBOutlet var collectionView: UICollectionView!
-    var decreasingAlpha = CGFloat()
+    private var decreasingAlpha = CGFloat()
+    private var timeSinceDOB = DateComponents()
+    private var alwaysRed = false
+    
     
     let columnLayout = ColumnFlowLayout(
         cellsPerRow: 52,
         minimumInteritemSpacing: 2,
         minimumLineSpacing: 2,
-        sectionInset: UIEdgeInsets(top: 2, left: 10, bottom: 0, right: 0)
+        sectionInset: UIEdgeInsets(top: 2, left: 0, bottom: 0, right: 0)
     )
     
     override func viewWillAppear(_ animated: Bool) {
-        
         collectionView?.collectionViewLayout = columnLayout
         collectionView?.contentInsetAdjustmentBehavior = .always
         collectionView?.register(UICollectionViewCell.self, forCellWithReuseIdentifier: "Cell")
@@ -30,7 +30,10 @@ class ViewController: UIViewController, UICollectionViewDataSource, UICollection
     
     override func viewDidLoad() {
         super.viewDidLoad()
+
+        timeSinceDOB = Calendar.current.dateComponents([.year, .weekOfYear], from: UserDefaults.standard.value(forKey: "DOB") as! Date, to: Date())
         
+        print(timeSinceDOB)
         
         print(UserDefaults.standard.value(forKey: "DOB") as! Date)
     }
@@ -40,13 +43,29 @@ class ViewController: UIViewController, UICollectionViewDataSource, UICollection
     }
     
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
-        decreasingAlpha = CGFloat(90 - indexPath.section)/90
-
-        let cell = collectionView.dequeueReusableCell(withReuseIdentifier: "Cell", for: indexPath)
+        decreasingAlpha = CGFloat(90 - (indexPath.section/2))/90
         
-        cell.backgroundColor = randomColor()
+        let cell = collectionView.dequeueReusableCell(withReuseIdentifier: "Cell", for: indexPath)
 
-        print("row \(indexPath[0]), column \(indexPath[1])")
+        if alwaysRed {
+            
+            cell.backgroundColor = randomColor()
+        } else {
+            cell.backgroundColor = UIColor.green.withAlphaComponent(decreasingAlpha)
+        }
+
+        
+        
+        if indexPath[0] > timeSinceDOB.year! && indexPath[1] > timeSinceDOB.weekOfYear! {
+            alwaysRed = true
+        }
+        
+        if indexPath[0] == 89 || indexPath[1] == 51 {
+            cell.backgroundColor = .red
+        }
+        
+
+//        print("row \(indexPath[0]), column \(indexPath[1])")
         
         return cell
     }
@@ -91,16 +110,20 @@ class ColumnFlowLayout: UICollectionViewFlowLayout {
         super.prepare()
         
         guard let collectionView = collectionView else { return }
+        
         let marginsAndInsets = sectionInset.left + sectionInset.right + collectionView.safeAreaInsets.left + collectionView.safeAreaInsets.right + minimumInteritemSpacing * CGFloat(cellsPerRow - 1)
-        let itemWidth = ((collectionView.bounds.size.width - marginsAndInsets) / CGFloat(cellsPerRow)).rounded(.down)
-        let test = sectionInset.top + sectionInset.bottom + collectionView.safeAreaInsets.top + collectionView.safeAreaInsets.bottom + minimumLineSpacing * CGFloat(90 - 1)
-        let itemHeight = ((collectionView.bounds.size.height - test) / CGFloat(90))
+        let itemWidth = ((collectionView.bounds.size.width - marginsAndInsets) / CGFloat(cellsPerRow))
+        
+        let verticalMarginsAndInsets = sectionInset.top + sectionInset.bottom + collectionView.safeAreaInsets.top + collectionView.safeAreaInsets.bottom + minimumLineSpacing * CGFloat(90 - 1)
+        let itemHeight = ((collectionView.bounds.size.height - verticalMarginsAndInsets) / CGFloat(90))
+        
         itemSize = CGSize(width: itemWidth, height: itemHeight)
     }
     
     override func invalidationContext(forBoundsChange newBounds: CGRect) -> UICollectionViewLayoutInvalidationContext {
         let context = super.invalidationContext(forBoundsChange: newBounds) as! UICollectionViewFlowLayoutInvalidationContext
         context.invalidateFlowLayoutDelegateMetrics = newBounds.size != collectionView?.bounds.size
+        
         return context
     }
     
