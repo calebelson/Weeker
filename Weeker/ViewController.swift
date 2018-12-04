@@ -10,9 +10,12 @@ import UIKit
 
 class ViewController: UIViewController, UICollectionViewDataSource, UICollectionViewDelegate, UICollectionViewDelegateFlowLayout {
     @IBOutlet var collectionView: UICollectionView!
+    @IBOutlet weak var leftLabel: UILabel!
+    @IBOutlet weak var middleLabel: UILabel!
+    @IBOutlet weak var rightLabel: UILabel!
     private var decreasingAlpha = CGFloat()
     private var timeSinceDOB = DateComponents()
-    private var alwaysRed = false
+    private var ageReached = false
     
     
     let columnLayout = ColumnFlowLayout(
@@ -26,12 +29,23 @@ class ViewController: UIViewController, UICollectionViewDataSource, UICollection
         collectionView?.collectionViewLayout = columnLayout
         collectionView?.contentInsetAdjustmentBehavior = .always
         collectionView?.register(UICollectionViewCell.self, forCellWithReuseIdentifier: "Cell")
+        
+        // Remove, for testing splash screen
+//        UserDefaults.standard.removeObject(forKey: "DOB")
     }
     
     override func viewDidLoad() {
         super.viewDidLoad()
-
+        
         timeSinceDOB = Calendar.current.dateComponents([.year, .weekOfYear], from: UserDefaults.standard.value(forKey: "DOB") as! Date, to: Date())
+        
+        let daysLived = Calendar.current.dateComponents([.day], from: UserDefaults.standard.value(forKey: "DOB") as! Date, to: Date())
+        let ninetyYearsFromDOB = Calendar.current.date(byAdding: .year, value: 90, to: UserDefaults.standard.value(forKey: "DOB") as! Date)
+        let daysLeft = Calendar.current.dateComponents([.day], from: Date(), to: ninetyYearsFromDOB!)
+        leftLabel.text = "Weeks Lived:\n\(daysLived.day!/7)"
+        middleLabel.text = "Weeks Left:\n\(daysLeft.day!/7)"
+        rightLabel.text = "Life Lived: \n\(daysLived.day!*100/(daysLived.day!+daysLeft.day!))%"
+        
         
         print(timeSinceDOB)
         
@@ -43,12 +57,11 @@ class ViewController: UIViewController, UICollectionViewDataSource, UICollection
     }
     
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
-        decreasingAlpha = CGFloat(90 - (indexPath.section/2))/90
+        decreasingAlpha = CGFloat(90 - Double(indexPath.section)/1.3)/90
         
         let cell = collectionView.dequeueReusableCell(withReuseIdentifier: "Cell", for: indexPath)
 
-        if alwaysRed {
-            
+        if ageReached {
             cell.backgroundColor = randomColor()
         } else {
             cell.backgroundColor = UIColor.green.withAlphaComponent(decreasingAlpha)
@@ -56,13 +69,14 @@ class ViewController: UIViewController, UICollectionViewDataSource, UICollection
 
         
         
-        if indexPath[0] > timeSinceDOB.year! && indexPath[1] > timeSinceDOB.weekOfYear! {
-            alwaysRed = true
+        if indexPath[0] == timeSinceDOB.year! && indexPath[1] == timeSinceDOB.weekOfYear! {
+            ageReached = true
         }
         
-        if indexPath[0] == 89 || indexPath[1] == 51 {
-            cell.backgroundColor = .red
-        }
+//        // View width/height error test
+//        if indexPath[0] == 89 || indexPath[1] == 51 {
+//            cell.backgroundColor = .red
+//        }
         
 
 //        print("row \(indexPath[0]), column \(indexPath[1])")
@@ -76,7 +90,7 @@ class ViewController: UIViewController, UICollectionViewDataSource, UICollection
     
     
     
-    // custom function to generate a random UIColor
+    // Generate a random UIColor
     func randomColor() -> UIColor{
         let red = CGFloat(drand48())
         let green = CGFloat(drand48())

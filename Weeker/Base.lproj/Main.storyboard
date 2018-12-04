@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="14460.31" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="BYZ-38-t0r">
-    <device id="retina4_0" orientation="portrait">
+    <device id="retina6_5" orientation="portrait">
         <adaptation id="fullscreen"/>
     </device>
     <dependencies>
@@ -15,11 +15,11 @@
             <objects>
                 <viewController storyboardIdentifier="homeViewControllerID" id="BYZ-38-t0r" customClass="ViewController" customModule="Weeker" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="8bC-Xf-vdC">
-                        <rect key="frame" x="0.0" y="0.0" width="320" height="568"/>
+                        <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <collectionView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" dataMode="prototypes" translatesAutoresizingMaskIntoConstraints="NO" id="HDO-06-gOf">
-                                <rect key="frame" x="0.0" y="178" width="320" height="390"/>
+                                <rect key="frame" x="0.0" y="202" width="414" height="660"/>
                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 <collectionViewFlowLayout key="collectionViewLayout" minimumLineSpacing="10" minimumInteritemSpacing="10" id="03C-0d-Iso">
                                     <size key="itemSize" width="50" height="50"/>
@@ -43,34 +43,71 @@
                                     <outlet property="delegate" destination="BYZ-38-t0r" id="aL9-ee-7x0"/>
                                 </connections>
                             </collectionView>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Weeks Lived" textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="2" baselineAdjustment="alignBaselines" minimumScaleFactor="0.80000000000000004" adjustsLetterSpacingToFitWidth="YES" translatesAutoresizingMaskIntoConstraints="NO" id="TSf-Mi-NC4">
+                                <rect key="frame" x="0.0" y="44" width="138" height="150"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="20"/>
+                                <nil key="textColor"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Weeks Left" textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="2" baselineAdjustment="alignBaselines" minimumScaleFactor="0.80000000000000004" adjustsLetterSpacingToFitWidth="YES" translatesAutoresizingMaskIntoConstraints="NO" id="J06-Ef-9iR">
+                                <rect key="frame" x="138" y="44" width="138" height="150"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="20"/>
+                                <nil key="textColor"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Percentage Lived" textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="2" baselineAdjustment="alignBaselines" minimumScaleFactor="0.80000000000000004" adjustsLetterSpacingToFitWidth="YES" translatesAutoresizingMaskIntoConstraints="NO" id="ZLU-xG-PJ9">
+                                <rect key="frame" x="275.66666666666669" y="44" width="138.33333333333331" height="150"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="20"/>
+                                <nil key="textColor"/>
+                                <nil key="highlightedColor"/>
+                            </label>
                         </subviews>
                         <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                         <constraints>
+                            <constraint firstItem="HDO-06-gOf" firstAttribute="top" secondItem="ZLU-xG-PJ9" secondAttribute="bottom" constant="8" id="0Eq-tc-vcn"/>
+                            <constraint firstItem="HDO-06-gOf" firstAttribute="top" secondItem="TSf-Mi-NC4" secondAttribute="bottom" constant="8" id="1v4-Dw-zce"/>
                             <constraint firstItem="HDO-06-gOf" firstAttribute="leading" secondItem="8bC-Xf-vdC" secondAttribute="leading" id="7w8-fm-tvR"/>
+                            <constraint firstItem="J06-Ef-9iR" firstAttribute="leading" secondItem="TSf-Mi-NC4" secondAttribute="trailing" id="CJ1-XJ-xw4"/>
                             <constraint firstItem="HDO-06-gOf" firstAttribute="top" secondItem="6Tk-OE-BBY" secondAttribute="top" constant="158" id="Crg-hg-04M"/>
+                            <constraint firstItem="HDO-06-gOf" firstAttribute="top" secondItem="TSf-Mi-NC4" secondAttribute="bottom" constant="8" id="DmR-8E-kFS"/>
+                            <constraint firstItem="HDO-06-gOf" firstAttribute="trailing" secondItem="6Tk-OE-BBY" secondAttribute="trailing" id="FX2-AK-pnp"/>
+                            <constraint firstItem="ZLU-xG-PJ9" firstAttribute="top" secondItem="6Tk-OE-BBY" secondAttribute="top" id="Jg5-dG-q6z"/>
                             <constraint firstAttribute="trailing" secondItem="HDO-06-gOf" secondAttribute="trailing" id="KeH-W4-JC4"/>
+                            <constraint firstItem="TSf-Mi-NC4" firstAttribute="leading" secondItem="6Tk-OE-BBY" secondAttribute="leading" id="MRa-qw-IYF"/>
                             <constraint firstItem="HDO-06-gOf" firstAttribute="bottom" secondItem="6Tk-OE-BBY" secondAttribute="bottom" id="OpA-FA-779"/>
+                            <constraint firstItem="J06-Ef-9iR" firstAttribute="top" secondItem="6Tk-OE-BBY" secondAttribute="top" id="OpS-4J-0w5"/>
+                            <constraint firstItem="HDO-06-gOf" firstAttribute="bottom" secondItem="6Tk-OE-BBY" secondAttribute="bottom" id="Qki-pE-D7b"/>
+                            <constraint firstItem="HDO-06-gOf" firstAttribute="top" secondItem="J06-Ef-9iR" secondAttribute="bottom" constant="8" id="TDc-vW-S22"/>
+                            <constraint firstItem="TSf-Mi-NC4" firstAttribute="top" secondItem="6Tk-OE-BBY" secondAttribute="top" id="bxs-g0-hje"/>
+                            <constraint firstItem="TSf-Mi-NC4" firstAttribute="width" secondItem="J06-Ef-9iR" secondAttribute="width" id="cEF-Sm-vRu"/>
+                            <constraint firstItem="ZLU-xG-PJ9" firstAttribute="leading" secondItem="J06-Ef-9iR" secondAttribute="trailing" constant="-0.5" id="iYS-Mq-b4X"/>
+                            <constraint firstItem="6Tk-OE-BBY" firstAttribute="trailing" secondItem="ZLU-xG-PJ9" secondAttribute="trailing" id="p1f-Sl-2N4"/>
+                            <constraint firstItem="TSf-Mi-NC4" firstAttribute="width" secondItem="8bC-Xf-vdC" secondAttribute="width" multiplier="1/3" id="t03-79-Xpj"/>
+                            <constraint firstItem="HDO-06-gOf" firstAttribute="leading" secondItem="6Tk-OE-BBY" secondAttribute="leading" id="tzq-Fe-Anb"/>
                         </constraints>
                         <viewLayoutGuide key="safeArea" id="6Tk-OE-BBY"/>
                     </view>
                     <connections>
                         <outlet property="collectionView" destination="HDO-06-gOf" id="nqL-gG-2Ip"/>
+                        <outlet property="leftLabel" destination="TSf-Mi-NC4" id="HWO-ht-E4r"/>
+                        <outlet property="middleLabel" destination="J06-Ef-9iR" id="a7J-Ax-HRy"/>
+                        <outlet property="rightLabel" destination="ZLU-xG-PJ9" id="33I-RB-Xf6"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="dkx-z0-nzr" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="349.60000000000002" y="-195.07389162561577"/>
+            <point key="canvasLocation" x="348.75" y="-195.42253521126761"/>
         </scene>
         <!--Select Date of Birth-->
         <scene sceneID="9Wq-yV-N1v">
             <objects>
                 <viewController modalPresentationStyle="overFullScreen" id="fPE-g0-tkc" customClass="DOBViewController" customModule="Weeker" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="4D9-x3-IRj">
-                        <rect key="frame" x="0.0" y="0.0" width="320" height="568"/>
+                        <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <datePicker contentMode="scaleToFill" contentHorizontalAlignment="fill" contentVerticalAlignment="fill" datePickerMode="date" minuteInterval="1" translatesAutoresizingMaskIntoConstraints="NO" id="fEM-Cs-L3a">
-                                <rect key="frame" x="16" y="64" width="288" height="504"/>
+                                <rect key="frame" x="20" y="88" width="374" height="774"/>
                                 <date key="date" timeIntervalSinceReferenceDate="565316447.61423194">
                                     <!--2018-12-01 00:20:47 +0000-->
                                 </date>
@@ -109,7 +146,7 @@
                 <navigationController storyboardIdentifier="DOBViewControllerID" automaticallyAdjustsScrollViewInsets="NO" id="57f-hE-bV7" sceneMemberID="viewController">
                     <toolbarItems/>
                     <navigationBar key="navigationBar" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" id="k3q-2X-iEE">
-                        <rect key="frame" x="0.0" y="20" width="320" height="44"/>
+                        <rect key="frame" x="0.0" y="44" width="414" height="44"/>
                         <autoresizingMask key="autoresizingMask"/>
                     </navigationBar>
                     <nil name="viewControllers"/>
