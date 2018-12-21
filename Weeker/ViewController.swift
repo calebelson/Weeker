@@ -62,9 +62,10 @@ class ViewController: UIViewController, UICollectionViewDataSource, UICollection
         let cell = collectionView.dequeueReusableCell(withReuseIdentifier: "Cell", for: indexPath)
 
         if ageReached {
-            cell.backgroundColor = randomColor()
+            cell.backgroundColor = #colorLiteral(red: 0.6979569793, green: 0.8412405849, blue: 0.9987565875, alpha: 1).withAlphaComponent(decreasingAlpha)
+
         } else {
-            cell.backgroundColor = UIColor.green.withAlphaComponent(decreasingAlpha)
+            cell.backgroundColor = #colorLiteral(red: 0.9998636842, green: 0.597361505, blue: 0.5580425858, alpha: 1).withAlphaComponent(decreasingAlpha)
         }
 
         
@@ -72,14 +73,6 @@ class ViewController: UIViewController, UICollectionViewDataSource, UICollection
         if indexPath[0] == timeSinceDOB.year! && indexPath[1] == timeSinceDOB.weekOfYear! {
             ageReached = true
         }
-        
-//        // View width/height error test
-//        if indexPath[0] == 89 || indexPath[1] == 51 {
-//            cell.backgroundColor = .red
-//        }
-        
-
-//        print("row \(indexPath[0]), column \(indexPath[1])")
         
         return cell
     }
