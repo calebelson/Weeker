@@ -17,8 +17,13 @@ class DOBViewController: UIViewController {
         let date = dateOfBirthPicker.date
         UserDefaults.standard.set(date, forKey: "DOB")
         
-        let mainStoryboard: UIStoryboard = UIStoryboard(name: "Main", bundle: nil)
-        let viewController = mainStoryboard.instantiateViewController(withIdentifier: "transitionViewControllerID")
-        UIApplication.shared.keyWindow?.rootViewController = viewController
+        
+        let transition = CATransition()
+        transition.duration = 0.5
+        transition.type = CATransitionType.push
+        transition.subtype = CATransitionSubtype.fromLeft
+        transition.timingFunction = CAMediaTimingFunction(name:CAMediaTimingFunctionName.easeInEaseOut)
+        view.window!.layer.add(transition, forKey: kCATransition)
+        present(TransitionViewController(), animated: false, completion: nil)
     }
 }
