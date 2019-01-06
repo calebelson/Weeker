@@ -20,7 +20,7 @@
                         <subviews>
                             <collectionView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" dataMode="prototypes" translatesAutoresizingMaskIntoConstraints="NO" id="HDO-06-gOf">
                                 <rect key="frame" x="0.0" y="202" width="414" height="660"/>
-                                <color key="backgroundColor" white="0.66666666666666663" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                <color key="backgroundColor" cocoaTouchSystemColor="scrollViewTexturedBackgroundColor"/>
                                 <collectionViewFlowLayout key="collectionViewLayout" minimumLineSpacing="10" minimumInteritemSpacing="10" id="03C-0d-Iso">
                                     <size key="itemSize" width="50" height="50"/>
                                     <size key="headerReferenceSize" width="0.0" height="0.0"/>
@@ -52,17 +52,17 @@
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Weeks Left" textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="2" baselineAdjustment="alignBaselines" minimumScaleFactor="0.80000000000000004" adjustsLetterSpacingToFitWidth="YES" translatesAutoresizingMaskIntoConstraints="NO" id="J06-Ef-9iR">
                                 <rect key="frame" x="138" y="44" width="138" height="150"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="20"/>
-                                <color key="textColor" red="0.94447320700000004" green="0.61648559570000006" blue="0.57252699139999996" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
+                                <color key="textColor" red="0.72618448729999996" green="0.83693432810000001" blue="0.98433631659999998" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
                                 <nil key="highlightedColor"/>
                             </label>
-                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Percentage Lived" textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="2" baselineAdjustment="alignBaselines" minimumScaleFactor="0.80000000000000004" adjustsLetterSpacingToFitWidth="YES" translatesAutoresizingMaskIntoConstraints="NO" id="ZLU-xG-PJ9">
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Life Lived" textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="2" baselineAdjustment="alignBaselines" minimumScaleFactor="0.80000000000000004" adjustsLetterSpacingToFitWidth="YES" translatesAutoresizingMaskIntoConstraints="NO" id="ZLU-xG-PJ9">
                                 <rect key="frame" x="275.66666666666669" y="44" width="138.33333333333331" height="150"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="20"/>
-                                <color key="textColor" red="0.94447320700000004" green="0.61648559570000006" blue="0.57252699139999996" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
+                                <color key="textColor" red="0.72618448729999996" green="0.83693432810000001" blue="0.98433631659999998" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
                                 <nil key="highlightedColor"/>
                             </label>
                         </subviews>
-                        <color key="backgroundColor" white="0.66666666666666663" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                        <color key="backgroundColor" cocoaTouchSystemColor="scrollViewTexturedBackgroundColor"/>
                         <constraints>
                             <constraint firstItem="HDO-06-gOf" firstAttribute="top" secondItem="ZLU-xG-PJ9" secondAttribute="bottom" constant="8" id="0Eq-tc-vcn"/>
                             <constraint firstItem="HDO-06-gOf" firstAttribute="top" secondItem="TSf-Mi-NC4" secondAttribute="bottom" constant="8" id="1v4-Dw-zce"/>
@@ -103,11 +103,11 @@
             <objects>
                 <viewController modalPresentationStyle="overFullScreen" id="fPE-g0-tkc" customClass="DOBViewController" customModule="Weeker" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="4D9-x3-IRj">
-                        <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
+                        <rect key="frame" x="0.0" y="0.0" width="414" height="808"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <datePicker contentMode="scaleToFill" contentHorizontalAlignment="fill" contentVerticalAlignment="fill" datePickerMode="date" minuteInterval="1" translatesAutoresizingMaskIntoConstraints="NO" id="fEM-Cs-L3a">
-                                <rect key="frame" x="20" y="88" width="374" height="774"/>
+                                <rect key="frame" x="20" y="0.0" width="374" height="774"/>
                                 <date key="date" timeIntervalSinceReferenceDate="565316447.61423194">
                                     <!--2018-12-01 00:20:47 +0000-->
                                 </date>
@@ -116,7 +116,7 @@
                                 </date>
                             </datePicker>
                         </subviews>
-                        <color key="backgroundColor" white="0.66666666666666663" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                        <color key="backgroundColor" cocoaTouchSystemColor="scrollViewTexturedBackgroundColor"/>
                         <constraints>
                             <constraint firstItem="fEM-Cs-L3a" firstAttribute="trailing" secondItem="4D9-x3-IRj" secondAttribute="trailingMargin" id="H3k-6g-vwh"/>
                             <constraint firstItem="fEM-Cs-L3a" firstAttribute="bottom" secondItem="7QF-DX-JQc" secondAttribute="bottom" id="ntR-7q-po5"/>
@@ -138,16 +138,17 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="Sm8-6R-34E" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="1886.1328124999998" y="-195.46120058565151"/>
+            <point key="canvasLocation" x="2855" y="-196"/>
         </scene>
         <!--Navigation Controller-->
         <scene sceneID="A2f-al-TVf">
             <objects>
                 <navigationController storyboardIdentifier="DOBViewControllerID" automaticallyAdjustsScrollViewInsets="NO" id="57f-hE-bV7" sceneMemberID="viewController">
                     <toolbarItems/>
-                    <navigationBar key="navigationBar" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" id="k3q-2X-iEE">
+                    <navigationBar key="navigationBar" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" translucent="NO" id="k3q-2X-iEE">
                         <rect key="frame" x="0.0" y="44" width="414" height="44"/>
                         <autoresizingMask key="autoresizingMask"/>
+                        <color key="barTintColor" cocoaTouchSystemColor="scrollViewTexturedBackgroundColor"/>
                     </navigationBar>
                     <nil name="viewControllers"/>
                     <connections>
@@ -156,7 +157,22 @@
                 </navigationController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="sjF-Em-NRC" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="1160.7421875" y="-195.46120058565151"/>
+            <point key="canvasLocation" x="1117" y="-196"/>
+        </scene>
+        <!--Transition View Controller-->
+        <scene sceneID="aBH-Ib-hlN">
+            <objects>
+                <viewController storyboardIdentifier="transitionViewControllerID" id="lwB-IM-1vQ" customClass="TransitionViewController" customModule="Weeker" customModuleProvider="target" sceneMemberID="viewController">
+                    <view key="view" contentMode="scaleToFill" id="ILv-aM-S26">
+                        <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <color key="backgroundColor" cocoaTouchSystemColor="scrollViewTexturedBackgroundColor"/>
+                        <viewLayoutGuide key="safeArea" id="Cx6-uQ-hsX"/>
+                    </view>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="FGT-n1-DrH" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="1981" y="414"/>
         </scene>
     </scenes>
 </document>

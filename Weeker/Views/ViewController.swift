@@ -9,12 +9,15 @@
 import UIKit
 
 class ViewController: UIViewController, UICollectionViewDataSource, UICollectionViewDelegate, UICollectionViewDelegateFlowLayout {
+    
+    // MARK: - Properties
     @IBOutlet var collectionView: UICollectionView!
     @IBOutlet weak var leftLabel: UILabel!
     @IBOutlet weak var middleLabel: UILabel!
     @IBOutlet weak var rightLabel: UILabel!
+    
     private var decreasingAlpha = CGFloat()
-    private var timeSinceDOB = DateComponents()
+    private let ageModel = AgeModel()
     private var ageReached = false
     
     
@@ -30,26 +33,16 @@ class ViewController: UIViewController, UICollectionViewDataSource, UICollection
         collectionView?.contentInsetAdjustmentBehavior = .always
         collectionView?.register(UICollectionViewCell.self, forCellWithReuseIdentifier: "Cell")
         
-        // Remove, for testing splash screen
+//        // Remove, for testing splash screen
 //        UserDefaults.standard.removeObject(forKey: "DOB")
     }
     
     override func viewDidLoad() {
         super.viewDidLoad()
         
-        timeSinceDOB = Calendar.current.dateComponents([.year, .weekOfYear], from: UserDefaults.standard.value(forKey: "DOB") as! Date, to: Date())
-        
-        let daysLived = Calendar.current.dateComponents([.day], from: UserDefaults.standard.value(forKey: "DOB") as! Date, to: Date())
-        let ninetyYearsFromDOB = Calendar.current.date(byAdding: .year, value: 90, to: UserDefaults.standard.value(forKey: "DOB") as! Date)
-        let daysLeft = Calendar.current.dateComponents([.day], from: Date(), to: ninetyYearsFromDOB!)
-        leftLabel.text = "Weeks Lived:\n\(daysLived.day!/7)"
-        middleLabel.text = "Weeks Left:\n\(daysLeft.day!/7)"
-        rightLabel.text = "Life Lived: \n\(daysLived.day!*100/(daysLived.day!+daysLeft.day!))%"
-        
-        
-        print(timeSinceDOB)
-        
-        print(UserDefaults.standard.value(forKey: "DOB") as! Date)
+        leftLabel.text = "Lived:\n\(ageModel.weeksLivedAndLeft().weeksLived)"
+        middleLabel.text = "Left:\n\(ageModel.weeksLivedAndLeft().weeksLeft)"
+        rightLabel.text = "Percentage: \n\(ageModel.weeksLivedAndLeft().percentLived)%"
     }
     
     func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
@@ -57,6 +50,7 @@ class ViewController: UIViewController, UICollectionViewDataSource, UICollection
     }
     
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
+        
         decreasingAlpha = CGFloat(90 - Double(indexPath.section)/1.3)/90
         
         let cell = collectionView.dequeueReusableCell(withReuseIdentifier: "Cell", for: indexPath)
@@ -67,10 +61,8 @@ class ViewController: UIViewController, UICollectionViewDataSource, UICollection
         } else {
             cell.backgroundColor = #colorLiteral(red: 0.9998636842, green: 0.597361505, blue: 0.5580425858, alpha: 1).withAlphaComponent(decreasingAlpha)
         }
-
         
-        
-        if indexPath[0] == timeSinceDOB.year! && indexPath[1] == timeSinceDOB.weekOfYear! {
+        if indexPath[0] == ageModel.current().year && indexPath[1] == ageModel.current().weekOfYear {
             ageReached = true
         }
         
@@ -79,17 +71,6 @@ class ViewController: UIViewController, UICollectionViewDataSource, UICollection
     
     func numberOfSections(in collectionView: UICollectionView) -> Int {
         return 90
-    }
-    
-    
-    
-    // Generate a random UIColor
-    func randomColor() -> UIColor{
-        let red = CGFloat(drand48())
-        let green = CGFloat(drand48())
-        let blue = CGFloat(drand48())
-        
-        return UIColor(red: red, green: green, blue: blue, alpha: decreasingAlpha)
     }
 }
 
