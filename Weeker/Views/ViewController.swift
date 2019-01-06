@@ -12,9 +12,7 @@ class ViewController: UIViewController, UICollectionViewDataSource, UICollection
     
     // MARK: - Properties
     @IBOutlet var collectionView: UICollectionView!
-    @IBOutlet weak var leftLabel: UILabel!
-    @IBOutlet weak var middleLabel: UILabel!
-    @IBOutlet weak var rightLabel: UILabel!
+    @IBOutlet weak var livedAndLeftLabel: UILabel!
     
     private var decreasingAlpha = CGFloat()
     private let ageModel = AgeModel()
@@ -40,9 +38,16 @@ class ViewController: UIViewController, UICollectionViewDataSource, UICollection
     override func viewDidLoad() {
         super.viewDidLoad()
         
-        leftLabel.text = "Lived:\n\(ageModel.weeksLivedAndLeft().weeksLived)"
-        middleLabel.text = "Left:\n\(ageModel.weeksLivedAndLeft().weeksLeft)"
-        rightLabel.text = "Percentage: \n\(ageModel.weeksLivedAndLeft().percentLived)%"
+        let weeksLivedString = "Weeks Lived: \(ageModel.weeksLivedAndLeft().weeksLived), \(ageModel.weeksLivedAndLeft().percentLived)%"
+        let weeksLeftString = "Weeks Left: \(ageModel.weeksLivedAndLeft().weeksLeft), \(ageModel.weeksLivedAndLeft().percentLeft)%"
+        
+        let labelString = "\(weeksLivedString)\n\(weeksLeftString)"
+        
+        let range = (labelString as NSString).range(of: weeksLeftString)
+        let attributedString = NSMutableAttributedString.init(string: labelString)
+        attributedString.addAttribute(NSAttributedString.Key.foregroundColor, value: #colorLiteral(red: 0.6979569793, green: 0.8412405849, blue: 0.9987565875, alpha: 1), range: range)
+
+        livedAndLeftLabel.attributedText = attributedString
     }
     
     func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
