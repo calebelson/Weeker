@@ -32,7 +32,7 @@ class ViewController: UIViewController, UICollectionViewDataSource, UICollection
         collectionView?.register(UICollectionViewCell.self, forCellWithReuseIdentifier: "Cell")
         
 //        // Remove, for testing splash screen
-//        UserDefaults.standard.removeObject(forKey: "DOB")
+//        UserDefaults(suiteName: "group.com.calebElson.Weeker")?.removeObject(forKey: "DOB")
     }
     
     override func viewDidLoad() {
@@ -65,15 +65,15 @@ class ViewController: UIViewController, UICollectionViewDataSource, UICollection
         
         let cell = collectionView.dequeueReusableCell(withReuseIdentifier: "Cell", for: indexPath)
 
+        if indexPath[0] == ageModel.current().year && indexPath[1] == ageModel.current().weekOfYear {
+            ageReached = true
+        }
+        
         if ageReached {
             cell.backgroundColor = #colorLiteral(red: 0.6979569793, green: 0.8412405849, blue: 0.9987565875, alpha: 1).withAlphaComponent(decreasingAlpha)
 
         } else {
             cell.backgroundColor = #colorLiteral(red: 0.9998636842, green: 0.597361505, blue: 0.5580425858, alpha: 1).withAlphaComponent(decreasingAlpha)
-        }
-        
-        if indexPath[0] == ageModel.current().year && indexPath[1] == ageModel.current().weekOfYear {
-            ageReached = true
         }
         
         return cell

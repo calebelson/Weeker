@@ -8,6 +8,11 @@
 
 /* Begin PBXBuildFile section */
 		C915544221E162A10075B725 /* AgeModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = C915544121E162A10075B725 /* AgeModel.swift */; };
+		C915544921E2D1540075B725 /* NotificationCenter.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = C915544821E2D1540075B725 /* NotificationCenter.framework */; };
+		C915544C21E2D1540075B725 /* TodayViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = C915544B21E2D1540075B725 /* TodayViewController.swift */; };
+		C915544F21E2D1540075B725 /* MainInterface.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = C915544D21E2D1540075B725 /* MainInterface.storyboard */; };
+		C915545321E2D1540075B725 /* Weeker Widget.appex in Embed App Extensions */ = {isa = PBXBuildFile; fileRef = C915544721E2D1540075B725 /* Weeker Widget.appex */; settings = {ATTRIBUTES = (RemoveHeadersOnCopy, ); }; };
+		C915545821E2DB730075B725 /* AgeModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = C915544121E162A10075B725 /* AgeModel.swift */; };
 		C91E775221B20DED00D2C16C /* DOBViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = C91E775121B20DED00D2C16C /* DOBViewController.swift */; };
 		C91E776921B21FE700D2C16C /* README.md in Resources */ = {isa = PBXBuildFile; fileRef = C91E776821B21FE700D2C16C /* README.md */; };
 		C9592C2821AC7E390077747F /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = C9592C2721AC7E390077747F /* AppDelegate.swift */; };
@@ -19,9 +24,40 @@
 		F7D5B9EE97C59607BE602E7E /* Pods_Weeker.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = EE9FB097F6799D94794E48DE /* Pods_Weeker.framework */; };
 /* End PBXBuildFile section */
 
+/* Begin PBXContainerItemProxy section */
+		C915545121E2D1540075B725 /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = C9592C1C21AC7E390077747F /* Project object */;
+			proxyType = 1;
+			remoteGlobalIDString = C915544621E2D1540075B725;
+			remoteInfo = "Weeker Widget";
+		};
+/* End PBXContainerItemProxy section */
+
+/* Begin PBXCopyFilesBuildPhase section */
+		C915545721E2D1540075B725 /* Embed App Extensions */ = {
+			isa = PBXCopyFilesBuildPhase;
+			buildActionMask = 2147483647;
+			dstPath = "";
+			dstSubfolderSpec = 13;
+			files = (
+				C915545321E2D1540075B725 /* Weeker Widget.appex in Embed App Extensions */,
+			);
+			name = "Embed App Extensions";
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXCopyFilesBuildPhase section */
+
 /* Begin PBXFileReference section */
 		425E31406F98DC7A9B9AFF40 /* Pods-Weeker.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Weeker.release.xcconfig"; path = "Pods/Target Support Files/Pods-Weeker/Pods-Weeker.release.xcconfig"; sourceTree = "<group>"; };
 		C915544121E162A10075B725 /* AgeModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AgeModel.swift; sourceTree = "<group>"; };
+		C915544721E2D1540075B725 /* Weeker Widget.appex */ = {isa = PBXFileReference; explicitFileType = "wrapper.app-extension"; includeInIndex = 0; path = "Weeker Widget.appex"; sourceTree = BUILT_PRODUCTS_DIR; };
+		C915544821E2D1540075B725 /* NotificationCenter.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = NotificationCenter.framework; path = System/Library/Frameworks/NotificationCenter.framework; sourceTree = SDKROOT; };
+		C915544B21E2D1540075B725 /* TodayViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TodayViewController.swift; sourceTree = "<group>"; };
+		C915544E21E2D1540075B725 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/MainInterface.storyboard; sourceTree = "<group>"; };
+		C915545021E2D1540075B725 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		C915545921E2DCCF0075B725 /* Weeker.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = Weeker.entitlements; sourceTree = "<group>"; };
+		C915545A21E2DCDE0075B725 /* Weeker Widget.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = "Weeker Widget.entitlements"; sourceTree = "<group>"; };
 		C91E775121B20DED00D2C16C /* DOBViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DOBViewController.swift; sourceTree = "<group>"; };
 		C91E776821B21FE700D2C16C /* README.md */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = net.daringfireball.markdown; path = README.md; sourceTree = "<group>"; };
 		C9592C2421AC7E390077747F /* Weeker.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Weeker.app; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -37,6 +73,14 @@
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
+		C915544421E2D1540075B725 /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				C915544921E2D1540075B725 /* NotificationCenter.framework in Frameworks */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
 		C9592C2121AC7E390077747F /* Frameworks */ = {
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
@@ -61,6 +105,7 @@
 			isa = PBXGroup;
 			children = (
 				EE9FB097F6799D94794E48DE /* Pods_Weeker.framework */,
+				C915544821E2D1540075B725 /* NotificationCenter.framework */,
 			);
 			name = Frameworks;
 			sourceTree = "<group>";
@@ -75,11 +120,23 @@
 			path = Views;
 			sourceTree = "<group>";
 		};
+		C915544A21E2D1540075B725 /* Weeker Widget */ = {
+			isa = PBXGroup;
+			children = (
+				C915545A21E2DCDE0075B725 /* Weeker Widget.entitlements */,
+				C915544B21E2D1540075B725 /* TodayViewController.swift */,
+				C915544D21E2D1540075B725 /* MainInterface.storyboard */,
+				C915545021E2D1540075B725 /* Info.plist */,
+			);
+			path = "Weeker Widget";
+			sourceTree = "<group>";
+		};
 		C9592C1B21AC7E390077747F = {
 			isa = PBXGroup;
 			children = (
 				C91E776821B21FE700D2C16C /* README.md */,
 				C9592C2621AC7E390077747F /* Weeker */,
+				C915544A21E2D1540075B725 /* Weeker Widget */,
 				C9592C2521AC7E390077747F /* Products */,
 				4A8B2699C99C605850FF38C4 /* Pods */,
 				6FA57F65BDD43BB68094D418 /* Frameworks */,
@@ -90,6 +147,7 @@
 			isa = PBXGroup;
 			children = (
 				C9592C2421AC7E390077747F /* Weeker.app */,
+				C915544721E2D1540075B725 /* Weeker Widget.appex */,
 			);
 			name = Products;
 			sourceTree = "<group>";
@@ -97,6 +155,7 @@
 		C9592C2621AC7E390077747F /* Weeker */ = {
 			isa = PBXGroup;
 			children = (
+				C915545921E2DCCF0075B725 /* Weeker.entitlements */,
 				C9592C2721AC7E390077747F /* AppDelegate.swift */,
 				C915544121E162A10075B725 /* AgeModel.swift */,
 				C915544021E162350075B725 /* Views */,
@@ -111,6 +170,23 @@
 /* End PBXGroup section */
 
 /* Begin PBXNativeTarget section */
+		C915544621E2D1540075B725 /* Weeker Widget */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = C915545421E2D1540075B725 /* Build configuration list for PBXNativeTarget "Weeker Widget" */;
+			buildPhases = (
+				C915544321E2D1540075B725 /* Sources */,
+				C915544421E2D1540075B725 /* Frameworks */,
+				C915544521E2D1540075B725 /* Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+			);
+			name = "Weeker Widget";
+			productName = "Weeker Widget";
+			productReference = C915544721E2D1540075B725 /* Weeker Widget.appex */;
+			productType = "com.apple.product-type.app-extension";
+		};
 		C9592C2321AC7E390077747F /* Weeker */ = {
 			isa = PBXNativeTarget;
 			buildConfigurationList = C9592C3621AC7E3B0077747F /* Build configuration list for PBXNativeTarget "Weeker" */;
@@ -120,10 +196,12 @@
 				C9592C2121AC7E390077747F /* Frameworks */,
 				C9592C2221AC7E390077747F /* Resources */,
 				2D6D6A96D1A345A7C07ABCCE /* [CP] Embed Pods Frameworks */,
+				C915545721E2D1540075B725 /* Embed App Extensions */,
 			);
 			buildRules = (
 			);
 			dependencies = (
+				C915545221E2D1540075B725 /* PBXTargetDependency */,
 			);
 			name = Weeker;
 			productName = Weeker;
@@ -140,8 +218,21 @@
 				LastUpgradeCheck = 1010;
 				ORGANIZATIONNAME = "Caleb Elson";
 				TargetAttributes = {
+					C915544621E2D1540075B725 = {
+						CreatedOnToolsVersion = 10.1;
+						SystemCapabilities = {
+							com.apple.ApplicationGroups.iOS = {
+								enabled = 1;
+							};
+						};
+					};
 					C9592C2321AC7E390077747F = {
 						CreatedOnToolsVersion = 10.1;
+						SystemCapabilities = {
+							com.apple.ApplicationGroups.iOS = {
+								enabled = 1;
+							};
+						};
 					};
 				};
 			};
@@ -159,11 +250,20 @@
 			projectRoot = "";
 			targets = (
 				C9592C2321AC7E390077747F /* Weeker */,
+				C915544621E2D1540075B725 /* Weeker Widget */,
 			);
 		};
 /* End PBXProject section */
 
 /* Begin PBXResourcesBuildPhase section */
+		C915544521E2D1540075B725 /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				C915544F21E2D1540075B725 /* MainInterface.storyboard in Resources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
 		C9592C2221AC7E390077747F /* Resources */ = {
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
@@ -225,6 +325,15 @@
 /* End PBXShellScriptBuildPhase section */
 
 /* Begin PBXSourcesBuildPhase section */
+		C915544321E2D1540075B725 /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				C915544C21E2D1540075B725 /* TodayViewController.swift in Sources */,
+				C915545821E2DB730075B725 /* AgeModel.swift in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
 		C9592C2021AC7E390077747F /* Sources */ = {
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
@@ -239,7 +348,23 @@
 		};
 /* End PBXSourcesBuildPhase section */
 
+/* Begin PBXTargetDependency section */
+		C915545221E2D1540075B725 /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			target = C915544621E2D1540075B725 /* Weeker Widget */;
+			targetProxy = C915545121E2D1540075B725 /* PBXContainerItemProxy */;
+		};
+/* End PBXTargetDependency section */
+
 /* Begin PBXVariantGroup section */
+		C915544D21E2D1540075B725 /* MainInterface.storyboard */ = {
+			isa = PBXVariantGroup;
+			children = (
+				C915544E21E2D1540075B725 /* Base */,
+			);
+			name = MainInterface.storyboard;
+			sourceTree = "<group>";
+		};
 		C9592C2B21AC7E390077747F /* Main.storyboard */ = {
 			isa = PBXVariantGroup;
 			children = (
@@ -259,6 +384,46 @@
 /* End PBXVariantGroup section */
 
 /* Begin XCBuildConfiguration section */
+		C915545521E2D1540075B725 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				CODE_SIGN_ENTITLEMENTS = "Weeker Widget/Weeker Widget.entitlements";
+				CODE_SIGN_STYLE = Automatic;
+				DEVELOPMENT_TEAM = 877B3XVSF5;
+				INFOPLIST_FILE = "Weeker Widget/Info.plist";
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+					"@executable_path/../../Frameworks",
+				);
+				PRODUCT_BUNDLE_IDENTIFIER = "calebElson.Weeker.Weeker-Widget";
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SKIP_INSTALL = YES;
+				SWIFT_VERSION = 4.2;
+				TARGETED_DEVICE_FAMILY = "1,2";
+			};
+			name = Debug;
+		};
+		C915545621E2D1540075B725 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				CODE_SIGN_ENTITLEMENTS = "Weeker Widget/Weeker Widget.entitlements";
+				CODE_SIGN_STYLE = Automatic;
+				DEVELOPMENT_TEAM = 877B3XVSF5;
+				INFOPLIST_FILE = "Weeker Widget/Info.plist";
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+					"@executable_path/../../Frameworks",
+				);
+				PRODUCT_BUNDLE_IDENTIFIER = "calebElson.Weeker.Weeker-Widget";
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SKIP_INSTALL = YES;
+				SWIFT_VERSION = 4.2;
+				TARGETED_DEVICE_FAMILY = "1,2";
+			};
+			name = Release;
+		};
 		C9592C3421AC7E3B0077747F /* Debug */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
@@ -379,7 +544,9 @@
 			isa = XCBuildConfiguration;
 			baseConfigurationReference = D61F78B3CCD5AE4F51F7BEFB /* Pods-Weeker.debug.xcconfig */;
 			buildSettings = {
+				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				CODE_SIGN_ENTITLEMENTS = Weeker/Weeker.entitlements;
 				CODE_SIGN_STYLE = Automatic;
 				DEVELOPMENT_TEAM = 877B3XVSF5;
 				INFOPLIST_FILE = Weeker/Info.plist;
@@ -398,7 +565,9 @@
 			isa = XCBuildConfiguration;
 			baseConfigurationReference = 425E31406F98DC7A9B9AFF40 /* Pods-Weeker.release.xcconfig */;
 			buildSettings = {
+				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				CODE_SIGN_ENTITLEMENTS = Weeker/Weeker.entitlements;
 				CODE_SIGN_STYLE = Automatic;
 				DEVELOPMENT_TEAM = 877B3XVSF5;
 				INFOPLIST_FILE = Weeker/Info.plist;
@@ -416,6 +585,15 @@
 /* End XCBuildConfiguration section */
 
 /* Begin XCConfigurationList section */
+		C915545421E2D1540075B725 /* Build configuration list for PBXNativeTarget "Weeker Widget" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				C915545521E2D1540075B725 /* Debug */,
+				C915545621E2D1540075B725 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
 		C9592C1F21AC7E390077747F /* Build configuration list for PBXProject "Weeker" */ = {
 			isa = XCConfigurationList;
 			buildConfigurations = (
