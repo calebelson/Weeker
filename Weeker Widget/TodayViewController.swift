@@ -14,7 +14,7 @@ class TodayViewController: UIViewController, NCWidgetProviding {
     @IBOutlet weak var lifeProgress: UIProgressView!
     @IBOutlet weak var livedAndLeftLabel: UILabel!
     
-    
+    // Open main app
     @IBAction func widgetTapped(_ sender: UITapGestureRecognizer) {
         let url = URL(string: "mainAppUrl://")!
         self.extensionContext?.open(url, completionHandler: nil)
@@ -23,6 +23,7 @@ class TodayViewController: UIViewController, NCWidgetProviding {
     override func viewDidLoad() {
         super.viewDidLoad()
         
+        // Checks if DOB has been set
         if let _ = UserDefaults(suiteName: "group.com.calebElson.Weeker")?.value(forKey: "DOB") {
             let ageModel = AgeModel()
 

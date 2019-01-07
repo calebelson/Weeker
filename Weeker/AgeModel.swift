@@ -16,7 +16,9 @@ class AgeModel {
         let daysLived = Calendar.current.dateComponents([.day], from: dateOfBirth as! Date, to: Date()).day!
         
         let weeksLived = daysLived/7
+        // Prevents negative weeks left
         let weeksLeft = max((lifeSpan - daysLived)/7, 0)
+        // Prevents above 100% life lived
         let percentLived = min(daysLived*100/lifeSpan, 100)
         let percentLeft = 100 - percentLived
         
