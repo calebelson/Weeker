@@ -15,7 +15,7 @@ class ViewController: UIViewController, UICollectionViewDataSource, UICollection
     @IBOutlet weak var livedAndLeftLabel: UILabel!
     
     private var decreasingAlpha = CGFloat()
-    private let ageModel = AgeModel()
+    private var ageModel = AgeModel()
     private var ageReached = false
     
     
@@ -31,8 +31,40 @@ class ViewController: UIViewController, UICollectionViewDataSource, UICollection
         collectionView?.contentInsetAdjustmentBehavior = .always
         collectionView?.register(UICollectionViewCell.self, forCellWithReuseIdentifier: "Cell")
         
+        if ageModel.current() != AgeModel().current() {
+            ageModel = AgeModel()
+            refresh()
+        }
+        
 //        // Remove, for testing splash screen
 //        UserDefaults(suiteName: "group.com.calebElson.Weeker")?.removeObject(forKey: "DOB")
+    }
+    
+    func refresh() {
+        livedAndLeftLabel.isHidden = true
+        collectionView.isHidden = true
+
+        DispatchQueue.main.async {
+            self.ageReached = false
+            
+            let weeksLivedString = "Weeks Lived: \(self.ageModel.weeksLivedAndLeft().weeksLived), \(self.ageModel.weeksLivedAndLeft().percentLived)%"
+            let weeksLeftString = "Weeks Left: \(self.ageModel.weeksLivedAndLeft().weeksLeft), \(self.ageModel.weeksLivedAndLeft().percentLeft)%"
+            
+            let labelString = "\(weeksLivedString)\n\(weeksLeftString)"
+            
+            let range = (labelString as NSString).range(of: weeksLeftString)
+            let attributedString = NSMutableAttributedString.init(string: labelString)
+            attributedString.addAttribute(NSAttributedString.Key.foregroundColor, value: #colorLiteral(red: 0.6979569793, green: 0.8412405849, blue: 0.9987565875, alpha: 1), range: range)
+            
+            self.livedAndLeftLabel.attributedText = attributedString
+            
+            self.collectionView.reloadData()
+        }
+        
+        DispatchQueue.main.async {
+            self.collectionView.isHidden = false
+            self.livedAndLeftLabel.isHidden = false
+        }
     }
     
     override func viewDidLoad() {
@@ -42,17 +74,7 @@ class ViewController: UIViewController, UICollectionViewDataSource, UICollection
         let backItem = UIBarButtonItem(title: "Cancel", style: .plain, target: nil, action: nil)
         navigationItem.backBarButtonItem = backItem
         
-        
-        let weeksLivedString = "Weeks Lived: \(ageModel.weeksLivedAndLeft().weeksLived), \(ageModel.weeksLivedAndLeft().percentLived)%"
-        let weeksLeftString = "Weeks Left: \(ageModel.weeksLivedAndLeft().weeksLeft), \(ageModel.weeksLivedAndLeft().percentLeft)%"
-        
-        let labelString = "\(weeksLivedString)\n\(weeksLeftString)"
-        
-        let range = (labelString as NSString).range(of: weeksLeftString)
-        let attributedString = NSMutableAttributedString.init(string: labelString)
-        attributedString.addAttribute(NSAttributedString.Key.foregroundColor, value: #colorLiteral(red: 0.6979569793, green: 0.8412405849, blue: 0.9987565875, alpha: 1), range: range)
-
-        livedAndLeftLabel.attributedText = attributedString
+        refresh()
     }
     
     func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {

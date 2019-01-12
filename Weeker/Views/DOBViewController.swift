@@ -11,6 +11,7 @@ import SVProgressHUD
 
 class DOBViewController: UIViewController {
     @IBOutlet weak var dateOfBirthPicker: UIDatePicker!
+    var firstLoad = UserDefaults(suiteName: "group.com.calebElson.Weeker")?.value(forKey: "DOB") == nil
     
     override func viewDidLoad() {
         let dateFormatter = DateFormatter()
@@ -31,13 +32,16 @@ class DOBViewController: UIViewController {
         let date = dateOfBirthPicker.date
         UserDefaults(suiteName: "group.com.calebElson.Weeker")?.set(date, forKey: "DOB")
         
-        
-        let transition = CATransition()
-        transition.duration = 0.5
-        transition.type = CATransitionType.push
-        transition.subtype = CATransitionSubtype.fromLeft
-        transition.timingFunction = CAMediaTimingFunction(name:CAMediaTimingFunctionName.easeInEaseOut)
-        view.window!.layer.add(transition, forKey: kCATransition)
-        present(TransitionViewController(), animated: false, completion: nil)
+        if firstLoad {
+            let transition = CATransition()
+            transition.duration = 0.5
+            transition.type = CATransitionType.push
+            transition.subtype = CATransitionSubtype.fromLeft
+            transition.timingFunction = CAMediaTimingFunction(name:CAMediaTimingFunctionName.easeInEaseOut)
+            view.window!.layer.add(transition, forKey: kCATransition)
+            present(TransitionViewController(), animated: false, completion: nil)
+        } else {
+            self.navigationController?.popViewController(animated: true)
+        }
     }
 }
