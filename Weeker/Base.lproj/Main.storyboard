@@ -19,7 +19,7 @@
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <collectionView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" dataMode="prototypes" translatesAutoresizingMaskIntoConstraints="NO" id="HDO-06-gOf">
-                                <rect key="frame" x="0.0" y="158" width="414" height="616"/>
+                                <rect key="frame" x="20" y="158" width="374" height="616"/>
                                 <color key="backgroundColor" cocoaTouchSystemColor="scrollViewTexturedBackgroundColor"/>
                                 <collectionViewFlowLayout key="collectionViewLayout" minimumLineSpacing="10" minimumInteritemSpacing="10" id="03C-0d-Iso">
                                     <size key="itemSize" width="50" height="50"/>
@@ -44,7 +44,7 @@
                                 </connections>
                             </collectionView>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Description Label" lineBreakMode="tailTruncation" numberOfLines="2" baselineAdjustment="alignBaselines" minimumScaleFactor="0.55000000000000004" adjustsLetterSpacingToFitWidth="YES" translatesAutoresizingMaskIntoConstraints="NO" id="TSf-Mi-NC4">
-                                <rect key="frame" x="0.0" y="0.0" width="414" height="150"/>
+                                <rect key="frame" x="20" y="0.0" width="374" height="150"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="22"/>
                                 <color key="textColor" red="0.94447320700000004" green="0.61648559570000006" blue="0.57252699139999996" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
                                 <nil key="highlightedColor"/>
@@ -53,17 +53,17 @@
                         <color key="backgroundColor" cocoaTouchSystemColor="scrollViewTexturedBackgroundColor"/>
                         <constraints>
                             <constraint firstItem="HDO-06-gOf" firstAttribute="top" secondItem="TSf-Mi-NC4" secondAttribute="bottom" constant="8" id="1v4-Dw-zce"/>
-                            <constraint firstItem="HDO-06-gOf" firstAttribute="leading" secondItem="8bC-Xf-vdC" secondAttribute="leading" id="7w8-fm-tvR"/>
+                            <constraint firstItem="HDO-06-gOf" firstAttribute="leading" secondItem="8bC-Xf-vdC" secondAttribute="leading" constant="20" id="7w8-fm-tvR"/>
                             <constraint firstItem="HDO-06-gOf" firstAttribute="top" secondItem="6Tk-OE-BBY" secondAttribute="top" constant="158" id="Crg-hg-04M"/>
-                            <constraint firstItem="HDO-06-gOf" firstAttribute="trailing" secondItem="6Tk-OE-BBY" secondAttribute="trailing" id="FX2-AK-pnp"/>
-                            <constraint firstAttribute="trailing" secondItem="HDO-06-gOf" secondAttribute="trailing" id="KeH-W4-JC4"/>
-                            <constraint firstItem="TSf-Mi-NC4" firstAttribute="width" secondItem="8bC-Xf-vdC" secondAttribute="width" id="NuC-Ma-kcu"/>
+                            <constraint firstItem="HDO-06-gOf" firstAttribute="trailing" secondItem="6Tk-OE-BBY" secondAttribute="trailing" constant="-20" id="FX2-AK-pnp"/>
+                            <constraint firstAttribute="trailing" secondItem="HDO-06-gOf" secondAttribute="trailing" constant="20" id="KeH-W4-JC4"/>
+                            <constraint firstItem="TSf-Mi-NC4" firstAttribute="width" secondItem="8bC-Xf-vdC" secondAttribute="width" constant="-40" id="NuC-Ma-kcu"/>
                             <constraint firstItem="HDO-06-gOf" firstAttribute="bottom" secondItem="6Tk-OE-BBY" secondAttribute="bottom" id="OpA-FA-779"/>
-                            <constraint firstItem="TSf-Mi-NC4" firstAttribute="trailing" secondItem="6Tk-OE-BBY" secondAttribute="trailing" id="QaL-4b-B2O"/>
+                            <constraint firstItem="TSf-Mi-NC4" firstAttribute="trailing" secondItem="6Tk-OE-BBY" secondAttribute="trailing" constant="-20" id="QaL-4b-B2O"/>
                             <constraint firstItem="HDO-06-gOf" firstAttribute="bottom" secondItem="6Tk-OE-BBY" secondAttribute="bottom" id="Qki-pE-D7b"/>
                             <constraint firstItem="TSf-Mi-NC4" firstAttribute="top" secondItem="6Tk-OE-BBY" secondAttribute="top" id="bxs-g0-hje"/>
-                            <constraint firstItem="TSf-Mi-NC4" firstAttribute="leading" secondItem="6Tk-OE-BBY" secondAttribute="leading" id="gLA-cL-Vod"/>
-                            <constraint firstItem="HDO-06-gOf" firstAttribute="leading" secondItem="6Tk-OE-BBY" secondAttribute="leading" id="tzq-Fe-Anb"/>
+                            <constraint firstItem="TSf-Mi-NC4" firstAttribute="leading" secondItem="6Tk-OE-BBY" secondAttribute="leading" constant="20" id="gLA-cL-Vod"/>
+                            <constraint firstItem="HDO-06-gOf" firstAttribute="leading" secondItem="6Tk-OE-BBY" secondAttribute="leading" constant="20" id="tzq-Fe-Anb"/>
                         </constraints>
                         <viewLayoutGuide key="safeArea" id="6Tk-OE-BBY"/>
                     </view>
@@ -185,6 +185,6 @@
         </scene>
     </scenes>
     <inferredMetricsTieBreakers>
-        <segue reference="fdO-XA-qU3"/>
+        <segue reference="YAz-sU-Bdg"/>
     </inferredMetricsTieBreakers>
 </document>

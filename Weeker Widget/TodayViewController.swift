@@ -22,22 +22,6 @@ class TodayViewController: UIViewController, NCWidgetProviding {
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        
-        // Checks if DOB has been set
-        if let _ = UserDefaults(suiteName: "group.com.calebElson.Weeker")?.value(forKey: "DOB") {
-            let ageModel = AgeModel()
-
-            let weeksLivedString = "Weeks Lived: \(ageModel.weeksLivedAndLeft().weeksLived), \(ageModel.weeksLivedAndLeft().percentLived)%"
-            let weeksLeftString = "Weeks Left: \(ageModel.weeksLivedAndLeft().weeksLeft), \(ageModel.weeksLivedAndLeft().percentLeft)%"
-
-            livedAndLeftLabel.text = "\(weeksLivedString)\n\(weeksLeftString)"
-            lifeProgress.progress = Float(ageModel.weeksLivedAndLeft().percentLived)/100
-            
-        } else {
-            livedAndLeftLabel.text = "Tap to set date of birth"
-            lifeProgress.progress = 0
-        }
-        
     }
     
     func widgetPerformUpdate(completionHandler: (@escaping (NCUpdateResult) -> Void)) {
@@ -47,7 +31,21 @@ class TodayViewController: UIViewController, NCWidgetProviding {
         // If there's no update required, use NCUpdateResult.NoData
         // If there's an update, use NCUpdateResult.NewData
         
+        // Checks if DOB has been set
+        if let _ = UserDefaults(suiteName: "group.com.calebElson.Weeker")?.value(forKey: "DOB") {
+            let ageModel = AgeModel()
+            
+            let weeksLivedString = "Weeks Lived: \(ageModel.weeksLivedAndLeft().weeksLived), \(ageModel.weeksLivedAndLeft().percentLived)%"
+            let weeksLeftString = "Weeks Left: \(ageModel.weeksLivedAndLeft().weeksLeft), \(ageModel.weeksLivedAndLeft().percentLeft)%"
+            
+            livedAndLeftLabel.text = "\(weeksLivedString)\n\(weeksLeftString)"
+            lifeProgress.progress = Float(ageModel.weeksLivedAndLeft().percentLived)/100
+            
+        } else {
+            livedAndLeftLabel.text = "Tap to set date of birth"
+            lifeProgress.progress = 0
+        }
+        
         completionHandler(NCUpdateResult.newData)
     }
-    
 }
