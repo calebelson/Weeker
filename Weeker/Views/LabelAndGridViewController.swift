@@ -16,7 +16,8 @@ class LabelAndGridViewController: UIViewController, UICollectionViewDataSource, 
     @IBOutlet weak var activityIndicator: UIActivityIndicatorView!
     
     private var decreasingAlpha = CGFloat()
-    private var ageModel = AgeModel()
+    private var ageModelCurrent = AgeModel().current()
+    private var ageModelWeeksLivedAndLeft = AgeModel().weeksLivedAndLeft()
     private var ageReached = false
     
     
@@ -32,8 +33,9 @@ class LabelAndGridViewController: UIViewController, UICollectionViewDataSource, 
         collectionView?.contentInsetAdjustmentBehavior = .always
         collectionView?.register(UICollectionViewCell.self, forCellWithReuseIdentifier: "Cell")
         
-        if ageModel.current() != AgeModel().current() {
-            ageModel = AgeModel()
+        if ageModelCurrent != AgeModel().current() {
+            ageModelCurrent = AgeModel().current()
+            ageModelWeeksLivedAndLeft = AgeModel().weeksLivedAndLeft()
             refreshLabel()
             refreshCollectionView()
         }
@@ -45,8 +47,8 @@ class LabelAndGridViewController: UIViewController, UICollectionViewDataSource, 
     func refreshLabel() {
         ageReached = false
         
-        let weeksLivedString = "Weeks Lived: \(ageModel.weeksLivedAndLeft().weeksLived), \(ageModel.weeksLivedAndLeft().percentLived)%"
-        let weeksLeftString = "Weeks Left: \(ageModel.weeksLivedAndLeft().weeksLeft), \(ageModel.weeksLivedAndLeft().percentLeft)%"
+        let weeksLivedString = "Weeks Lived: \(ageModelWeeksLivedAndLeft.weeksLived), \(ageModelWeeksLivedAndLeft.percentLived)%"
+        let weeksLeftString = "Weeks Left: \(ageModelWeeksLivedAndLeft.weeksLeft), \(ageModelWeeksLivedAndLeft.percentLeft)%"
         
         let labelString = "\(weeksLivedString)\n\(weeksLeftString)"
         
@@ -98,7 +100,7 @@ class LabelAndGridViewController: UIViewController, UICollectionViewDataSource, 
         
         let cell = collectionView.dequeueReusableCell(withReuseIdentifier: "Cell", for: indexPath)
 
-        if indexPath[0] == ageModel.current().year && indexPath[1] == ageModel.current().weekOfYear {
+        if indexPath[0] == ageModelCurrent.year && indexPath[1] == ageModelCurrent.weekOfYear {
             ageReached = true
         }
         
