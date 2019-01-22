@@ -13,6 +13,7 @@ class LabelAndGridViewController: UIViewController, UICollectionViewDataSource, 
     // MARK: - Properties
     @IBOutlet var collectionView: UICollectionView!
     @IBOutlet weak var livedAndLeftLabel: UILabel!
+    @IBOutlet weak var activityIndicator: UIActivityIndicatorView!
     
     private var decreasingAlpha = CGFloat()
     private var ageModel = AgeModel()
@@ -33,37 +34,47 @@ class LabelAndGridViewController: UIViewController, UICollectionViewDataSource, 
         
         if ageModel.current() != AgeModel().current() {
             ageModel = AgeModel()
-            refresh()
+            refreshLabel()
+            refreshCollectionView()
         }
         
 //        // Remove, for testing splash screen
 //        UserDefaults(suiteName: "group.com.calebElson.Weeker")?.removeObject(forKey: "DOB")
     }
     
-    func refresh() {
-        livedAndLeftLabel.isHidden = true
+    func refreshLabel() {
+        ageReached = false
+        
+        let weeksLivedString = "Weeks Lived: \(ageModel.weeksLivedAndLeft().weeksLived), \(ageModel.weeksLivedAndLeft().percentLived)%"
+        let weeksLeftString = "Weeks Left: \(ageModel.weeksLivedAndLeft().weeksLeft), \(ageModel.weeksLivedAndLeft().percentLeft)%"
+        
+        let labelString = "\(weeksLivedString)\n\(weeksLeftString)"
+        
+        let range = (labelString as NSString).range(of: weeksLeftString)
+        let attributedString = NSMutableAttributedString.init(string: labelString)
+        attributedString.addAttribute(NSAttributedString.Key.foregroundColor, value: #colorLiteral(red: 0.6979569793, green: 0.8412405849, blue: 0.9987565875, alpha: 1), range: range)
+        
+        livedAndLeftLabel.attributedText = attributedString
+    }
+    
+    func refreshCollectionView() {
         collectionView.isHidden = true
+        // Label only needs to be hidden for collectionView refresh
+        livedAndLeftLabel.isHidden = true
+        activityIndicator.isHidden = false
+        activityIndicator.startAnimating()
+        
+        refreshLabel()
 
         DispatchQueue.main.async {
-            self.ageReached = false
-            
-            let weeksLivedString = "Weeks Lived: \(self.ageModel.weeksLivedAndLeft().weeksLived), \(self.ageModel.weeksLivedAndLeft().percentLived)%"
-            let weeksLeftString = "Weeks Left: \(self.ageModel.weeksLivedAndLeft().weeksLeft), \(self.ageModel.weeksLivedAndLeft().percentLeft)%"
-            
-            let labelString = "\(weeksLivedString)\n\(weeksLeftString)"
-            
-            let range = (labelString as NSString).range(of: weeksLeftString)
-            let attributedString = NSMutableAttributedString.init(string: labelString)
-            attributedString.addAttribute(NSAttributedString.Key.foregroundColor, value: #colorLiteral(red: 0.6979569793, green: 0.8412405849, blue: 0.9987565875, alpha: 1), range: range)
-            
-            self.livedAndLeftLabel.attributedText = attributedString
-            
             self.collectionView.reloadData()
         }
         
         DispatchQueue.main.async {
             self.collectionView.isHidden = false
             self.livedAndLeftLabel.isHidden = false
+            self.activityIndicator.isHidden = true
+            self.activityIndicator.stopAnimating()
         }
     }
     
@@ -74,7 +85,7 @@ class LabelAndGridViewController: UIViewController, UICollectionViewDataSource, 
         let backItem = UIBarButtonItem(title: "Cancel", style: .plain, target: nil, action: nil)
         navigationItem.backBarButtonItem = backItem
         
-        refresh()
+        refreshLabel()
     }
     
     func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
