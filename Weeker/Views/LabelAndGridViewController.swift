@@ -16,13 +16,13 @@ class LabelAndGridViewController: UIViewController, UICollectionViewDataSource, 
     @IBOutlet weak var activityIndicator: UIActivityIndicatorView!
     
     private var decreasingAlpha = CGFloat()
-    private var ageModelCurrent = AgeModel().current()
-    private var ageModelWeeksLivedAndLeft = AgeModel().weeksLivedAndLeft()
+    private var ageModel = AgeModel()
     private var ageReached = false
     
     
     let columnLayout = ColumnFlowLayout(
         cellsPerRow: 52,
+        numberOfRows: AgeModel().lifeSpan,
         minimumInteritemSpacing: 2,
         minimumLineSpacing: 2,
         sectionInset: UIEdgeInsets(top: 2, left: 0, bottom: 0, right: 0)
@@ -33,9 +33,8 @@ class LabelAndGridViewController: UIViewController, UICollectionViewDataSource, 
         collectionView?.contentInsetAdjustmentBehavior = .always
         collectionView?.register(UICollectionViewCell.self, forCellWithReuseIdentifier: "Cell")
         
-        if ageModelCurrent != AgeModel().current() {
-            ageModelCurrent = AgeModel().current()
-            ageModelWeeksLivedAndLeft = AgeModel().weeksLivedAndLeft()
+        if ageModel.dateOfBirth != AgeModel().dateOfBirth || ageModel.lifeSpanSwitchOn != AgeModel().lifeSpanSwitchOn {
+            ageModel = AgeModel()
             refreshLabel()
             refreshCollectionView()
         }
@@ -47,8 +46,8 @@ class LabelAndGridViewController: UIViewController, UICollectionViewDataSource, 
     func refreshLabel() {
         ageReached = false
         
-        let weeksLivedString = "Weeks Lived: \(ageModelWeeksLivedAndLeft.weeksLived), \(ageModelWeeksLivedAndLeft.percentLived)%"
-        let weeksLeftString = "Weeks Left: \(ageModelWeeksLivedAndLeft.weeksLeft), \(ageModelWeeksLivedAndLeft.percentLeft)%"
+        let weeksLivedString = "Weeks Lived: \(ageModel.weeksLived), \(ageModel.percentLived)%"
+        let weeksLeftString = "Weeks Left: \(ageModel.weeksLeft), \(ageModel.percentLeft)%"
         
         let labelString = "\(weeksLivedString)\n\(weeksLeftString)"
         
@@ -96,11 +95,11 @@ class LabelAndGridViewController: UIViewController, UICollectionViewDataSource, 
     
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
         
-        decreasingAlpha = CGFloat(90 - Double(indexPath.section)/1.3)/90
+        decreasingAlpha = CGFloat(Double(ageModel.lifeSpan) - Double(indexPath.section)/1.3)/CGFloat(ageModel.lifeSpan)
         
         let cell = collectionView.dequeueReusableCell(withReuseIdentifier: "Cell", for: indexPath)
 
-        if indexPath[0] == ageModelCurrent.year && indexPath[1] == ageModelCurrent.weekOfYear {
+        if indexPath[0] == ageModel.timeSinceDOB.year && indexPath[1] == ageModel.timeSinceDOB.weekOfYear {
             ageReached = true
         }
         
@@ -115,7 +114,7 @@ class LabelAndGridViewController: UIViewController, UICollectionViewDataSource, 
     }
     
     func numberOfSections(in collectionView: UICollectionView) -> Int {
-        return 90
+        return ageModel.lifeSpan
     }
 }
 
@@ -125,9 +124,11 @@ class LabelAndGridViewController: UIViewController, UICollectionViewDataSource, 
 class ColumnFlowLayout: UICollectionViewFlowLayout {
     
     let cellsPerRow: Int
+    let numberOfRows: Int
     
-    init(cellsPerRow: Int, minimumInteritemSpacing: CGFloat = 0, minimumLineSpacing: CGFloat = 0, sectionInset: UIEdgeInsets = .zero) {
+    init(cellsPerRow: Int, numberOfRows: Int, minimumInteritemSpacing: CGFloat = 0, minimumLineSpacing: CGFloat = 0, sectionInset: UIEdgeInsets = .zero) {
         self.cellsPerRow = cellsPerRow
+        self.numberOfRows = numberOfRows
         super.init()
         
         self.minimumInteritemSpacing = minimumInteritemSpacing
@@ -147,8 +148,8 @@ class ColumnFlowLayout: UICollectionViewFlowLayout {
         let marginsAndInsets = sectionInset.left + sectionInset.right + collectionView.safeAreaInsets.left + collectionView.safeAreaInsets.right + minimumInteritemSpacing * CGFloat(cellsPerRow - 1)
         let itemWidth = ((collectionView.bounds.size.width - marginsAndInsets) / CGFloat(cellsPerRow))
         
-        let verticalMarginsAndInsets = sectionInset.top + sectionInset.bottom + collectionView.safeAreaInsets.top + collectionView.safeAreaInsets.bottom + minimumLineSpacing * CGFloat(90 - 1)
-        let itemHeight = ((collectionView.bounds.size.height - verticalMarginsAndInsets) / CGFloat(90))
+        let verticalMarginsAndInsets = sectionInset.top + sectionInset.bottom + collectionView.safeAreaInsets.top + collectionView.safeAreaInsets.bottom + minimumLineSpacing * CGFloat(numberOfRows - 1)
+        let itemHeight = ((collectionView.bounds.size.height - verticalMarginsAndInsets) / CGFloat(numberOfRows))
         
         itemSize = CGSize(width: itemWidth, height: itemHeight)
     }
@@ -159,5 +160,4 @@ class ColumnFlowLayout: UICollectionViewFlowLayout {
         
         return context
     }
-    
 }

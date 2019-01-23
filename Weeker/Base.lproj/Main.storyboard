@@ -99,7 +99,7 @@
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <datePicker contentMode="scaleToFill" contentHorizontalAlignment="fill" contentVerticalAlignment="fill" datePickerMode="date" minuteInterval="1" useCurrentDate="NO" translatesAutoresizingMaskIntoConstraints="NO" id="fEM-Cs-L3a">
-                                <rect key="frame" x="16" y="0.0" width="343" height="603"/>
+                                <rect key="frame" x="16" y="71" width="343" height="532"/>
                                 <date key="date" timeIntervalSinceReferenceDate="-175048752.38576806">
                                     <!--1995-06-15 23:20:47 +0000-->
                                 </date>
@@ -110,13 +110,40 @@
                                     <!--2017-12-31 11:00:00 +0000-->
                                 </date>
                             </datePicker>
+                            <switch opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="750" verticalHuggingPriority="750" contentHorizontalAlignment="center" contentVerticalAlignment="center" translatesAutoresizingMaskIntoConstraints="NO" id="q1q-Fi-tX0">
+                                <rect key="frame" x="163" y="20" width="51" height="31"/>
+                                <color key="onTintColor" red="0.72618448729999996" green="0.83693432810000001" blue="0.98433631659999998" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
+                                <color key="thumbTintColor" red="0.94447320700000004" green="0.61648559570000006" blue="0.57252699139999996" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
+                            </switch>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Lifespan of 90 years" textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="2" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="j5i-UE-2jV">
+                                <rect key="frame" x="8" y="8" width="147" height="55"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                <color key="textColor" red="0.94447320700000004" green="0.61648559570000006" blue="0.57252699139999996" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Lifespan based on actuarial table" textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="2" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Ous-AP-TYu">
+                                <rect key="frame" x="220" y="8" width="163" height="55"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                <color key="textColor" red="0.72618448729999996" green="0.83693432810000001" blue="0.98433631659999998" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
+                                <nil key="highlightedColor"/>
+                            </label>
                         </subviews>
                         <color key="backgroundColor" cocoaTouchSystemColor="scrollViewTexturedBackgroundColor"/>
                         <constraints>
+                            <constraint firstItem="q1q-Fi-tX0" firstAttribute="centerX" secondItem="4D9-x3-IRj" secondAttribute="centerX" id="Fzb-HB-E7h"/>
                             <constraint firstItem="fEM-Cs-L3a" firstAttribute="trailing" secondItem="4D9-x3-IRj" secondAttribute="trailingMargin" id="H3k-6g-vwh"/>
+                            <constraint firstItem="Ous-AP-TYu" firstAttribute="trailing" secondItem="7QF-DX-JQc" secondAttribute="trailing" constant="8" id="HPO-0W-FLd"/>
+                            <constraint firstItem="fEM-Cs-L3a" firstAttribute="top" secondItem="j5i-UE-2jV" secondAttribute="bottom" constant="8" id="KiI-mc-8Lk"/>
+                            <constraint firstItem="Ous-AP-TYu" firstAttribute="top" secondItem="7QF-DX-JQc" secondAttribute="top" constant="8" id="P0x-gl-fB8"/>
+                            <constraint firstItem="fEM-Cs-L3a" firstAttribute="top" secondItem="Ous-AP-TYu" secondAttribute="bottom" constant="8" id="XOR-bO-M6X"/>
+                            <constraint firstItem="q1q-Fi-tX0" firstAttribute="leading" secondItem="j5i-UE-2jV" secondAttribute="trailing" constant="8" id="Z6i-bW-cjz"/>
+                            <constraint firstItem="Ous-AP-TYu" firstAttribute="leading" secondItem="q1q-Fi-tX0" secondAttribute="trailing" constant="8" id="ZBb-RJ-83b"/>
+                            <constraint firstItem="j5i-UE-2jV" firstAttribute="top" secondItem="7QF-DX-JQc" secondAttribute="top" constant="8" id="i8t-h6-lxZ"/>
                             <constraint firstItem="fEM-Cs-L3a" firstAttribute="bottom" secondItem="7QF-DX-JQc" secondAttribute="bottom" id="ntR-7q-po5"/>
-                            <constraint firstItem="fEM-Cs-L3a" firstAttribute="top" secondItem="7QF-DX-JQc" secondAttribute="top" id="o5W-Vo-99i"/>
+                            <constraint firstItem="fEM-Cs-L3a" firstAttribute="top" secondItem="q1q-Fi-tX0" secondAttribute="bottom" constant="20" id="o5W-Vo-99i"/>
+                            <constraint firstItem="q1q-Fi-tX0" firstAttribute="top" secondItem="7QF-DX-JQc" secondAttribute="top" constant="20" id="pYe-3M-c3x"/>
                             <constraint firstItem="fEM-Cs-L3a" firstAttribute="leading" secondItem="4D9-x3-IRj" secondAttribute="leadingMargin" id="vdD-vl-hTo"/>
+                            <constraint firstItem="j5i-UE-2jV" firstAttribute="leading" secondItem="7QF-DX-JQc" secondAttribute="leading" constant="8" id="vrw-0S-hev"/>
                         </constraints>
                         <viewLayoutGuide key="safeArea" id="7QF-DX-JQc"/>
                     </view>
@@ -129,11 +156,12 @@
                     </navigationItem>
                     <connections>
                         <outlet property="dateOfBirthPicker" destination="fEM-Cs-L3a" id="MSx-Tc-NtT"/>
+                        <outlet property="lifeSpanSwitch" destination="q1q-Fi-tX0" id="cig-wb-mZ6"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="Sm8-6R-34E" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="3763.7681159420295" y="-196.20535714285714"/>
+            <point key="canvasLocation" x="3762.4000000000001" y="-196.55172413793105"/>
         </scene>
         <!--Navigation Controller-->
         <scene sceneID="A2f-al-TVf">

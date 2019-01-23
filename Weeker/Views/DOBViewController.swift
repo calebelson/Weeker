@@ -11,6 +11,8 @@ import SVProgressHUD
 
 class DOBViewController: UIViewController {
     @IBOutlet weak var dateOfBirthPicker: UIDatePicker!
+    @IBOutlet weak var lifeSpanSwitch: UISwitch!
+    
     var firstLoad = UserDefaults(suiteName: "group.com.calebElson.Weeker")?.value(forKey: "DOB") == nil
     
     override func viewDidLoad() {
@@ -18,6 +20,13 @@ class DOBViewController: UIViewController {
         dateFormatter.dateFormat = "YYYY-MM-DD"
         
         dateOfBirthPicker.maximumDate = Date()
+        
+        
+        if let lifeSpanSwitchSet = UserDefaults(suiteName: "group.com.calebElson.Weeker")?.value(forKey: "lifeSpanSwitchOn") {
+            lifeSpanSwitch.setOn(lifeSpanSwitchSet as! Bool, animated: false)
+        }
+        
+        
         
         if let dob = UserDefaults(suiteName: "group.com.calebElson.Weeker")?.value(forKey: "DOB") {
             dateOfBirthPicker.setDate(dob as! Date, animated: false)
@@ -31,6 +40,9 @@ class DOBViewController: UIViewController {
         
         let date = dateOfBirthPicker.date
         UserDefaults(suiteName: "group.com.calebElson.Weeker")?.set(date, forKey: "DOB")
+        UserDefaults(suiteName: "group.com.calebElson.Weeker")?.set(lifeSpanSwitch.isOn, forKey: "lifeSpanSwitchOn")
+        
+
         
         if firstLoad {
             let transition = CATransition()

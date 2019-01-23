@@ -120,7 +120,7 @@
 			path = Views;
 			sourceTree = "<group>";
 		};
-		C915544A21E2D1540075B725 /* Weeker Widget */ = {
+		C915544A21E2D1540075B725 /* Weeker */ = {
 			isa = PBXGroup;
 			children = (
 				C915545A21E2DCDE0075B725 /* Weeker Widget.entitlements */,
@@ -128,6 +128,7 @@
 				C915544D21E2D1540075B725 /* MainInterface.storyboard */,
 				C915545021E2D1540075B725 /* Info.plist */,
 			);
+			name = Weeker;
 			path = "Weeker Widget";
 			sourceTree = "<group>";
 		};
@@ -136,7 +137,7 @@
 			children = (
 				C91E776821B21FE700D2C16C /* README.md */,
 				C9592C2621AC7E390077747F /* Weeker */,
-				C915544A21E2D1540075B725 /* Weeker Widget */,
+				C915544A21E2D1540075B725 /* Weeker */,
 				C9592C2521AC7E390077747F /* Products */,
 				4A8B2699C99C605850FF38C4 /* Pods */,
 				6FA57F65BDD43BB68094D418 /* Frameworks */,

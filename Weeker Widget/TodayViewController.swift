@@ -35,11 +35,11 @@ class TodayViewController: UIViewController, NCWidgetProviding {
         if let _ = UserDefaults(suiteName: "group.com.calebElson.Weeker")?.value(forKey: "DOB") {
             let ageModel = AgeModel()
             
-            let weeksLivedString = "Weeks Lived: \(ageModel.weeksLivedAndLeft().weeksLived), \(ageModel.weeksLivedAndLeft().percentLived)%"
-            let weeksLeftString = "Weeks Left: \(ageModel.weeksLivedAndLeft().weeksLeft), \(ageModel.weeksLivedAndLeft().percentLeft)%"
+            let weeksLivedString = "Weeks Lived: \(ageModel.weeksLived), \(ageModel.percentLived)%"
+            let weeksLeftString = "Weeks Left: \(ageModel.weeksLeft), \(ageModel.percentLeft)%"
             
             livedAndLeftLabel.text = "\(weeksLivedString)\n\(weeksLeftString)"
-            lifeProgress.progress = Float(ageModel.weeksLivedAndLeft().percentLived)/100
+            lifeProgress.progress = Float(ageModel.percentLived)/100
             
         } else {
             livedAndLeftLabel.text = "Tap to set date of birth"
