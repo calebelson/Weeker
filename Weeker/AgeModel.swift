@@ -9,7 +9,7 @@
 import Foundation
 
 struct AgeModel {
-    let dateOfBirth = UserDefaults(suiteName: "group.com.calebElson.Weeker")?.value(forKey: "DOB") as! Date
+    let dateOfBirth = UserDefaults(suiteName: "group.com.calebElson.Weeker")?.value(forKey: "DOB") as? Date ?? Date()
     let lifeSpanSwitchOn = (UserDefaults(suiteName: "group.com.calebElson.Weeker")?.value(forKey: "lifeSpanSwitchOn") ?? false) as! Bool
     
     let timeSinceDOB: DateComponents
@@ -22,7 +22,7 @@ struct AgeModel {
     
     
     init() {
-        timeSinceDOB = Calendar.current.dateComponents([.year, .weekOfYear], from: dateOfBirth , to: Date())
+        timeSinceDOB = Calendar.current.dateComponents([.year, .weekOfYear], from: dateOfBirth, to: Date())
         
         // If value is outside of actuarialTable's range, the value is either negative or above 119. lifeSpan is age + 1 in the former case, and 90 in the latter. agePlusOne exists to work around @autoclosure
         let agePlusOne = timeSinceDOB.year! + 1
