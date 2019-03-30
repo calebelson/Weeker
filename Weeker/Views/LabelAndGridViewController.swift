@@ -103,6 +103,9 @@ class LabelAndGridViewController: UIViewController, UICollectionViewDataSource, 
             ageReached = true
         }
         
+        cell.layer.cornerRadius = min(cell.frame.size.height, cell.frame.size.width)/2
+        cell.layer.masksToBounds = true
+        
         if ageReached {
             cell.backgroundColor = #colorLiteral(red: 0.6979569793, green: 0.8412405849, blue: 0.9987565875, alpha: 1).withAlphaComponent(decreasingAlpha)
 
