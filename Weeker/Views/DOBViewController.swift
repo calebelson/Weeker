@@ -7,7 +7,6 @@
 //
 
 import UIKit
-import SVProgressHUD
 
 class DOBViewController: UIViewController {
     @IBOutlet weak var dateOfBirthPicker: UIDatePicker!

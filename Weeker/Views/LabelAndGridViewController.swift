@@ -17,6 +17,7 @@ class LabelAndGridViewController: UIViewController, UICollectionViewDataSource, 
     
     private var decreasingAlpha = CGFloat()
     private var ageModel = AgeModel()
+    // Used to keep track of whether the current value in the collectionView has past the user's current age
     private var ageReached = false
     
     
