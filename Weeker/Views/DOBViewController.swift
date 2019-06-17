@@ -13,6 +13,8 @@ class DOBViewController: UIViewController {
     @IBOutlet weak var lifeSpanSwitch: UISwitch!
     
     var firstLoad = UserDefaults(suiteName: "group.com.calebElson.Weeker")?.value(forKey: "DOB") == nil
+    private let mainColor = UIColor(named: "mainColor") ?? .systemTeal
+    private let secondaryColor = UIColor(named: "secondaryColor") ?? UIColor.systemOrange
     
     override func viewDidLoad() {
         let dateFormatter = DateFormatter()
@@ -20,7 +22,7 @@ class DOBViewController: UIViewController {
         
         dateOfBirthPicker.maximumDate = Date()
         
-        dateOfBirthPicker.setValue(#colorLiteral(red: 0.6979569793, green: 0.8412405849, blue: 0.9987565875, alpha: 1), forKeyPath: "textColor")
+        dateOfBirthPicker.setValue(mainColor, forKeyPath: "textColor")
         dateOfBirthPicker.setValue(false, forKey: "highlightsToday")
         
         
@@ -45,7 +47,6 @@ class DOBViewController: UIViewController {
         UserDefaults(suiteName: "group.com.calebElson.Weeker")?.set(lifeSpanSwitch.isOn, forKey: "lifeSpanSwitchOn")
         
 
-        
         if firstLoad {
             let transition = CATransition()
             transition.duration = 0.5

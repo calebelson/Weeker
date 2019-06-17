@@ -19,6 +19,8 @@ class LabelAndGridViewController: UIViewController, UICollectionViewDataSource, 
     private var ageModel = AgeModel()
     // Used to keep track of whether the current value in the collectionView has past the user's current age
     private var ageReached = false
+    private let mainColor = UIColor(named: "mainColor") ?? .systemTeal
+    private let secondaryColor = UIColor(named: "secondaryColor") ?? UIColor.systemOrange
     
     
     let columnLayout = ColumnFlowLayout(
@@ -54,7 +56,7 @@ class LabelAndGridViewController: UIViewController, UICollectionViewDataSource, 
         
         let range = (labelString as NSString).range(of: weeksLeftString)
         let attributedString = NSMutableAttributedString.init(string: labelString)
-        attributedString.addAttribute(NSAttributedString.Key.foregroundColor, value: #colorLiteral(red: 0.6979569793, green: 0.8412405849, blue: 0.9987565875, alpha: 1), range: range)
+        attributedString.addAttribute(NSAttributedString.Key.foregroundColor, value: mainColor, range: range)
         
         livedAndLeftLabel.attributedText = attributedString
     }
@@ -111,10 +113,10 @@ class LabelAndGridViewController: UIViewController, UICollectionViewDataSource, 
         cell.layer.masksToBounds = true
         
         if ageReached {
-            cell.backgroundColor = #colorLiteral(red: 0.6979569793, green: 0.8412405849, blue: 0.9987565875, alpha: 1).withAlphaComponent(decreasingAlpha)
+            cell.backgroundColor = mainColor.withAlphaComponent(decreasingAlpha)
 
         } else {
-            cell.backgroundColor = #colorLiteral(red: 0.9998636842, green: 0.597361505, blue: 0.5580425858, alpha: 1).withAlphaComponent(decreasingAlpha)
+            cell.backgroundColor = secondaryColor.withAlphaComponent(decreasingAlpha)
         }
         
         return cell
