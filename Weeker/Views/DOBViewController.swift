@@ -21,6 +21,7 @@ class DOBViewController: UIViewController {
         dateOfBirthPicker.maximumDate = Date()
         
         dateOfBirthPicker.setValue(#colorLiteral(red: 0.6979569793, green: 0.8412405849, blue: 0.9987565875, alpha: 1), forKeyPath: "textColor")
+        dateOfBirthPicker.setValue(false, forKey: "highlightsToday")
         
         
         if let lifeSpanSwitchSet = UserDefaults(suiteName: "group.com.calebElson.Weeker")?.value(forKey: "lifeSpanSwitchOn") {
