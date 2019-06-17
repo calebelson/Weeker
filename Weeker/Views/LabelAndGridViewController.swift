@@ -96,7 +96,10 @@ class LabelAndGridViewController: UIViewController, UICollectionViewDataSource, 
     
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
         
-        decreasingAlpha = CGFloat(Double(ageModel.lifeSpan) - Double(indexPath.section)/1.3)/CGFloat(ageModel.lifeSpan)
+        //decreasingAlpha = CGFloat(Double(ageModel.lifeSpan) - Double(indexPath.section)/1.3)/CGFloat(ageModel.lifeSpan)
+        
+        decreasingAlpha = CGFloat(Double(ageModel.lifeSpan) - Double.random(in: 0...Double(ageModel.lifeSpan))*0.25)/CGFloat(ageModel.lifeSpan)
+        
         
         let cell = collectionView.dequeueReusableCell(withReuseIdentifier: "Cell", for: indexPath)
 
