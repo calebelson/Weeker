@@ -107,7 +107,7 @@ class LabelAndGridViewController: UIViewController, UICollectionViewDataSource, 
             ageReached = true
         }
         
-        cell.layer.cornerRadius = min(cell.frame.size.height, cell.frame.size.width)/2
+        cell.layer.cornerRadius = 2
         cell.layer.masksToBounds = true
         
         if ageReached {
