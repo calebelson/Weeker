@@ -21,6 +21,8 @@
 		C9592C2F21AC7E3B0077747F /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = C9592C2E21AC7E3B0077747F /* Assets.xcassets */; };
 		C9592C3221AC7E3B0077747F /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = C9592C3021AC7E3B0077747F /* LaunchScreen.storyboard */; };
 		C976D1F121DD5FBC0039428E /* TransitionViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = C976D1F021DD5FBC0039428E /* TransitionViewController.swift */; };
+		C9EC875C22B8363D00A91FE3 /* DOB-VC.swift in Sources */ = {isa = PBXBuildFile; fileRef = C9EC875B22B8363D00A91FE3 /* DOB-VC.swift */; };
+		C9EC875E22B83A4900A91FE3 /* UserData.swift in Sources */ = {isa = PBXBuildFile; fileRef = C9EC875D22B83A4900A91FE3 /* UserData.swift */; };
 		F7D5B9EE97C59607BE602E7E /* Pods_Weeker.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = EE9FB097F6799D94794E48DE /* Pods_Weeker.framework */; };
 /* End PBXBuildFile section */
 
@@ -68,6 +70,8 @@
 		C9592C3121AC7E3B0077747F /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		C9592C3321AC7E3B0077747F /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		C976D1F021DD5FBC0039428E /* TransitionViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TransitionViewController.swift; sourceTree = "<group>"; };
+		C9EC875B22B8363D00A91FE3 /* DOB-VC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "DOB-VC.swift"; sourceTree = "<group>"; };
+		C9EC875D22B83A4900A91FE3 /* UserData.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserData.swift; sourceTree = "<group>"; };
 		D61F78B3CCD5AE4F51F7BEFB /* Pods-Weeker.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Weeker.debug.xcconfig"; path = "Pods/Target Support Files/Pods-Weeker/Pods-Weeker.debug.xcconfig"; sourceTree = "<group>"; };
 		EE9FB097F6799D94794E48DE /* Pods_Weeker.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_Weeker.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 /* End PBXFileReference section */
@@ -114,7 +118,9 @@
 			isa = PBXGroup;
 			children = (
 				C9592C2921AC7E390077747F /* LabelAndGridViewController.swift */,
+				C9EC875D22B83A4900A91FE3 /* UserData.swift */,
 				C91E775121B20DED00D2C16C /* DOBViewController.swift */,
+				C9EC875B22B8363D00A91FE3 /* DOB-VC.swift */,
 				C976D1F021DD5FBC0039428E /* TransitionViewController.swift */,
 			);
 			path = Views;
@@ -343,8 +349,10 @@
 			files = (
 				C9592C2A21AC7E390077747F /* LabelAndGridViewController.swift in Sources */,
 				C9592C2821AC7E390077747F /* AppDelegate.swift in Sources */,
+				C9EC875E22B83A4900A91FE3 /* UserData.swift in Sources */,
 				C91E775221B20DED00D2C16C /* DOBViewController.swift in Sources */,
 				C915544221E162A10075B725 /* AgeModel.swift in Sources */,
+				C9EC875C22B8363D00A91FE3 /* DOB-VC.swift in Sources */,
 				C976D1F121DD5FBC0039428E /* TransitionViewController.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
