@@ -22,23 +22,22 @@ struct DOB_VC : View {
     
     var body: some View {
         NavigationView {
-            VStack {
+            List {
                 VStack {
                     Toggle(isOn: $userData.actuarialLifeSpan) {
                         Text("Switch to actuarial lifespan")
-                    }
-                    .padding()
-                    
-
+                        }
                     Text("Default lifespan is 90 years")
                         .font(.caption)
+                        .padding(.bottom, 45)
+                    
+                    Text("Select date of birth")
+                        .font(.headline)
+                    DatePicker($userData.dateOfBirth, minimumDate: dateFormatter.date(from: "1900-01-01"), maximumDate: Date(), displayedComponents: .date)
+                    Spacer()
                 }
-                Spacer()
-                Text("Select date of birth")
-                .font(.headline)
-                DatePicker($userData.dateOfBirth, minimumDate: dateFormatter.date(from: "1900-01-01"), maximumDate: Date(), displayedComponents: .date)
-                Spacer()
             }
+            .navigationBarTitle(Text("Settings"))
         }
     }
 }
