@@ -9,7 +9,7 @@
 import Foundation
 
 struct AgeModel {
-    let dateOfBirth = UserDefaults(suiteName: "group.com.calebElson.Weeker")?.value(forKey: "syncDOB") as? Date ?? Date().addingTimeInterval(TimeInterval()
+    let dateOfBirth = UserDefaults(suiteName: "group.com.calebElson.Weeker")?.value(forKey: "syncDOB") as? Date ?? DateFormatter().calendar.date(from: DateComponents(year: 1995, month: 6, day: 15))!
     let lifeSpanSwitchOn = (UserDefaults(suiteName: "group.com.calebElson.Weeker")?.value(forKey: "syncLifeSpanSwitchOn") ?? false) as! Bool
     
     let timeSinceDOB: DateComponents
