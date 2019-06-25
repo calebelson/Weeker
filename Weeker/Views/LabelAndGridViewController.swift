@@ -96,7 +96,7 @@ class LabelAndGridViewController: UIViewController, UICollectionViewDataSource, 
     
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
         
-        decreasingAlpha = CGFloat(Double(ageModel.lifeSpan) - Double(indexPath.section)/1.3)/CGFloat(ageModel.lifeSpan)
+        decreasingAlpha = CGFloat(Double(ageModel.lifeSpan) - Double.random(in: 0...Double(ageModel.lifeSpan))*0.25)/CGFloat(ageModel.lifeSpan)
         
         let cell = collectionView.dequeueReusableCell(withReuseIdentifier: "Cell", for: indexPath)
 
@@ -104,14 +104,16 @@ class LabelAndGridViewController: UIViewController, UICollectionViewDataSource, 
             ageReached = true
         }
         
-        cell.layer.cornerRadius = min(cell.frame.size.height, cell.frame.size.width)/2
+        cell.layer.cornerRadius = 2
         cell.layer.masksToBounds = true
         
         if ageReached {
-            cell.backgroundColor = #colorLiteral(red: 0.6979569793, green: 0.8412405849, blue: 0.9987565875, alpha: 1).withAlphaComponent(decreasingAlpha)
+            cell.layer.borderColor = #colorLiteral(red: 0.6979569793, green: 0.8412405849, blue: 0.9987565875, alpha: 1)
+            cell.layer.borderWidth = CGFloat(Double(ageModel.lifeSpan) - Double.random(in: 0...Double(ageModel.lifeSpan))*0.75)/CGFloat(ageModel.lifeSpan)
 
         } else {
             cell.backgroundColor = #colorLiteral(red: 0.9998636842, green: 0.597361505, blue: 0.5580425858, alpha: 1).withAlphaComponent(decreasingAlpha)
+
         }
         
         return cell
