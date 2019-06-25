@@ -20,6 +20,8 @@
 		C9592C2D21AC7E390077747F /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = C9592C2B21AC7E390077747F /* Main.storyboard */; };
 		C9592C2F21AC7E3B0077747F /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = C9592C2E21AC7E3B0077747F /* Assets.xcassets */; };
 		C9592C3221AC7E3B0077747F /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = C9592C3021AC7E3B0077747F /* LaunchScreen.storyboard */; };
+		C95D9CF022C2849500FDCB74 /* MKiCloudSync.m in Sources */ = {isa = PBXBuildFile; fileRef = C95D9CEF22C2849500FDCB74 /* MKiCloudSync.m */; };
+		C95D9CF122C2849500FDCB74 /* MKiCloudSync.m in Sources */ = {isa = PBXBuildFile; fileRef = C95D9CEF22C2849500FDCB74 /* MKiCloudSync.m */; };
 		C976D1F121DD5FBC0039428E /* TransitionViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = C976D1F021DD5FBC0039428E /* TransitionViewController.swift */; };
 		F7D5B9EE97C59607BE602E7E /* Pods_Weeker.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = EE9FB097F6799D94794E48DE /* Pods_Weeker.framework */; };
 /* End PBXBuildFile section */
@@ -67,6 +69,10 @@
 		C9592C2E21AC7E3B0077747F /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		C9592C3121AC7E3B0077747F /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		C9592C3321AC7E3B0077747F /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		C95D9CEC22C2849500FDCB74 /* Weeker-Bridging-Header.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "Weeker-Bridging-Header.h"; sourceTree = "<group>"; };
+		C95D9CED22C2849500FDCB74 /* Weeker Widget-Bridging-Header.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "Weeker Widget-Bridging-Header.h"; sourceTree = "<group>"; };
+		C95D9CEE22C2849500FDCB74 /* MKiCloudSync.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MKiCloudSync.h; sourceTree = "<group>"; };
+		C95D9CEF22C2849500FDCB74 /* MKiCloudSync.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MKiCloudSync.m; sourceTree = "<group>"; };
 		C976D1F021DD5FBC0039428E /* TransitionViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TransitionViewController.swift; sourceTree = "<group>"; };
 		D61F78B3CCD5AE4F51F7BEFB /* Pods-Weeker.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Weeker.debug.xcconfig"; path = "Pods/Target Support Files/Pods-Weeker/Pods-Weeker.debug.xcconfig"; sourceTree = "<group>"; };
 		EE9FB097F6799D94794E48DE /* Pods_Weeker.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_Weeker.framework; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -164,8 +170,20 @@
 				C9592C2E21AC7E3B0077747F /* Assets.xcassets */,
 				C9592C3021AC7E3B0077747F /* LaunchScreen.storyboard */,
 				C9592C3321AC7E3B0077747F /* Info.plist */,
+				C95D9CEB22C2846A00FDCB74 /* MKiCloudSync */,
 			);
 			path = Weeker;
+			sourceTree = "<group>";
+		};
+		C95D9CEB22C2846A00FDCB74 /* MKiCloudSync */ = {
+			isa = PBXGroup;
+			children = (
+				C95D9CEE22C2849500FDCB74 /* MKiCloudSync.h */,
+				C95D9CEF22C2849500FDCB74 /* MKiCloudSync.m */,
+				C95D9CEC22C2849500FDCB74 /* Weeker-Bridging-Header.h */,
+				C95D9CED22C2849500FDCB74 /* Weeker Widget-Bridging-Header.h */,
+			);
+			path = MKiCloudSync;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -233,6 +251,9 @@
 						LastSwiftMigration = 1020;
 						SystemCapabilities = {
 							com.apple.ApplicationGroups.iOS = {
+								enabled = 1;
+							};
+							com.apple.iCloud = {
 								enabled = 1;
 							};
 						};
@@ -333,6 +354,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				C915544C21E2D1540075B725 /* TodayViewController.swift in Sources */,
+				C95D9CF122C2849500FDCB74 /* MKiCloudSync.m in Sources */,
 				C915545821E2DB730075B725 /* AgeModel.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -345,6 +367,7 @@
 				C9592C2821AC7E390077747F /* AppDelegate.swift in Sources */,
 				C91E775221B20DED00D2C16C /* DOBViewController.swift in Sources */,
 				C915544221E162A10075B725 /* AgeModel.swift in Sources */,
+				C95D9CF022C2849500FDCB74 /* MKiCloudSync.m in Sources */,
 				C976D1F121DD5FBC0039428E /* TransitionViewController.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -390,6 +413,7 @@
 		C915545521E2D1540075B725 /* Debug */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
+				CLANG_ENABLE_MODULES = YES;
 				CODE_SIGN_ENTITLEMENTS = "Weeker Widget/Weeker Widget.entitlements";
 				CODE_SIGN_STYLE = Automatic;
 				DEVELOPMENT_TEAM = 877B3XVSF5;
@@ -402,6 +426,8 @@
 				PRODUCT_BUNDLE_IDENTIFIER = "calebElson.Weeker.Weeker-Widget";
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SKIP_INSTALL = YES;
+				SWIFT_OBJC_BRIDGING_HEADER = "Weeker/MKiCloudSync/Weeker Widget-Bridging-Header.h";
+				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
 				SWIFT_VERSION = 5.0;
 				TARGETED_DEVICE_FAMILY = "1,2";
 			};
@@ -410,6 +436,7 @@
 		C915545621E2D1540075B725 /* Release */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
+				CLANG_ENABLE_MODULES = YES;
 				CODE_SIGN_ENTITLEMENTS = "Weeker Widget/Weeker Widget.entitlements";
 				CODE_SIGN_STYLE = Automatic;
 				DEVELOPMENT_TEAM = 877B3XVSF5;
@@ -422,6 +449,7 @@
 				PRODUCT_BUNDLE_IDENTIFIER = "calebElson.Weeker.Weeker-Widget";
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SKIP_INSTALL = YES;
+				SWIFT_OBJC_BRIDGING_HEADER = "Weeker/MKiCloudSync/Weeker Widget-Bridging-Header.h";
 				SWIFT_VERSION = 5.0;
 				TARGETED_DEVICE_FAMILY = "1,2";
 			};
@@ -549,6 +577,7 @@
 			buildSettings = {
 				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				CLANG_ENABLE_MODULES = YES;
 				CODE_SIGN_ENTITLEMENTS = Weeker/Weeker.entitlements;
 				CODE_SIGN_STYLE = Automatic;
 				DEVELOPMENT_TEAM = 877B3XVSF5;
@@ -559,6 +588,8 @@
 				);
 				PRODUCT_BUNDLE_IDENTIFIER = calebElson.Weeker;
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_OBJC_BRIDGING_HEADER = "Weeker/MKiCloudSync/Weeker-Bridging-Header.h";
+				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
 				SWIFT_VERSION = 5.0;
 				TARGETED_DEVICE_FAMILY = "1,2";
 			};
@@ -570,6 +601,7 @@
 			buildSettings = {
 				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				CLANG_ENABLE_MODULES = YES;
 				CODE_SIGN_ENTITLEMENTS = Weeker/Weeker.entitlements;
 				CODE_SIGN_STYLE = Automatic;
 				DEVELOPMENT_TEAM = 877B3XVSF5;
@@ -580,6 +612,7 @@
 				);
 				PRODUCT_BUNDLE_IDENTIFIER = calebElson.Weeker;
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_OBJC_BRIDGING_HEADER = "Weeker/MKiCloudSync/Weeker-Bridging-Header.h";
 				SWIFT_VERSION = 5.0;
 				TARGETED_DEVICE_FAMILY = "1,2";
 			};

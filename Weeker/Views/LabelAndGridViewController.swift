@@ -41,7 +41,7 @@ class LabelAndGridViewController: UIViewController, UICollectionViewDataSource, 
         }
         
 //        // Remove, for testing splash screen
-//        UserDefaults(suiteName: "group.com.calebElson.Weeker")?.removeObject(forKey: "DOB")
+//        UserDefaults(suiteName: "group.com.calebElson.Weeker")?.removeObject(forKey: "syncDOB")
     }
     
     func refreshLabel() {

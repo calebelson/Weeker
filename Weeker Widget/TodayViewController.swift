@@ -32,7 +32,7 @@ class TodayViewController: UIViewController, NCWidgetProviding {
         // If there's an update, use NCUpdateResult.NewData
         
         // Checks if DOB has been set
-        if let _ = UserDefaults(suiteName: "group.com.calebElson.Weeker")?.value(forKey: "DOB") {
+        if let _ = UserDefaults(suiteName: "group.com.calebElson.Weeker")?.value(forKey: "syncDOB") {
             let ageModel = AgeModel()
             
             let weeksLivedString = "Weeks Lived: \(ageModel.weeksLived), \(ageModel.percentLived)%"
