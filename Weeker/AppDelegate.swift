@@ -18,14 +18,6 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         // Override point for customization after application launch.
         MKiCloudSync.start(withPrefix: "sync")
         
-        
-        let storyboard = UIStoryboard(name: "Main", bundle: nil)
-        
-        let rootViewController = storyboard.instantiateViewController(withIdentifier: (UserDefaults(suiteName: "group.com.calebElson.Weeker")?.value(forKey: "DOB") != nil) ? "homeViewControllerID" : "DOBViewControllerID")
-        print("rootViewController \(rootViewController)")
-        window?.rootViewController = rootViewController
-        
-        
         return true
     }
 

@@ -38,23 +38,10 @@ class DOBViewController: UIViewController {
     }
     
     @IBAction func saveButtonPushed(_ sender: Any) {
-        
         let date = dateOfBirthPicker.date
         UserDefaults(suiteName: "group.com.calebElson.Weeker")?.set(date, forKey: "syncDOB")
         UserDefaults(suiteName: "group.com.calebElson.Weeker")?.set(lifeSpanSwitch.isOn, forKey: "syncLifeSpanSwitchOn")
         
-
-        
-        if firstLoad {
-            let transition = CATransition()
-            transition.duration = 0.5
-            transition.type = CATransitionType.push
-            transition.subtype = CATransitionSubtype.fromLeft
-            transition.timingFunction = CAMediaTimingFunction(name:CAMediaTimingFunctionName.easeInEaseOut)
-            view.window!.layer.add(transition, forKey: kCATransition)
-            present(TransitionViewController(), animated: false, completion: nil)
-        } else {
-            self.navigationController?.popViewController(animated: true)
-        }
+        self.navigationController?.popViewController(animated: true)
     }
 }

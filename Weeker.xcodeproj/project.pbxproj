@@ -22,7 +22,6 @@
 		C9592C3221AC7E3B0077747F /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = C9592C3021AC7E3B0077747F /* LaunchScreen.storyboard */; };
 		C95D9CF022C2849500FDCB74 /* MKiCloudSync.m in Sources */ = {isa = PBXBuildFile; fileRef = C95D9CEF22C2849500FDCB74 /* MKiCloudSync.m */; };
 		C95D9CF122C2849500FDCB74 /* MKiCloudSync.m in Sources */ = {isa = PBXBuildFile; fileRef = C95D9CEF22C2849500FDCB74 /* MKiCloudSync.m */; };
-		C976D1F121DD5FBC0039428E /* TransitionViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = C976D1F021DD5FBC0039428E /* TransitionViewController.swift */; };
 		F7D5B9EE97C59607BE602E7E /* Pods_Weeker.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = EE9FB097F6799D94794E48DE /* Pods_Weeker.framework */; };
 /* End PBXBuildFile section */
 
@@ -73,7 +72,6 @@
 		C95D9CED22C2849500FDCB74 /* Weeker Widget-Bridging-Header.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "Weeker Widget-Bridging-Header.h"; sourceTree = "<group>"; };
 		C95D9CEE22C2849500FDCB74 /* MKiCloudSync.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MKiCloudSync.h; sourceTree = "<group>"; };
 		C95D9CEF22C2849500FDCB74 /* MKiCloudSync.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MKiCloudSync.m; sourceTree = "<group>"; };
-		C976D1F021DD5FBC0039428E /* TransitionViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TransitionViewController.swift; sourceTree = "<group>"; };
 		D61F78B3CCD5AE4F51F7BEFB /* Pods-Weeker.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Weeker.debug.xcconfig"; path = "Pods/Target Support Files/Pods-Weeker/Pods-Weeker.debug.xcconfig"; sourceTree = "<group>"; };
 		EE9FB097F6799D94794E48DE /* Pods_Weeker.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_Weeker.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 /* End PBXFileReference section */
@@ -121,7 +119,6 @@
 			children = (
 				C9592C2921AC7E390077747F /* LabelAndGridViewController.swift */,
 				C91E775121B20DED00D2C16C /* DOBViewController.swift */,
-				C976D1F021DD5FBC0039428E /* TransitionViewController.swift */,
 			);
 			path = Views;
 			sourceTree = "<group>";
@@ -368,7 +365,6 @@
 				C91E775221B20DED00D2C16C /* DOBViewController.swift in Sources */,
 				C915544221E162A10075B725 /* AgeModel.swift in Sources */,
 				C95D9CF022C2849500FDCB74 /* MKiCloudSync.m in Sources */,
-				C976D1F121DD5FBC0039428E /* TransitionViewController.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
