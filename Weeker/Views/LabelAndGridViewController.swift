@@ -24,7 +24,7 @@ class LabelAndGridViewController: UIViewController, UICollectionViewDataSource, 
     let columnLayout = ColumnFlowLayout(
         cellsPerRow: 52,
         numberOfRows: AgeModel().lifeSpan,
-        minimumInteritemSpacing: 2,
+        minimumInteritemSpacing: 1,
         minimumLineSpacing: 2,
         sectionInset: UIEdgeInsets(top: 2, left: 0, bottom: 0, right: 0)
     )
@@ -34,7 +34,7 @@ class LabelAndGridViewController: UIViewController, UICollectionViewDataSource, 
         collectionView?.contentInsetAdjustmentBehavior = .always
         collectionView?.register(UICollectionViewCell.self, forCellWithReuseIdentifier: "Cell")
         
-        if ageModel.dateOfBirth != AgeModel().dateOfBirth || ageModel.lifeSpanSwitchOn != AgeModel().lifeSpanSwitchOn {
+        if ageModel.dateOfBirth != AgeModel().dateOfBirth {
             ageModel = AgeModel()
             refreshLabel()
             refreshCollectionView()
@@ -96,7 +96,7 @@ class LabelAndGridViewController: UIViewController, UICollectionViewDataSource, 
     
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
         
-        decreasingAlpha = CGFloat(Double(ageModel.lifeSpan) - Double.random(in: 0...Double(ageModel.lifeSpan))*0.25)/CGFloat(ageModel.lifeSpan)
+        decreasingAlpha = CGFloat(Double(ageModel.lifeSpan)*0.50 - Double.random(in: 0...Double(ageModel.lifeSpan))*0.25)/CGFloat(ageModel.lifeSpan)
         
         let cell = collectionView.dequeueReusableCell(withReuseIdentifier: "Cell", for: indexPath)
 
@@ -104,12 +104,13 @@ class LabelAndGridViewController: UIViewController, UICollectionViewDataSource, 
             ageReached = true
         }
         
-        cell.layer.cornerRadius = 2
         cell.layer.masksToBounds = true
         
         if ageReached {
-            cell.layer.borderColor = #colorLiteral(red: 0.6979569793, green: 0.8412405849, blue: 0.9987565875, alpha: 1)
-            cell.layer.borderWidth = CGFloat(Double(ageModel.lifeSpan) - Double.random(in: 0...Double(ageModel.lifeSpan))*0.75)/CGFloat(ageModel.lifeSpan)
+//            cell.layer.borderColor = #colorLiteral(red: 0.6979569793, green: 0.8412405849, blue: 0.9987565875, alpha: 1)
+//            cell.layer.borderWidth = CGFloat(Double(ageModel.lifeSpan) - Double.random(in: 0...Double(ageModel.lifeSpan))*0.75)/CGFloat(ageModel.lifeSpan)
+            cell.backgroundColor = #colorLiteral(red: 0.6979569793, green: 0.8412405849, blue: 0.9987565875, alpha: 1).withAlphaComponent(decreasingAlpha)
+
 
         } else {
             cell.backgroundColor = #colorLiteral(red: 0.9998636842, green: 0.597361505, blue: 0.5580425858, alpha: 1).withAlphaComponent(decreasingAlpha)
@@ -152,10 +153,10 @@ class ColumnFlowLayout: UICollectionViewFlowLayout {
         guard let collectionView = collectionView else { return }
         
         let marginsAndInsets = sectionInset.left + sectionInset.right + collectionView.safeAreaInsets.left + collectionView.safeAreaInsets.right + minimumInteritemSpacing * CGFloat(cellsPerRow - 1)
-        let itemWidth = ((collectionView.bounds.size.width - marginsAndInsets) / CGFloat(cellsPerRow))
+        let itemWidth = ((collectionView.bounds.size.width - marginsAndInsets) / CGFloat(cellsPerRow+1))
         
         let verticalMarginsAndInsets = sectionInset.top + sectionInset.bottom + collectionView.safeAreaInsets.top + collectionView.safeAreaInsets.bottom + minimumLineSpacing * CGFloat(numberOfRows - 1)
-        let itemHeight = ((collectionView.bounds.size.height - verticalMarginsAndInsets) / CGFloat(numberOfRows))
+        let itemHeight = ((collectionView.bounds.size.height - verticalMarginsAndInsets) / CGFloat(numberOfRows+1))
         
         itemSize = CGSize(width: itemWidth, height: itemHeight)
     }

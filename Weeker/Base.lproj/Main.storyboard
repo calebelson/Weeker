@@ -23,7 +23,7 @@
                                 <color key="color" red="0.72618448729999996" green="0.83693432810000001" blue="0.98433631659999998" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
                             </activityIndicatorView>
                             <collectionView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" dataMode="prototypes" translatesAutoresizingMaskIntoConstraints="NO" id="HDO-06-gOf">
-                                <rect key="frame" x="20" y="158" width="335" height="445"/>
+                                <rect key="frame" x="0.0" y="0.0" width="375" height="603"/>
                                 <color key="backgroundColor" cocoaTouchSystemColor="scrollViewTexturedBackgroundColor"/>
                                 <collectionViewFlowLayout key="collectionViewLayout" minimumLineSpacing="10" minimumInteritemSpacing="10" id="03C-0d-Iso">
                                     <size key="itemSize" width="50" height="50"/>
@@ -48,7 +48,7 @@
                                 </connections>
                             </collectionView>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Description Label" lineBreakMode="tailTruncation" numberOfLines="2" baselineAdjustment="alignBaselines" minimumScaleFactor="0.55000000000000004" adjustsLetterSpacingToFitWidth="YES" translatesAutoresizingMaskIntoConstraints="NO" id="TSf-Mi-NC4">
-                                <rect key="frame" x="20" y="0.0" width="335" height="150"/>
+                                <rect key="frame" x="20" y="0.0" width="335" height="26.5"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="22"/>
                                 <color key="textColor" red="0.94447320700000004" green="0.61648559570000006" blue="0.57252699139999996" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
                                 <nil key="highlightedColor"/>
@@ -56,20 +56,16 @@
                         </subviews>
                         <color key="backgroundColor" cocoaTouchSystemColor="scrollViewTexturedBackgroundColor"/>
                         <constraints>
-                            <constraint firstItem="HDO-06-gOf" firstAttribute="top" secondItem="TSf-Mi-NC4" secondAttribute="bottom" constant="8" id="1v4-Dw-zce"/>
-                            <constraint firstItem="HDO-06-gOf" firstAttribute="leading" secondItem="8bC-Xf-vdC" secondAttribute="leading" constant="20" id="7w8-fm-tvR"/>
-                            <constraint firstItem="HDO-06-gOf" firstAttribute="top" secondItem="6Tk-OE-BBY" secondAttribute="top" constant="158" id="Crg-hg-04M"/>
-                            <constraint firstItem="HDO-06-gOf" firstAttribute="trailing" secondItem="6Tk-OE-BBY" secondAttribute="trailing" constant="-20" id="FX2-AK-pnp"/>
-                            <constraint firstAttribute="trailing" secondItem="HDO-06-gOf" secondAttribute="trailing" constant="20" id="KeH-W4-JC4"/>
+                            <constraint firstItem="HDO-06-gOf" firstAttribute="leading" secondItem="8bC-Xf-vdC" secondAttribute="leading" id="7w8-fm-tvR"/>
+                            <constraint firstItem="HDO-06-gOf" firstAttribute="top" secondItem="6Tk-OE-BBY" secondAttribute="top" id="Crg-hg-04M"/>
+                            <constraint firstAttribute="trailing" secondItem="HDO-06-gOf" secondAttribute="trailing" id="KeH-W4-JC4"/>
                             <constraint firstItem="TSf-Mi-NC4" firstAttribute="width" secondItem="8bC-Xf-vdC" secondAttribute="width" constant="-40" id="NuC-Ma-kcu"/>
-                            <constraint firstItem="HDO-06-gOf" firstAttribute="bottom" secondItem="6Tk-OE-BBY" secondAttribute="bottom" id="OpA-FA-779"/>
                             <constraint firstItem="TSf-Mi-NC4" firstAttribute="trailing" secondItem="6Tk-OE-BBY" secondAttribute="trailing" constant="-20" id="QaL-4b-B2O"/>
                             <constraint firstItem="HDO-06-gOf" firstAttribute="bottom" secondItem="6Tk-OE-BBY" secondAttribute="bottom" id="Qki-pE-D7b"/>
                             <constraint firstItem="g40-Jc-8qk" firstAttribute="centerY" secondItem="6Tk-OE-BBY" secondAttribute="centerY" id="Y46-DM-kQL"/>
                             <constraint firstItem="TSf-Mi-NC4" firstAttribute="top" secondItem="6Tk-OE-BBY" secondAttribute="top" id="bxs-g0-hje"/>
                             <constraint firstItem="g40-Jc-8qk" firstAttribute="centerX" secondItem="6Tk-OE-BBY" secondAttribute="centerX" id="fau-gp-ttx"/>
                             <constraint firstItem="TSf-Mi-NC4" firstAttribute="leading" secondItem="6Tk-OE-BBY" secondAttribute="leading" constant="20" id="gLA-cL-Vod"/>
-                            <constraint firstItem="HDO-06-gOf" firstAttribute="leading" secondItem="6Tk-OE-BBY" secondAttribute="leading" constant="20" id="tzq-Fe-Anb"/>
                         </constraints>
                         <viewLayoutGuide key="safeArea" id="6Tk-OE-BBY"/>
                     </view>
@@ -88,7 +84,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="dkx-z0-nzr" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="1257.9710144927537" y="-195.53571428571428"/>
+            <point key="canvasLocation" x="1256.8" y="-195.6521739130435"/>
         </scene>
         <!--Select Date of Birth-->
         <scene sceneID="9Wq-yV-N1v">
@@ -99,7 +95,7 @@
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <datePicker contentMode="scaleToFill" contentHorizontalAlignment="fill" contentVerticalAlignment="fill" datePickerMode="date" minuteInterval="1" useCurrentDate="NO" translatesAutoresizingMaskIntoConstraints="NO" id="fEM-Cs-L3a">
-                                <rect key="frame" x="16" y="71" width="343" height="532"/>
+                                <rect key="frame" x="16" y="0.0" width="343" height="603"/>
                                 <date key="date" timeIntervalSinceReferenceDate="-175048752.38576806">
                                     <!--1995-06-15 23:20:47 +0000-->
                                 </date>
@@ -110,39 +106,13 @@
                                     <!--2017-12-31 11:00:00 +0000-->
                                 </date>
                             </datePicker>
-                            <switch opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="750" verticalHuggingPriority="750" contentHorizontalAlignment="center" contentVerticalAlignment="center" translatesAutoresizingMaskIntoConstraints="NO" id="q1q-Fi-tX0">
-                                <rect key="frame" x="163" y="20" width="51" height="31"/>
-                                <color key="onTintColor" red="0.72618448729999996" green="0.83693432810000001" blue="0.98433631659999998" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
-                            </switch>
-                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Lifespan of 90 years" textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="2" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="j5i-UE-2jV">
-                                <rect key="frame" x="8" y="8" width="147" height="55"/>
-                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
-                                <nil key="textColor"/>
-                                <nil key="highlightedColor"/>
-                            </label>
-                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Lifespan based on actuarial table" textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="2" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Ous-AP-TYu">
-                                <rect key="frame" x="220" y="8" width="163" height="55"/>
-                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
-                                <nil key="textColor"/>
-                                <nil key="highlightedColor"/>
-                            </label>
                         </subviews>
                         <color key="backgroundColor" cocoaTouchSystemColor="scrollViewTexturedBackgroundColor"/>
                         <constraints>
-                            <constraint firstItem="q1q-Fi-tX0" firstAttribute="centerX" secondItem="4D9-x3-IRj" secondAttribute="centerX" id="Fzb-HB-E7h"/>
+                            <constraint firstItem="fEM-Cs-L3a" firstAttribute="height" secondItem="4D9-x3-IRj" secondAttribute="height" constant="0.40000000000000002" id="AaJ-Bb-r9C"/>
+                            <constraint firstItem="fEM-Cs-L3a" firstAttribute="centerY" secondItem="4D9-x3-IRj" secondAttribute="centerY" id="DYp-BF-1e6"/>
                             <constraint firstItem="fEM-Cs-L3a" firstAttribute="trailing" secondItem="4D9-x3-IRj" secondAttribute="trailingMargin" id="H3k-6g-vwh"/>
-                            <constraint firstItem="Ous-AP-TYu" firstAttribute="trailing" secondItem="7QF-DX-JQc" secondAttribute="trailing" constant="8" id="HPO-0W-FLd"/>
-                            <constraint firstItem="fEM-Cs-L3a" firstAttribute="top" secondItem="j5i-UE-2jV" secondAttribute="bottom" constant="8" id="KiI-mc-8Lk"/>
-                            <constraint firstItem="Ous-AP-TYu" firstAttribute="top" secondItem="7QF-DX-JQc" secondAttribute="top" constant="8" id="P0x-gl-fB8"/>
-                            <constraint firstItem="fEM-Cs-L3a" firstAttribute="top" secondItem="Ous-AP-TYu" secondAttribute="bottom" constant="8" id="XOR-bO-M6X"/>
-                            <constraint firstItem="q1q-Fi-tX0" firstAttribute="leading" secondItem="j5i-UE-2jV" secondAttribute="trailing" constant="8" id="Z6i-bW-cjz"/>
-                            <constraint firstItem="Ous-AP-TYu" firstAttribute="leading" secondItem="q1q-Fi-tX0" secondAttribute="trailing" constant="8" id="ZBb-RJ-83b"/>
-                            <constraint firstItem="j5i-UE-2jV" firstAttribute="top" secondItem="7QF-DX-JQc" secondAttribute="top" constant="8" id="i8t-h6-lxZ"/>
-                            <constraint firstItem="fEM-Cs-L3a" firstAttribute="bottom" secondItem="7QF-DX-JQc" secondAttribute="bottom" id="ntR-7q-po5"/>
-                            <constraint firstItem="fEM-Cs-L3a" firstAttribute="top" secondItem="q1q-Fi-tX0" secondAttribute="bottom" constant="20" id="o5W-Vo-99i"/>
-                            <constraint firstItem="q1q-Fi-tX0" firstAttribute="top" secondItem="7QF-DX-JQc" secondAttribute="top" constant="20" id="pYe-3M-c3x"/>
                             <constraint firstItem="fEM-Cs-L3a" firstAttribute="leading" secondItem="4D9-x3-IRj" secondAttribute="leadingMargin" id="vdD-vl-hTo"/>
-                            <constraint firstItem="j5i-UE-2jV" firstAttribute="leading" secondItem="7QF-DX-JQc" secondAttribute="leading" constant="8" id="vrw-0S-hev"/>
                         </constraints>
                         <viewLayoutGuide key="safeArea" id="7QF-DX-JQc"/>
                     </view>
@@ -155,27 +125,11 @@
                     </navigationItem>
                     <connections>
                         <outlet property="dateOfBirthPicker" destination="fEM-Cs-L3a" id="MSx-Tc-NtT"/>
-                        <outlet property="lifeSpanSwitch" destination="q1q-Fi-tX0" id="cig-wb-mZ6"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="Sm8-6R-34E" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="3762.4000000000001" y="-196.55172413793105"/>
-        </scene>
-        <!--Transition View Controller-->
-        <scene sceneID="aBH-Ib-hlN">
-            <objects>
-                <viewController storyboardIdentifier="transitionViewControllerID" id="lwB-IM-1vQ" customClass="TransitionViewController" customModule="Weeker" customModuleProvider="target" sceneMemberID="viewController">
-                    <view key="view" contentMode="scaleToFill" id="ILv-aM-S26">
-                        <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
-                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
-                        <color key="backgroundColor" cocoaTouchSystemColor="scrollViewTexturedBackgroundColor"/>
-                        <viewLayoutGuide key="safeArea" id="Cx6-uQ-hsX"/>
-                    </view>
-                </viewController>
-                <placeholder placeholderIdentifier="IBFirstResponder" id="FGT-n1-DrH" userLabel="First Responder" sceneMemberID="firstResponder"/>
-            </objects>
-            <point key="canvasLocation" x="1925" y="529"/>
         </scene>
         <!--Navigation Controller-->
         <scene sceneID="Dwg-wh-q8i">

@@ -10,7 +10,6 @@ import UIKit
 
 class DOBViewController: UIViewController {
     @IBOutlet weak var dateOfBirthPicker: UIDatePicker!
-    @IBOutlet weak var lifeSpanSwitch: UISwitch!
     
     var firstLoad = UserDefaults(suiteName: "group.com.calebElson.Weeker")?.value(forKey: "syncDOB") == nil
     
@@ -21,12 +20,6 @@ class DOBViewController: UIViewController {
         dateOfBirthPicker.maximumDate = Date()
         
         dateOfBirthPicker.setValue(#colorLiteral(red: 0.6979569793, green: 0.8412405849, blue: 0.9987565875, alpha: 1), forKeyPath: "textColor")
-        
-        
-        if let lifeSpanSwitchSet = UserDefaults(suiteName: "group.com.calebElson.Weeker")?.value(forKey: "syncLifeSpanSwitchOn") {
-            lifeSpanSwitch.setOn(lifeSpanSwitchSet as! Bool, animated: false)
-        }
-        
         
         
         if let dob = UserDefaults(suiteName: "group.com.calebElson.Weeker")?.value(forKey: "syncDOB") {
@@ -40,7 +33,6 @@ class DOBViewController: UIViewController {
     @IBAction func saveButtonPushed(_ sender: Any) {
         let date = dateOfBirthPicker.date
         UserDefaults(suiteName: "group.com.calebElson.Weeker")?.set(date, forKey: "syncDOB")
-        UserDefaults(suiteName: "group.com.calebElson.Weeker")?.set(lifeSpanSwitch.isOn, forKey: "syncLifeSpanSwitchOn")
         
         self.navigationController?.popViewController(animated: true)
     }
