@@ -100,6 +100,15 @@
                         <viewLayoutGuide key="safeArea" id="6Tk-OE-BBY"/>
                     </view>
                     <navigationItem key="navigationItem" id="g4I-AQ-YCd">
+                        <barButtonItem key="leftBarButtonItem" id="Mn4-rg-o4M">
+                            <button key="customView" opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="infoLight" showsTouchWhenHighlighted="YES" lineBreakMode="middleTruncation" id="jNC-jU-xXV">
+                                <rect key="frame" x="16" y="11" width="22" height="22"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <connections>
+                                    <action selector="infoButtonPressed:" destination="BYZ-38-t0r" eventType="touchUpInside" id="cmY-fM-KU2"/>
+                                </connections>
+                            </button>
+                        </barButtonItem>
                         <barButtonItem key="rightBarButtonItem" title="Settings" id="XhU-8Z-dg2">
                             <connections>
                                 <segue destination="fPE-g0-tkc" kind="show" id="YAz-sU-Bdg"/>
@@ -109,6 +118,7 @@
                     <connections>
                         <outlet property="activityIndicator" destination="g40-Jc-8qk" id="4iu-Xj-ree"/>
                         <outlet property="collectionView" destination="HDO-06-gOf" id="nqL-gG-2Ip"/>
+                        <outlet property="infoLayerScrollView" destination="rtJ-Bx-4dy" id="tjz-7U-dZQ"/>
                         <outlet property="livedAndLeftLabel" destination="TSf-Mi-NC4" id="MQg-xP-NhM"/>
                     </connections>
                 </viewController>
@@ -124,7 +134,7 @@
                         <rect key="frame" x="0.0" y="0.0" width="375" height="603"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <datePicker contentMode="scaleToFill" contentHorizontalAlignment="fill" contentVerticalAlignment="fill" datePickerMode="date" minuteInterval="1" useCurrentDate="NO" translatesAutoresizingMaskIntoConstraints="NO" id="fEM-Cs-L3a">
+                            <datePicker contentMode="scaleToFill" contentHorizontalAlignment="fill" contentVerticalAlignment="fill" datePickerMode="date" useCurrentDate="NO" translatesAutoresizingMaskIntoConstraints="NO" id="fEM-Cs-L3a">
                                 <rect key="frame" x="16" y="0.0" width="343" height="603"/>
                                 <date key="date" timeIntervalSinceReferenceDate="-175048752.38576806">
                                     <!--1995-06-15 23:20:47 +0000-->

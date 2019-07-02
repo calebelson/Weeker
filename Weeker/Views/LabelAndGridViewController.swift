@@ -12,12 +12,13 @@ class LabelAndGridViewController: UIViewController, UICollectionViewDataSource, 
     
     // MARK: - Properties
     @IBOutlet var collectionView: UICollectionView!
+    @IBOutlet weak var infoLayerScrollView: UIScrollView!
     @IBOutlet weak var livedAndLeftLabel: UILabel!
     @IBOutlet weak var activityIndicator: UIActivityIndicatorView!
     
     private var decreasingAlpha = CGFloat()
     private var ageModel = AgeModel()
-    // Used to keep track of whether the current value in the collectionView has past the user's current age
+    // Used to keep track of whether the current value in the collectionView has passed the user's current age
     private var ageReached = false
     
     
@@ -44,6 +45,10 @@ class LabelAndGridViewController: UIViewController, UICollectionViewDataSource, 
 //        UserDefaults(suiteName: "group.com.calebElson.Weeker")?.removeObject(forKey: "syncDOB")
     }
     
+    @IBAction func infoButtonPressed(_ sender: Any) {
+        infoLayerScrollView.isHidden = !infoLayerScrollView.isHidden
+    }
+    
     func refreshLabel() {
         ageReached = false
         
@@ -64,6 +69,7 @@ class LabelAndGridViewController: UIViewController, UICollectionViewDataSource, 
         // Label only needs to be hidden for collectionView refresh
         livedAndLeftLabel.isHidden = true
         activityIndicator.isHidden = false
+        infoLayerScrollView.isHidden = true
         activityIndicator.startAnimating()
         
         refreshLabel()
@@ -76,6 +82,7 @@ class LabelAndGridViewController: UIViewController, UICollectionViewDataSource, 
             self.collectionView.isHidden = false
             self.livedAndLeftLabel.isHidden = false
             self.activityIndicator.isHidden = true
+            self.infoLayerScrollView.isHidden = false
             self.activityIndicator.stopAnimating()
         }
     }
@@ -87,6 +94,7 @@ class LabelAndGridViewController: UIViewController, UICollectionViewDataSource, 
         let backItem = UIBarButtonItem(title: "Cancel", style: .plain, target: nil, action: nil)
         navigationItem.backBarButtonItem = backItem
         
+        activityIndicator.isHidden = true
         refreshLabel()
     }
     

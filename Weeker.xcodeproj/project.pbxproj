@@ -161,7 +161,7 @@
 			children = (
 				C915545921E2DCCF0075B725 /* Weeker.entitlements */,
 				C9592C2721AC7E390077747F /* AppDelegate.swift */,
-				C915544121E162A10075B725 /* AgeModel.swift */,
+				C99F491A22CC03B70008A648 /* Models */,
 				C915544021E162350075B725 /* Views */,
 				C9592C2B21AC7E390077747F /* Main.storyboard */,
 				C9592C2E21AC7E3B0077747F /* Assets.xcassets */,
@@ -181,6 +181,14 @@
 				C95D9CED22C2849500FDCB74 /* Weeker Widget-Bridging-Header.h */,
 			);
 			path = MKiCloudSync;
+			sourceTree = "<group>";
+		};
+		C99F491A22CC03B70008A648 /* Models */ = {
+			isa = PBXGroup;
+			children = (
+				C915544121E162A10075B725 /* AgeModel.swift */,
+			);
+			path = Models;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
