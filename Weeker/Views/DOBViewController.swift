@@ -21,6 +21,12 @@ class DOBViewController: UIViewController {
         
         dateOfBirthPicker.setValue(#colorLiteral(red: 0.6979569793, green: 0.8412405849, blue: 0.9987565875, alpha: 1), forKeyPath: "textColor")
         
+        if firstLoad {
+            navigationItem.hidesBackButton = true
+        } else {
+            navigationItem.hidesBackButton = false
+        }
+        
         
         if let dob = UserDefaults(suiteName: "group.com.calebElson.Weeker")?.value(forKey: "syncDOB") {
             dateOfBirthPicker.setDate(dob as! Date, animated: false)

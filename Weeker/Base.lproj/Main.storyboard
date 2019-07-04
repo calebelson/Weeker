@@ -13,7 +13,7 @@
         <!--Label And Grid View Controller-->
         <scene sceneID="tne-QT-ifu">
             <objects>
-                <viewController id="BYZ-38-t0r" customClass="LabelAndGridViewController" customModule="Weeker" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController storyboardIdentifier="LabelAndGridViewController" id="BYZ-38-t0r" customClass="LabelAndGridViewController" customModule="Weeker" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="8bC-Xf-vdC">
                         <rect key="frame" x="0.0" y="0.0" width="375" height="603"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
@@ -126,7 +126,7 @@
                         </barButtonItem>
                         <barButtonItem key="rightBarButtonItem" title="Settings" id="XhU-8Z-dg2">
                             <connections>
-                                <segue destination="fPE-g0-tkc" kind="show" id="YAz-sU-Bdg"/>
+                                <segue destination="fPE-g0-tkc" kind="show" identifier="HomeVCToDOBVC" id="YAz-sU-Bdg"/>
                             </connections>
                         </barButtonItem>
                     </navigationItem>
@@ -144,7 +144,7 @@
         <!--Select Date of Birth-->
         <scene sceneID="9Wq-yV-N1v">
             <objects>
-                <viewController storyboardIdentifier="DOBViewControllerID2" modalPresentationStyle="overFullScreen" id="fPE-g0-tkc" customClass="DOBViewController" customModule="Weeker" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController storyboardIdentifier="DOBViewController" modalPresentationStyle="overFullScreen" id="fPE-g0-tkc" customClass="DOBViewController" customModule="Weeker" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="4D9-x3-IRj">
                         <rect key="frame" x="0.0" y="0.0" width="375" height="603"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
@@ -189,7 +189,7 @@
         <!--Navigation Controller-->
         <scene sceneID="Dwg-wh-q8i">
             <objects>
-                <navigationController storyboardIdentifier="homeViewControllerID" automaticallyAdjustsScrollViewInsets="NO" id="UEf-Yj-Jov" sceneMemberID="viewController">
+                <navigationController storyboardIdentifier="HomeNavigationController" automaticallyAdjustsScrollViewInsets="NO" id="UEf-Yj-Jov" sceneMemberID="viewController">
                     <toolbarItems/>
                     <navigationBar key="navigationBar" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" translucent="NO" id="mGx-rW-eIV">
                         <rect key="frame" x="0.0" y="20" width="375" height="44"/>

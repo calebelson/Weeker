@@ -90,6 +90,12 @@ class LabelAndGridViewController: UIViewController, UICollectionViewDataSource, 
     override func viewDidLoad() {
         super.viewDidLoad()
         
+        if UserDefaults(suiteName: "group.com.calebElson.Weeker")?.value(forKey: "syncDOB") == nil {
+            DispatchQueue.main.async {
+                self.performSegue(withIdentifier: "HomeVCToDOBVC", sender: self)
+            }
+        }
+        
         // Makes clear that going back from DOBViewController cancels DOB change
         let backItem = UIBarButtonItem(title: "Cancel", style: .plain, target: nil, action: nil)
         navigationItem.backBarButtonItem = backItem
