@@ -22,13 +22,24 @@ class LabelAndGridViewController: UIViewController, UICollectionViewDataSource, 
     private var ageReached = false
     
     
-    let columnLayout = ColumnFlowLayout(
-        cellsPerRow: 52,
-        numberOfRows: AgeModel().lifeSpan,
-        minimumInteritemSpacing: 1,
-        minimumLineSpacing: 2,
-        sectionInset: UIEdgeInsets(top: 2, left: 0, bottom: 0, right: 0)
-    )
+    // MARK: - View Setup
+    override func viewDidLoad() {
+        super.viewDidLoad()
+        
+        // If no DOB set, shows DOBVC with cancel/back button hidden
+        if UserDefaults(suiteName: "group.com.calebElson.Weeker")?.value(forKey: "syncDOB") == nil {
+            DispatchQueue.main.async {
+                self.performSegue(withIdentifier: "HomeVCToDOBVC", sender: self)
+            }
+        }
+        
+        // Makes clear that going back from DOBViewController cancels DOB change
+        let backItem = UIBarButtonItem(title: "Cancel", style: .plain, target: nil, action: nil)
+        navigationItem.backBarButtonItem = backItem
+        
+        activityIndicator.isHidden = true
+        refreshLabel()
+    }
     
     override func viewWillAppear(_ animated: Bool) {
         collectionView?.collectionViewLayout = columnLayout
@@ -45,6 +56,8 @@ class LabelAndGridViewController: UIViewController, UICollectionViewDataSource, 
 //        UserDefaults(suiteName: "group.com.calebElson.Weeker")?.removeObject(forKey: "syncDOB")
     }
     
+    
+    // MARK: - Refresh and Interaction Methods
     @IBAction func infoButtonPressed(_ sender: Any) {
         infoLayerScrollView.isHidden = !infoLayerScrollView.isHidden
     }
@@ -66,7 +79,6 @@ class LabelAndGridViewController: UIViewController, UICollectionViewDataSource, 
     
     func refreshCollectionView() {
         collectionView.isHidden = true
-        // Label only needs to be hidden for collectionView refresh
         livedAndLeftLabel.isHidden = true
         activityIndicator.isHidden = false
         infoLayerScrollView.isHidden = true
@@ -87,22 +99,15 @@ class LabelAndGridViewController: UIViewController, UICollectionViewDataSource, 
         }
     }
     
-    override func viewDidLoad() {
-        super.viewDidLoad()
-        
-        if UserDefaults(suiteName: "group.com.calebElson.Weeker")?.value(forKey: "syncDOB") == nil {
-            DispatchQueue.main.async {
-                self.performSegue(withIdentifier: "HomeVCToDOBVC", sender: self)
-            }
-        }
-        
-        // Makes clear that going back from DOBViewController cancels DOB change
-        let backItem = UIBarButtonItem(title: "Cancel", style: .plain, target: nil, action: nil)
-        navigationItem.backBarButtonItem = backItem
-        
-        activityIndicator.isHidden = true
-        refreshLabel()
-    }
+
+    // MARK: - CollectionView Setup
+    let columnLayout = ColumnFlowLayout(
+        cellsPerRow: 52,
+        numberOfRows: AgeModel().lifeSpan,
+        minimumInteritemSpacing: 1,
+        minimumLineSpacing: 2,
+        sectionInset: UIEdgeInsets(top: 2, left: 0, bottom: 0, right: 0)
+    )
     
     func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
         return 52
@@ -121,14 +126,9 @@ class LabelAndGridViewController: UIViewController, UICollectionViewDataSource, 
         cell.layer.masksToBounds = true
         
         if ageReached {
-//            cell.layer.borderColor = #colorLiteral(red: 0.6979569793, green: 0.8412405849, blue: 0.9987565875, alpha: 1)
-//            cell.layer.borderWidth = CGFloat(Double(ageModel.lifeSpan) - Double.random(in: 0...Double(ageModel.lifeSpan))*0.75)/CGFloat(ageModel.lifeSpan)
             cell.backgroundColor = #colorLiteral(red: 0.6979569793, green: 0.8412405849, blue: 0.9987565875, alpha: 1).withAlphaComponent(decreasingAlpha)
-
-
         } else {
             cell.backgroundColor = #colorLiteral(red: 0.9998636842, green: 0.597361505, blue: 0.5580425858, alpha: 1).withAlphaComponent(decreasingAlpha)
-
         }
         
         return cell
