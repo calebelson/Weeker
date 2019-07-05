@@ -20,6 +20,7 @@ class LabelAndGridViewController: UIViewController, UICollectionViewDataSource, 
     private var ageModel = AgeModel()
     // Used to keep track of whether the current value in the collectionView has passed the user's current age
     private var ageReached = false
+    private var theme = ThemeManager.currentTheme()
     
     
     // MARK: - View Setup
@@ -46,7 +47,8 @@ class LabelAndGridViewController: UIViewController, UICollectionViewDataSource, 
         collectionView?.contentInsetAdjustmentBehavior = .always
         collectionView?.register(UICollectionViewCell.self, forCellWithReuseIdentifier: "Cell")
         
-        if ageModel.dateOfBirth != AgeModel().dateOfBirth {
+        if ageModel.dateOfBirth != AgeModel().dateOfBirth || theme != ThemeManager.currentTheme() {
+            theme = ThemeManager.currentTheme()
             ageModel = AgeModel()
             refreshLabel()
             refreshCollectionView()
@@ -72,7 +74,7 @@ class LabelAndGridViewController: UIViewController, UICollectionViewDataSource, 
         
         let range = (labelString as NSString).range(of: weeksLeftString)
         let attributedString = NSMutableAttributedString.init(string: labelString)
-        attributedString.addAttribute(NSAttributedString.Key.foregroundColor, value: #colorLiteral(red: 0.6979569793, green: 0.8412405849, blue: 0.9987565875, alpha: 1), range: range)
+        attributedString.addAttribute(NSAttributedString.Key.foregroundColor, value: theme.primaryColor, range: range)
         
         livedAndLeftLabel.attributedText = attributedString
     }
@@ -80,6 +82,7 @@ class LabelAndGridViewController: UIViewController, UICollectionViewDataSource, 
     func refreshCollectionView() {
         collectionView.isHidden = true
         livedAndLeftLabel.isHidden = true
+        activityIndicator.color = theme.primaryColor
         activityIndicator.isHidden = false
         infoLayerScrollView.isHidden = true
         activityIndicator.startAnimating()
@@ -126,9 +129,9 @@ class LabelAndGridViewController: UIViewController, UICollectionViewDataSource, 
         cell.layer.masksToBounds = true
         
         if ageReached {
-            cell.backgroundColor = #colorLiteral(red: 0.6979569793, green: 0.8412405849, blue: 0.9987565875, alpha: 1).withAlphaComponent(decreasingAlpha)
+            cell.backgroundColor = theme.primaryColor.withAlphaComponent(decreasingAlpha)
         } else {
-            cell.backgroundColor = #colorLiteral(red: 0.9998636842, green: 0.597361505, blue: 0.5580425858, alpha: 1).withAlphaComponent(decreasingAlpha)
+            cell.backgroundColor = theme.secondaryColor.withAlphaComponent(decreasingAlpha)
         }
         
         return cell

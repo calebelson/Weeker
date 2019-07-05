@@ -22,6 +22,9 @@
 		C9592C3221AC7E3B0077747F /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = C9592C3021AC7E3B0077747F /* LaunchScreen.storyboard */; };
 		C95D9CF022C2849500FDCB74 /* MKiCloudSync.m in Sources */ = {isa = PBXBuildFile; fileRef = C95D9CEF22C2849500FDCB74 /* MKiCloudSync.m */; };
 		C95D9CF122C2849500FDCB74 /* MKiCloudSync.m in Sources */ = {isa = PBXBuildFile; fileRef = C95D9CEF22C2849500FDCB74 /* MKiCloudSync.m */; };
+		C9EA933E22CEB3C200C557C0 /* Colors.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = C9EA933D22CEB3C200C557C0 /* Colors.xcassets */; };
+		C9EA934022CEB4F500C557C0 /* Theme.swift in Sources */ = {isa = PBXBuildFile; fileRef = C9EA933F22CEB4F500C557C0 /* Theme.swift */; };
+		C9EA934122CEB4F500C557C0 /* Theme.swift in Sources */ = {isa = PBXBuildFile; fileRef = C9EA933F22CEB4F500C557C0 /* Theme.swift */; };
 		F7D5B9EE97C59607BE602E7E /* Pods_Weeker.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = EE9FB097F6799D94794E48DE /* Pods_Weeker.framework */; };
 /* End PBXBuildFile section */
 
@@ -72,6 +75,8 @@
 		C95D9CED22C2849500FDCB74 /* Weeker Widget-Bridging-Header.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "Weeker Widget-Bridging-Header.h"; sourceTree = "<group>"; };
 		C95D9CEE22C2849500FDCB74 /* MKiCloudSync.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MKiCloudSync.h; sourceTree = "<group>"; };
 		C95D9CEF22C2849500FDCB74 /* MKiCloudSync.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MKiCloudSync.m; sourceTree = "<group>"; };
+		C9EA933D22CEB3C200C557C0 /* Colors.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Colors.xcassets; sourceTree = "<group>"; };
+		C9EA933F22CEB4F500C557C0 /* Theme.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Theme.swift; sourceTree = "<group>"; };
 		D61F78B3CCD5AE4F51F7BEFB /* Pods-Weeker.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Weeker.debug.xcconfig"; path = "Pods/Target Support Files/Pods-Weeker/Pods-Weeker.debug.xcconfig"; sourceTree = "<group>"; };
 		EE9FB097F6799D94794E48DE /* Pods_Weeker.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_Weeker.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 /* End PBXFileReference section */
@@ -165,6 +170,7 @@
 				C915544021E162350075B725 /* Views */,
 				C9592C2B21AC7E390077747F /* Main.storyboard */,
 				C9592C2E21AC7E3B0077747F /* Assets.xcassets */,
+				C9EA933D22CEB3C200C557C0 /* Colors.xcassets */,
 				C9592C3021AC7E3B0077747F /* LaunchScreen.storyboard */,
 				C9592C3321AC7E3B0077747F /* Info.plist */,
 				C95D9CEB22C2846A00FDCB74 /* MKiCloudSync */,
@@ -187,6 +193,7 @@
 			isa = PBXGroup;
 			children = (
 				C915544121E162A10075B725 /* AgeModel.swift */,
+				C9EA933F22CEB4F500C557C0 /* Theme.swift */,
 			);
 			path = Models;
 			sourceTree = "<group>";
@@ -297,6 +304,7 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				C9EA933E22CEB3C200C557C0 /* Colors.xcassets in Resources */,
 				C9592C3221AC7E3B0077747F /* LaunchScreen.storyboard in Resources */,
 				C9592C2F21AC7E3B0077747F /* Assets.xcassets in Resources */,
 				C91E776921B21FE700D2C16C /* README.md in Resources */,
@@ -359,6 +367,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				C915544C21E2D1540075B725 /* TodayViewController.swift in Sources */,
+				C9EA934122CEB4F500C557C0 /* Theme.swift in Sources */,
 				C95D9CF122C2849500FDCB74 /* MKiCloudSync.m in Sources */,
 				C915545821E2DB730075B725 /* AgeModel.swift in Sources */,
 			);
@@ -371,6 +380,7 @@
 				C9592C2A21AC7E390077747F /* LabelAndGridViewController.swift in Sources */,
 				C9592C2821AC7E390077747F /* AppDelegate.swift in Sources */,
 				C91E775221B20DED00D2C16C /* DOBViewController.swift in Sources */,
+				C9EA934022CEB4F500C557C0 /* Theme.swift in Sources */,
 				C915544221E162A10075B725 /* AgeModel.swift in Sources */,
 				C95D9CF022C2849500FDCB74 /* MKiCloudSync.m in Sources */,
 			);
