@@ -16,7 +16,7 @@ class LabelAndGridViewController: UIViewController, UICollectionViewDataSource, 
     @IBOutlet weak var livedAndLeftLabel: UILabel!
     @IBOutlet weak var activityIndicator: UIActivityIndicatorView!
     
-    private var decreasingAlpha = CGFloat()
+    private var randomlyDecreasedAlpha = CGFloat()
     private var ageModel = AgeModel()
     // Used to keep track of whether the current value in the collectionView has passed the user's current age
     private var ageReached = false
@@ -109,7 +109,7 @@ class LabelAndGridViewController: UIViewController, UICollectionViewDataSource, 
         numberOfRows: AgeModel().lifeSpan,
         minimumInteritemSpacing: 1,
         minimumLineSpacing: 2,
-        sectionInset: UIEdgeInsets(top: 2, left: 0, bottom: 0, right: 0)
+        sectionInset: UIEdgeInsets(top: 0, left: 0, bottom: 2, right: 0)
     )
     
     func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
@@ -118,7 +118,7 @@ class LabelAndGridViewController: UIViewController, UICollectionViewDataSource, 
     
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
         
-        decreasingAlpha = CGFloat(Double(ageModel.lifeSpan)*0.50 - Double.random(in: 0...Double(ageModel.lifeSpan))*0.25)/CGFloat(ageModel.lifeSpan)
+        randomlyDecreasedAlpha = CGFloat(Double.random(in: 0.25...0.5))
         
         let cell = collectionView.dequeueReusableCell(withReuseIdentifier: "Cell", for: indexPath)
 
@@ -126,12 +126,13 @@ class LabelAndGridViewController: UIViewController, UICollectionViewDataSource, 
             ageReached = true
         }
         
-        cell.layer.masksToBounds = true
-        
         if ageReached {
-            cell.backgroundColor = theme.primaryColor.withAlphaComponent(decreasingAlpha)
+            cell.backgroundColor = theme.secondaryColor.withAlphaComponent(randomlyDecreasedAlpha)
+            cell.layer.borderWidth = 0.75
+            cell.layer.borderColor = theme.primaryColor.withAlphaComponent(randomlyDecreasedAlpha).cgColor
         } else {
-            cell.backgroundColor = theme.secondaryColor.withAlphaComponent(decreasingAlpha)
+            cell.layer.borderWidth = 0
+            cell.backgroundColor = theme.primaryColor.withAlphaComponent(randomlyDecreasedAlpha)
         }
         
         return cell

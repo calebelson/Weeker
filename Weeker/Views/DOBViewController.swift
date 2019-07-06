@@ -35,8 +35,6 @@ class DOBViewController: UIViewController {
             navigationItem.hidesBackButton = false
         }
         
-        print(ThemeManager.currentTheme())
-        
         if let dob = UserDefaults(suiteName: "group.com.calebElson.Weeker")?.value(forKey: "syncDOB") {
             dateOfBirthPicker.setDate(dob as! Date, animated: false)
         } else {
@@ -55,12 +53,10 @@ class DOBViewController: UIViewController {
     @IBAction func defaultStyleButtonPressed(_ sender: Any) {
         ThemeManager.applyTheme(theme: Theme(rawValue: "Default")!)
         setupView()
-        print(ThemeManager.currentTheme())
     }
     @IBAction func grayScaleButtonPressed(_ sender: Any) {
         ThemeManager.applyTheme(theme: Theme(rawValue: "GrayScale")!)
         setupView()
-        print(ThemeManager.currentTheme())
     }
     
     @IBAction func saveButtonPushed(_ sender: Any) {
