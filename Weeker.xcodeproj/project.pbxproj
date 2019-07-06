@@ -25,6 +25,7 @@
 		C9EA933E22CEB3C200C557C0 /* Colors.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = C9EA933D22CEB3C200C557C0 /* Colors.xcassets */; };
 		C9EA934022CEB4F500C557C0 /* Theme.swift in Sources */ = {isa = PBXBuildFile; fileRef = C9EA933F22CEB4F500C557C0 /* Theme.swift */; };
 		C9EA934122CEB4F500C557C0 /* Theme.swift in Sources */ = {isa = PBXBuildFile; fileRef = C9EA933F22CEB4F500C557C0 /* Theme.swift */; };
+		C9EA934222D0683F00C557C0 /* Colors.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = C9EA933D22CEB3C200C557C0 /* Colors.xcassets */; };
 		F7D5B9EE97C59607BE602E7E /* Pods_Weeker.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = EE9FB097F6799D94794E48DE /* Pods_Weeker.framework */; };
 /* End PBXBuildFile section */
 
@@ -297,6 +298,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				C915544F21E2D1540075B725 /* MainInterface.storyboard in Resources */,
+				C9EA934222D0683F00C557C0 /* Colors.xcassets in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
