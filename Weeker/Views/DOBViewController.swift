@@ -21,6 +21,7 @@ class DOBViewController: UIViewController {
         dateFormatter.dateFormat = "YYYY-MM-DD"
         
         dateOfBirthPicker.maximumDate = Date()
+        dateOfBirthPicker.setValue(false, forKey: "highlightsToday")
         
         setupView()
         
