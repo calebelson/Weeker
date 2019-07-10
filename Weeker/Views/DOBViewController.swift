@@ -8,7 +8,8 @@
 
 import UIKit
 
-class DOBViewController: UIViewController {
+class DOBViewController: UIViewController, UITableViewDelegate, UITableViewDataSource {
+    @IBOutlet weak var settingsTableView: UITableView!
     @IBOutlet weak var dateOfBirthPicker: UIDatePicker!
     @IBOutlet weak var defaultStyleButton: UIButton!
     @IBOutlet weak var grayScaleButton: UIButton!
@@ -17,6 +18,12 @@ class DOBViewController: UIViewController {
     var firstLoad = UserDefaults(suiteName: "group.com.calebElson.Weeker")?.value(forKey: "syncDOB") == nil
     
     override func viewDidLoad() {
+        tableViewTitles = ["First","Second"]
+        storyBoardIDs = ["ThemeChangeTableView", "AcknowledgmentsVC"]
+        
+        settingsTableView.delegate = self
+        settingsTableView.dataSource = self
+        
         setupView()
         
         defaultStyleButton.layer.cornerRadius = 25
@@ -65,5 +72,27 @@ class DOBViewController: UIViewController {
         UserDefaults(suiteName: "group.com.calebElson.Weeker")?.set(date, forKey: "syncDOB")
         
         self.navigationController?.popViewController(animated: true)
+    }
+    
+    // MARK: - TableView Setup
+    var tableViewTitles = [String]()
+    var storyBoardIDs = [String]()
+    
+    func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
+        return tableViewTitles.count
+    }
+    
+    func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
+        let cell = tableView.dequeueReusableCell(withIdentifier: "Cell")
+        
+        cell?.textLabel!.text = tableViewTitles[indexPath.row]
+        
+        return cell!
+    }
+    
+    func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+        let vcName = storyBoardIDs[indexPath.row]
+        let viewController = storyboard?.instantiateViewController(withIdentifier: vcName)
+        self.navigationController?.pushViewController(viewController!, animated: true)
     }
 }
