@@ -1,6 +1,0 @@
-framework module Pods_Weeker {
-  umbrella header "Pods-Weeker-umbrella.h"
-
-  export *
-  module * { export * }
-}
