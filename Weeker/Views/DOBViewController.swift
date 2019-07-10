@@ -18,7 +18,7 @@ class DOBViewController: UIViewController, UITableViewDelegate, UITableViewDataS
     var firstLoad = UserDefaults(suiteName: "group.com.calebElson.Weeker")?.value(forKey: "syncDOB") == nil
     
     override func viewDidLoad() {
-        tableViewTitles = ["First","Second"]
+        tableViewTitles = ["App Theme","Acknowledgments"]
         storyBoardIDs = ["ThemeChangeTableView", "AcknowledgmentsVC"]
         
         settingsTableView.delegate = self
@@ -43,6 +43,13 @@ class DOBViewController: UIViewController, UITableViewDelegate, UITableViewDataS
         } else {
             let date = dateFormatter.date(from: "1995-06-15")
             dateOfBirthPicker.setDate(date!, animated: false)
+        }
+    }
+    
+    override func viewWillAppear(_ animated: Bool) {
+        let selectedRow = settingsTableView.indexPathForSelectedRow
+        if let selectedRowNotNil = selectedRow {
+            settingsTableView.deselectRow(at: selectedRowNotNil, animated: true)
         }
     }
     
