@@ -24,6 +24,7 @@ class DOBViewController: UIViewController, UITableViewDelegate, UITableViewDataS
         
         setupView()
         
+        // Must set DOB on first load
         if firstLoad {
             navigationItem.hidesBackButton = true
         } else {
@@ -51,7 +52,6 @@ class DOBViewController: UIViewController, UITableViewDelegate, UITableViewDataS
         }
         setupView()
         settingsTableView.reloadData()
-
     }
     
     func setupView() {

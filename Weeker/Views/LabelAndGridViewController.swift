@@ -48,6 +48,7 @@ class LabelAndGridViewController: UIViewController, UICollectionViewDataSource, 
         refreshLabel()
     }
     
+    // Refreshes in viewDidAppear due to differences in lifecycle between swiping back and hitting back button
     override func viewDidAppear(_ animated: Bool) {
         if ageModel.dateOfBirth != AgeModel().dateOfBirth || theme != ThemeManager.currentTheme() {
             theme = ThemeManager.currentTheme()

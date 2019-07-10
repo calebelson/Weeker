@@ -24,6 +24,7 @@ class ThemeChangeTableView: UITableViewController {
         
         if "\(theme)" == names[indexPath.row] {
             cell?.accessoryType = .checkmark
+            // Allows for didDeselect to be called if another row is tapped
             tableView.selectRow(at: indexPath, animated: false, scrollPosition: .none)
         }
         
