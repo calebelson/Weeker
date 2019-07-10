@@ -17,12 +17,6 @@ class DOBViewController: UIViewController {
     var firstLoad = UserDefaults(suiteName: "group.com.calebElson.Weeker")?.value(forKey: "syncDOB") == nil
     
     override func viewDidLoad() {
-        let dateFormatter = DateFormatter()
-        dateFormatter.dateFormat = "YYYY-MM-DD"
-        
-        dateOfBirthPicker.maximumDate = Date()
-        dateOfBirthPicker.setValue(false, forKey: "highlightsToday")
-        
         setupView()
         
         defaultStyleButton.layer.cornerRadius = 25
@@ -35,6 +29,12 @@ class DOBViewController: UIViewController {
         } else {
             navigationItem.hidesBackButton = false
         }
+        
+        let dateFormatter = DateFormatter()
+        dateFormatter.dateFormat = "YYYY-MM-DD"
+        
+        dateOfBirthPicker.maximumDate = Date()
+        dateOfBirthPicker.setValue(false, forKey: "highlightsToday")
         
         if let dob = UserDefaults(suiteName: "group.com.calebElson.Weeker")?.value(forKey: "syncDOB") {
             dateOfBirthPicker.setDate(dob as! Date, animated: false)
