@@ -61,15 +61,6 @@ class DOBViewController: UIViewController, UITableViewDelegate, UITableViewDataS
         saveButton.tintColor = theme.primaryColor
     }
     
-    @IBAction func defaultStyleButtonPressed(_ sender: Any) {
-        ThemeManager.applyTheme(theme: Theme(rawValue: "Default")!)
-        setupView()
-    }
-    @IBAction func grayScaleButtonPressed(_ sender: Any) {
-        ThemeManager.applyTheme(theme: Theme(rawValue: "GrayScale")!)
-        setupView()
-    }
-    
     @IBAction func saveButtonPushed(_ sender: Any) {
         let date = dateOfBirthPicker.date
         UserDefaults(suiteName: "group.com.calebElson.Weeker")?.set(date, forKey: "syncDOB")

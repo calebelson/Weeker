@@ -27,6 +27,10 @@ class LabelAndGridViewController: UIViewController, UICollectionViewDataSource, 
     override func viewDidLoad() {
         super.viewDidLoad()
         
+        collectionView?.collectionViewLayout = columnLayout
+        collectionView?.contentInsetAdjustmentBehavior = .always
+        collectionView?.register(UICollectionViewCell.self, forCellWithReuseIdentifier: "Cell")
+        
         navigationController?.navigationBar.tintColor = theme.primaryColor
         
         // If no DOB set, shows DOBVC with cancel/back button hidden
@@ -44,11 +48,7 @@ class LabelAndGridViewController: UIViewController, UICollectionViewDataSource, 
         refreshLabel()
     }
     
-    override func viewWillAppear(_ animated: Bool) {
-        collectionView?.collectionViewLayout = columnLayout
-        collectionView?.contentInsetAdjustmentBehavior = .always
-        collectionView?.register(UICollectionViewCell.self, forCellWithReuseIdentifier: "Cell")
-        
+    override func viewDidAppear(_ animated: Bool) {
         if ageModel.dateOfBirth != AgeModel().dateOfBirth || theme != ThemeManager.currentTheme() {
             theme = ThemeManager.currentTheme()
             ageModel = AgeModel()
@@ -56,8 +56,8 @@ class LabelAndGridViewController: UIViewController, UICollectionViewDataSource, 
             refreshCollectionView()
         }
         
-//        // Remove, for testing splash screen
-//        UserDefaults(suiteName: "group.com.calebElson.Weeker")?.removeObject(forKey: "syncDOB")
+        //        // Remove, for testing splash screen
+        //        UserDefaults(suiteName: "group.com.calebElson.Weeker")?.removeObject(forKey: "syncDOB")
     }
     
     
