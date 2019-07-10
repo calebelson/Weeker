@@ -247,15 +247,20 @@
                         <rect key="frame" x="0.0" y="0.0" width="375" height="812"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Test Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="980-V5-6OI">
-                                <rect key="frame" x="0.0" y="44" width="385" height="734"/>
-                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Test Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="980-V5-6OI">
+                                <rect key="frame" x="0.0" y="44" width="375" height="734"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                 <nil key="textColor"/>
                                 <nil key="highlightedColor"/>
                             </label>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                        <constraints>
+                            <constraint firstItem="980-V5-6OI" firstAttribute="top" secondItem="f0H-7L-UTN" secondAttribute="top" id="Du6-TB-hM0"/>
+                            <constraint firstItem="980-V5-6OI" firstAttribute="bottom" secondItem="f0H-7L-UTN" secondAttribute="bottom" id="I7f-VJ-UCW"/>
+                            <constraint firstItem="980-V5-6OI" firstAttribute="leading" secondItem="f0H-7L-UTN" secondAttribute="leading" id="f1O-dv-efE"/>
+                            <constraint firstAttribute="trailing" secondItem="980-V5-6OI" secondAttribute="trailing" id="owv-dV-LPj"/>
+                        </constraints>
                         <viewLayoutGuide key="safeArea" id="f0H-7L-UTN"/>
                     </view>
                 </viewController>

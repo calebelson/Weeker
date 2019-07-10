@@ -11,8 +11,6 @@ import UIKit
 class DOBViewController: UIViewController, UITableViewDelegate, UITableViewDataSource {
     @IBOutlet weak var settingsTableView: UITableView!
     @IBOutlet weak var dateOfBirthPicker: UIDatePicker!
-    @IBOutlet weak var defaultStyleButton: UIButton!
-    @IBOutlet weak var grayScaleButton: UIButton!
     @IBOutlet weak var saveButton: UIBarButtonItem!
     
     var firstLoad = UserDefaults(suiteName: "group.com.calebElson.Weeker")?.value(forKey: "syncDOB") == nil
