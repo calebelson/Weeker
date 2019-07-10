@@ -10,33 +10,29 @@ import UIKit
 
 class DOBViewController: UIViewController {
     @IBOutlet weak var dateOfBirthPicker: UIDatePicker!
-    @IBOutlet weak var defaultStyleButton: UIButton!
-    @IBOutlet weak var grayScaleButton: UIButton!
-    @IBOutlet weak var saveButton: UIBarButtonItem!
+    @IBOutlet weak var lifeSpanSwitch: UISwitch!
     
-    var firstLoad = UserDefaults(suiteName: "group.com.calebElson.Weeker")?.value(forKey: "syncDOB") == nil
+    var firstLoad = UserDefaults(suiteName: "group.com.calebElson.Weeker")?.value(forKey: "DOB") == nil
+    private let mainColor = UIColor(named: "mainColor") ?? .systemTeal
+    private let secondaryColor = UIColor(named: "secondaryColor") ?? UIColor.systemOrange
     
     override func viewDidLoad() {
         let dateFormatter = DateFormatter()
         dateFormatter.dateFormat = "YYYY-MM-DD"
         
         dateOfBirthPicker.maximumDate = Date()
+        
+        dateOfBirthPicker.setValue(mainColor, forKeyPath: "textColor")
         dateOfBirthPicker.setValue(false, forKey: "highlightsToday")
         
-        setupView()
         
-        defaultStyleButton.layer.cornerRadius = 25
-        defaultStyleButton.clipsToBounds = true
-        grayScaleButton.layer.cornerRadius = 25
-        grayScaleButton.clipsToBounds = true
-        
-        if firstLoad {
-            navigationItem.hidesBackButton = true
-        } else {
-            navigationItem.hidesBackButton = false
+        if let lifeSpanSwitchSet = UserDefaults(suiteName: "group.com.calebElson.Weeker")?.value(forKey: "lifeSpanSwitchOn") {
+            lifeSpanSwitch.setOn(lifeSpanSwitchSet as! Bool, animated: false)
         }
         
-        if let dob = UserDefaults(suiteName: "group.com.calebElson.Weeker")?.value(forKey: "syncDOB") {
+        
+        
+        if let dob = UserDefaults(suiteName: "group.com.calebElson.Weeker")?.value(forKey: "DOB") {
             dateOfBirthPicker.setDate(dob as! Date, animated: false)
         } else {
             let date = dateFormatter.date(from: "1995-06-15")
@@ -44,26 +40,23 @@ class DOBViewController: UIViewController {
         }
     }
     
-    func setupView() {
-        let theme = ThemeManager.currentTheme()
-        dateOfBirthPicker.setValue(theme.primaryColor, forKey: "textColor")
-        navigationController?.navigationBar.tintColor = theme.primaryColor
-        saveButton.tintColor = theme.primaryColor
-    }
-    
-    @IBAction func defaultStyleButtonPressed(_ sender: Any) {
-        ThemeManager.applyTheme(theme: Theme(rawValue: "Default")!)
-        setupView()
-    }
-    @IBAction func grayScaleButtonPressed(_ sender: Any) {
-        ThemeManager.applyTheme(theme: Theme(rawValue: "GrayScale")!)
-        setupView()
-    }
-    
     @IBAction func saveButtonPushed(_ sender: Any) {
-        let date = dateOfBirthPicker.date
-        UserDefaults(suiteName: "group.com.calebElson.Weeker")?.set(date, forKey: "syncDOB")
         
-        self.navigationController?.popViewController(animated: true)
+        let date = dateOfBirthPicker.date
+        UserDefaults(suiteName: "group.com.calebElson.Weeker")?.set(date, forKey: "DOB")
+        UserDefaults(suiteName: "group.com.calebElson.Weeker")?.set(lifeSpanSwitch.isOn, forKey: "lifeSpanSwitchOn")
+        
+
+        if firstLoad {
+            let transition = CATransition()
+            transition.duration = 0.5
+            transition.type = CATransitionType.push
+            transition.subtype = CATransitionSubtype.fromLeft
+            transition.timingFunction = CAMediaTimingFunction(name:CAMediaTimingFunctionName.easeInEaseOut)
+            view.window!.layer.add(transition, forKey: kCATransition)
+            present(TransitionViewController(), animated: false, completion: nil)
+        } else {
+            self.navigationController?.popViewController(animated: true)
+        }
     }
 }

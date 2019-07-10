@@ -31,11 +31,8 @@ class TodayViewController: UIViewController, NCWidgetProviding {
         // If there's no update required, use NCUpdateResult.NoData
         // If there's an update, use NCUpdateResult.NewData
         
-        lifeProgress.progressTintColor = ThemeManager.currentTheme().primaryColor
-        lifeProgress.trackTintColor = ThemeManager.currentTheme().secondaryColor
-        
         // Checks if DOB has been set
-        if let _ = UserDefaults(suiteName: "group.com.calebElson.Weeker")?.value(forKey: "syncDOB") {
+        if let _ = UserDefaults(suiteName: "group.com.calebElson.Weeker")?.value(forKey: "DOB") {
             let ageModel = AgeModel()
             
             let weeksLivedString = "Weeks Lived: \(ageModel.weeksLived), \(ageModel.percentLived)%"
