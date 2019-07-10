@@ -12,38 +12,58 @@ class LabelAndGridViewController: UIViewController, UICollectionViewDataSource, 
     
     // MARK: - Properties
     @IBOutlet var collectionView: UICollectionView!
+    @IBOutlet weak var infoLayerScrollView: UIScrollView!
     @IBOutlet weak var livedAndLeftLabel: UILabel!
     @IBOutlet weak var activityIndicator: UIActivityIndicatorView!
     
-    private var decreasingAlpha = CGFloat()
+    private var randomlyDecreasedAlpha = CGFloat()
     private var ageModel = AgeModel()
-    // Used to keep track of whether the current value in the collectionView has past the user's current age
+    // Used to keep track of whether the current value in the collectionView has passed the user's current age
     private var ageReached = false
-    private let mainColor = UIColor(named: "mainColor") ?? .systemTeal
-    private let secondaryColor = UIColor(named: "secondaryColor") ?? UIColor.systemOrange
+    private var theme = ThemeManager.currentTheme()
     
     
-    let columnLayout = ColumnFlowLayout(
-        cellsPerRow: 52,
-        numberOfRows: AgeModel().lifeSpan,
-        minimumInteritemSpacing: 2,
-        minimumLineSpacing: 2,
-        sectionInset: UIEdgeInsets(top: 2, left: 0, bottom: 0, right: 0)
-    )
+    // MARK: - View Setup
+    override func viewDidLoad() {
+        super.viewDidLoad()
+        
+        navigationController?.navigationBar.tintColor = theme.primaryColor
+        
+        // If no DOB set, shows DOBVC with cancel/back button hidden
+        if UserDefaults(suiteName: "group.com.calebElson.Weeker")?.value(forKey: "syncDOB") == nil {
+            DispatchQueue.main.async {
+                self.performSegue(withIdentifier: "HomeVCToDOBVC", sender: self)
+            }
+        }
+        
+        // Makes clear that going back from DOBViewController cancels DOB change
+        let backItem = UIBarButtonItem(title: "Cancel", style: .plain, target: nil, action: nil)
+        navigationItem.backBarButtonItem = backItem
+        
+        activityIndicator.isHidden = true
+        refreshLabel()
+    }
     
     override func viewWillAppear(_ animated: Bool) {
         collectionView?.collectionViewLayout = columnLayout
         collectionView?.contentInsetAdjustmentBehavior = .always
         collectionView?.register(UICollectionViewCell.self, forCellWithReuseIdentifier: "Cell")
         
-        if ageModel.dateOfBirth != AgeModel().dateOfBirth || ageModel.lifeSpanSwitchOn != AgeModel().lifeSpanSwitchOn {
+        if ageModel.dateOfBirth != AgeModel().dateOfBirth || theme != ThemeManager.currentTheme() {
+            theme = ThemeManager.currentTheme()
             ageModel = AgeModel()
             refreshLabel()
             refreshCollectionView()
         }
         
 //        // Remove, for testing splash screen
-//        UserDefaults(suiteName: "group.com.calebElson.Weeker")?.removeObject(forKey: "DOB")
+//        UserDefaults(suiteName: "group.com.calebElson.Weeker")?.removeObject(forKey: "syncDOB")
+    }
+    
+    
+    // MARK: - Refresh and Interaction Methods
+    @IBAction func infoButtonPressed(_ sender: Any) {
+        infoLayerScrollView.isHidden = !infoLayerScrollView.isHidden
     }
     
     func refreshLabel() {
@@ -56,16 +76,17 @@ class LabelAndGridViewController: UIViewController, UICollectionViewDataSource, 
         
         let range = (labelString as NSString).range(of: weeksLeftString)
         let attributedString = NSMutableAttributedString.init(string: labelString)
-        attributedString.addAttribute(NSAttributedString.Key.foregroundColor, value: mainColor, range: range)
+        attributedString.addAttribute(NSAttributedString.Key.foregroundColor, value: theme.primaryColor, range: range)
         
         livedAndLeftLabel.attributedText = attributedString
     }
     
     func refreshCollectionView() {
         collectionView.isHidden = true
-        // Label only needs to be hidden for collectionView refresh
         livedAndLeftLabel.isHidden = true
+        activityIndicator.color = theme.primaryColor
         activityIndicator.isHidden = false
+        infoLayerScrollView.isHidden = true
         activityIndicator.startAnimating()
         
         refreshLabel()
@@ -78,19 +99,20 @@ class LabelAndGridViewController: UIViewController, UICollectionViewDataSource, 
             self.collectionView.isHidden = false
             self.livedAndLeftLabel.isHidden = false
             self.activityIndicator.isHidden = true
+            self.infoLayerScrollView.isHidden = false
             self.activityIndicator.stopAnimating()
         }
     }
     
-    override func viewDidLoad() {
-        super.viewDidLoad()
-        
-        // Makes clear that going back from DOBViewController cancels DOB change
-        let backItem = UIBarButtonItem(title: "Cancel", style: .plain, target: nil, action: nil)
-        navigationItem.backBarButtonItem = backItem
-        
-        refreshLabel()
-    }
+
+    // MARK: - CollectionView Setup
+    let columnLayout = ColumnFlowLayout(
+        cellsPerRow: 52,
+        numberOfRows: AgeModel().lifeSpan,
+        minimumInteritemSpacing: 1,
+        minimumLineSpacing: 2,
+        sectionInset: UIEdgeInsets(top: 0, left: 0, bottom: 2, right: 0)
+    )
     
     func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
         return 52
@@ -98,10 +120,7 @@ class LabelAndGridViewController: UIViewController, UICollectionViewDataSource, 
     
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
         
-        //decreasingAlpha = CGFloat(Double(ageModel.lifeSpan) - Double(indexPath.section)/1.3)/CGFloat(ageModel.lifeSpan)
-        
-        decreasingAlpha = CGFloat(Double(ageModel.lifeSpan) - Double.random(in: 0...Double(ageModel.lifeSpan))*0.25)/CGFloat(ageModel.lifeSpan)
-        
+        randomlyDecreasedAlpha = CGFloat(Double.random(in: 0.25...0.5))
         
         let cell = collectionView.dequeueReusableCell(withReuseIdentifier: "Cell", for: indexPath)
 
@@ -109,14 +128,13 @@ class LabelAndGridViewController: UIViewController, UICollectionViewDataSource, 
             ageReached = true
         }
         
-        cell.layer.cornerRadius = 2
-        cell.layer.masksToBounds = true
-        
         if ageReached {
-            cell.backgroundColor = mainColor.withAlphaComponent(decreasingAlpha)
-
+            cell.backgroundColor = theme.secondaryColor.withAlphaComponent(randomlyDecreasedAlpha)
+            cell.layer.borderWidth = 0.75
+            cell.layer.borderColor = theme.primaryColor.withAlphaComponent(randomlyDecreasedAlpha).cgColor
         } else {
-            cell.backgroundColor = secondaryColor.withAlphaComponent(decreasingAlpha)
+            cell.layer.borderWidth = 0
+            cell.backgroundColor = theme.primaryColor.withAlphaComponent(randomlyDecreasedAlpha)
         }
         
         return cell
@@ -155,10 +173,10 @@ class ColumnFlowLayout: UICollectionViewFlowLayout {
         guard let collectionView = collectionView else { return }
         
         let marginsAndInsets = sectionInset.left + sectionInset.right + collectionView.safeAreaInsets.left + collectionView.safeAreaInsets.right + minimumInteritemSpacing * CGFloat(cellsPerRow - 1)
-        let itemWidth = ((collectionView.bounds.size.width - marginsAndInsets) / CGFloat(cellsPerRow))
+        let itemWidth = ((collectionView.bounds.size.width - marginsAndInsets) / CGFloat(cellsPerRow+1))
         
         let verticalMarginsAndInsets = sectionInset.top + sectionInset.bottom + collectionView.safeAreaInsets.top + collectionView.safeAreaInsets.bottom + minimumLineSpacing * CGFloat(numberOfRows - 1)
-        let itemHeight = ((collectionView.bounds.size.height - verticalMarginsAndInsets) / CGFloat(numberOfRows))
+        let itemHeight = ((collectionView.bounds.size.height - verticalMarginsAndInsets) / CGFloat(numberOfRows+1))
         
         itemSize = CGSize(width: itemWidth, height: itemHeight)
     }
