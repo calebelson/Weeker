@@ -10,7 +10,6 @@ import UIKit
 
 class ThemeChangeTableView: UITableViewController {
     var names = [String]()
-    var identities = [String]()
     
     override func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         return names.count
@@ -25,11 +24,14 @@ class ThemeChangeTableView: UITableViewController {
     }
     
     override func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
-        
+        tableView.cellForRow(at: indexPath)?.accessoryType = .checkmark
+    }
+    
+    override func tableView(_ tableView: UITableView, didDeselectRowAt indexPath: IndexPath) {
+        tableView.cellForRow(at: indexPath)?.accessoryType = .none
     }
     
     override func viewDidLoad() {
         names = ["First","Second"]
-        identities = ["A", "B"]
     }
 }

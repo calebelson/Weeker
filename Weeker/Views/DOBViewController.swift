@@ -26,11 +26,6 @@ class DOBViewController: UIViewController, UITableViewDelegate, UITableViewDataS
         
         setupView()
         
-        defaultStyleButton.layer.cornerRadius = 25
-        defaultStyleButton.clipsToBounds = true
-        grayScaleButton.layer.cornerRadius = 25
-        grayScaleButton.clipsToBounds = true
-        
         if firstLoad {
             navigationItem.hidesBackButton = true
         } else {
