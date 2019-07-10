@@ -27,6 +27,8 @@ class LabelAndGridViewController: UIViewController, UICollectionViewDataSource, 
     override func viewDidLoad() {
         super.viewDidLoad()
         
+        navigationController?.navigationBar.tintColor = theme.primaryColor
+        
         // If no DOB set, shows DOBVC with cancel/back button hidden
         if UserDefaults(suiteName: "group.com.calebElson.Weeker")?.value(forKey: "syncDOB") == nil {
             DispatchQueue.main.async {
