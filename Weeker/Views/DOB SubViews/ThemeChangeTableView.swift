@@ -10,6 +10,7 @@ import UIKit
 
 class ThemeChangeTableView: UITableViewController {
     var names = [String]()
+    var theme = ThemeManager.currentTheme()
     
     override func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         return names.count
@@ -19,12 +20,20 @@ class ThemeChangeTableView: UITableViewController {
         let cell = tableView.dequeueReusableCell(withIdentifier: "ThemeCell")
         
         cell?.textLabel?.text = names[indexPath.row]
+        cell?.textLabel?.textColor = ThemeManager.currentTheme().primaryColor
+        
+        if "\(theme)" == names[indexPath.row] {
+            cell?.accessoryType = .checkmark
+            tableView.selectRow(at: indexPath, animated: false, scrollPosition: .none)
+        }
         
         return cell!
     }
     
     override func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         tableView.cellForRow(at: indexPath)?.accessoryType = .checkmark
+        ThemeManager.applyTheme(theme: Theme(rawValue: names[indexPath.row])!)
+        setupView()
     }
     
     override func tableView(_ tableView: UITableView, didDeselectRowAt indexPath: IndexPath) {
@@ -32,6 +41,15 @@ class ThemeChangeTableView: UITableViewController {
     }
     
     override func viewDidLoad() {
-        names = ["First","Second"]
+        names = ["Default","GrayScale"]
+        // Checkmark loads as correct color
+        tableView.tintColor = theme.primaryColor
+    }
+    
+    func setupView() {
+        theme = ThemeManager.currentTheme()
+        navigationController?.navigationBar.tintColor = theme.primaryColor
+        tableView.tintColor = theme.primaryColor
+        tableView.reloadData()
     }
 }

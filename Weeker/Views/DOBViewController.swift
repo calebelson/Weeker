@@ -16,13 +16,11 @@ class DOBViewController: UIViewController, UITableViewDelegate, UITableViewDataS
     @IBOutlet weak var saveButton: UIBarButtonItem!
     
     var firstLoad = UserDefaults(suiteName: "group.com.calebElson.Weeker")?.value(forKey: "syncDOB") == nil
+    var theme = ThemeManager.currentTheme()
     
     override func viewDidLoad() {
         tableViewTitles = ["App Theme","Acknowledgments"]
         storyBoardIDs = ["ThemeChangeTableView", "AcknowledgmentsVC"]
-        
-        settingsTableView.delegate = self
-        settingsTableView.dataSource = self
         
         setupView()
         
@@ -51,10 +49,13 @@ class DOBViewController: UIViewController, UITableViewDelegate, UITableViewDataS
         if let selectedRowNotNil = selectedRow {
             settingsTableView.deselectRow(at: selectedRowNotNil, animated: true)
         }
+        setupView()
+        settingsTableView.reloadData()
+
     }
     
     func setupView() {
-        let theme = ThemeManager.currentTheme()
+        theme = ThemeManager.currentTheme()
         dateOfBirthPicker.setValue(theme.primaryColor, forKey: "textColor")
         navigationController?.navigationBar.tintColor = theme.primaryColor
         saveButton.tintColor = theme.primaryColor
@@ -88,6 +89,7 @@ class DOBViewController: UIViewController, UITableViewDelegate, UITableViewDataS
         let cell = tableView.dequeueReusableCell(withIdentifier: "Cell")
         
         cell?.textLabel!.text = tableViewTitles[indexPath.row]
+        cell?.textLabel?.textColor = theme.primaryColor
         
         return cell!
     }
