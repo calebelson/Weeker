@@ -237,7 +237,7 @@
                 </tableViewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="IEb-zy-1NP" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="3100" y="-845"/>
+            <point key="canvasLocation" x="3100" y="-570"/>
         </scene>
         <!--Acknowledgments View Controller-->
         <scene sceneID="vUN-HJ-7GE">
@@ -247,26 +247,38 @@
                         <rect key="frame" x="0.0" y="0.0" width="375" height="812"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Test Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="980-V5-6OI">
-                                <rect key="frame" x="0.0" y="44" width="375" height="734"/>
-                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                            <label opaque="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="tedTalkLabel" textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="2" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="980-V5-6OI">
+                                <rect key="frame" x="0.0" y="43.999999999999993" width="375" height="81.333333333333314"/>
+                                <gestureRecognizers/>
+                                <fontDescription key="fontDescription" name=".AppleSystemUIFont" family=".AppleSystemUIFont" pointSize="17"/>
                                 <nil key="textColor"/>
                                 <nil key="highlightedColor"/>
+                                <connections>
+                                    <outletCollection property="gestureRecognizers" destination="AXD-9q-v8e" appends="YES" id="Nd5-sH-FOA"/>
+                                </connections>
                             </label>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                         <constraints>
                             <constraint firstItem="980-V5-6OI" firstAttribute="top" secondItem="f0H-7L-UTN" secondAttribute="top" id="Du6-TB-hM0"/>
-                            <constraint firstItem="980-V5-6OI" firstAttribute="bottom" secondItem="f0H-7L-UTN" secondAttribute="bottom" id="I7f-VJ-UCW"/>
-                            <constraint firstItem="980-V5-6OI" firstAttribute="leading" secondItem="f0H-7L-UTN" secondAttribute="leading" id="f1O-dv-efE"/>
-                            <constraint firstAttribute="trailing" secondItem="980-V5-6OI" secondAttribute="trailing" id="owv-dV-LPj"/>
+                            <constraint firstItem="980-V5-6OI" firstAttribute="leading" secondItem="f0H-7L-UTN" secondAttribute="leading" id="FNi-0r-g1M"/>
+                            <constraint firstItem="980-V5-6OI" firstAttribute="height" secondItem="HIx-aZ-Pnq" secondAttribute="height" multiplier="0.1" id="oK6-pv-3bF"/>
+                            <constraint firstItem="980-V5-6OI" firstAttribute="trailing" secondItem="f0H-7L-UTN" secondAttribute="trailing" id="v3A-aD-sOi"/>
                         </constraints>
                         <viewLayoutGuide key="safeArea" id="f0H-7L-UTN"/>
                     </view>
+                    <connections>
+                        <outlet property="tedTalkLabel" destination="980-V5-6OI" id="b48-QI-kds"/>
+                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="RXU-y9-BcH" userLabel="First Responder" sceneMemberID="firstResponder"/>
+                <tapGestureRecognizer id="AXD-9q-v8e">
+                    <connections>
+                        <action selector="tedTalkLabelTapped:" destination="M0p-6g-aWd" id="mRI-ZB-B9f"/>
+                    </connections>
+                </tapGestureRecognizer>
             </objects>
-            <point key="canvasLocation" x="3100" y="-151.47783251231527"/>
+            <point key="canvasLocation" x="3100" y="137"/>
         </scene>
         <!--Navigation Controller-->
         <scene sceneID="Dwg-wh-q8i">
