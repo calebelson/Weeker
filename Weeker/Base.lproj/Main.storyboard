@@ -247,7 +247,7 @@
                         <rect key="frame" x="0.0" y="0.0" width="375" height="812"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <label opaque="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="tedTalkLabel" textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="2" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="980-V5-6OI">
+                            <label opaque="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="tedTalkLabel" textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="2" baselineAdjustment="alignBaselines" adjustsLetterSpacingToFitWidth="YES" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="980-V5-6OI">
                                 <rect key="frame" x="0.0" y="43.999999999999993" width="375" height="81.333333333333314"/>
                                 <gestureRecognizers/>
                                 <fontDescription key="fontDescription" name=".AppleSystemUIFont" family=".AppleSystemUIFont" pointSize="17"/>
@@ -257,24 +257,64 @@
                                     <outletCollection property="gestureRecognizers" destination="AXD-9q-v8e" appends="YES" id="Nd5-sH-FOA"/>
                                 </connections>
                             </label>
+                            <label opaque="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="actuarialDataLabel" textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="2" baselineAdjustment="alignBaselines" minimumScaleFactor="0.5" adjustsLetterSpacingToFitWidth="YES" translatesAutoresizingMaskIntoConstraints="NO" id="8U3-BR-qy3">
+                                <rect key="frame" x="0.0" y="125.33333333333331" width="375" height="81"/>
+                                <gestureRecognizers/>
+                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                <nil key="textColor"/>
+                                <nil key="highlightedColor"/>
+                                <connections>
+                                    <outletCollection property="gestureRecognizers" destination="wPz-sn-rHa" appends="YES" id="TqL-El-g3J"/>
+                                </connections>
+                            </label>
+                            <label opaque="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="iconExplanationLabel" textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="3" baselineAdjustment="alignBaselines" adjustsLetterSpacingToFitWidth="YES" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="s3e-Ky-zbm">
+                                <rect key="frame" x="0.0" y="206.33333333333337" width="375" height="122"/>
+                                <gestureRecognizers/>
+                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                <nil key="textColor"/>
+                                <nil key="highlightedColor"/>
+                                <connections>
+                                    <outletCollection property="gestureRecognizers" destination="NN7-7l-4vF" appends="YES" id="S5m-RU-ufZ"/>
+                                </connections>
+                            </label>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                         <constraints>
+                            <constraint firstItem="s3e-Ky-zbm" firstAttribute="height" secondItem="8U3-BR-qy3" secondAttribute="height" multiplier="1.5" id="A2d-dW-9GT"/>
                             <constraint firstItem="980-V5-6OI" firstAttribute="top" secondItem="f0H-7L-UTN" secondAttribute="top" id="Du6-TB-hM0"/>
                             <constraint firstItem="980-V5-6OI" firstAttribute="leading" secondItem="f0H-7L-UTN" secondAttribute="leading" id="FNi-0r-g1M"/>
+                            <constraint firstItem="8U3-BR-qy3" firstAttribute="leading" secondItem="f0H-7L-UTN" secondAttribute="leading" id="QUE-7J-o6t"/>
+                            <constraint firstItem="f0H-7L-UTN" firstAttribute="trailing" secondItem="s3e-Ky-zbm" secondAttribute="trailing" id="i9u-JE-rMr"/>
+                            <constraint firstItem="s3e-Ky-zbm" firstAttribute="top" secondItem="8U3-BR-qy3" secondAttribute="bottom" id="kpT-5z-Ioe"/>
                             <constraint firstItem="980-V5-6OI" firstAttribute="height" secondItem="HIx-aZ-Pnq" secondAttribute="height" multiplier="0.1" id="oK6-pv-3bF"/>
+                            <constraint firstItem="s3e-Ky-zbm" firstAttribute="leading" secondItem="f0H-7L-UTN" secondAttribute="leading" id="odE-Te-hRj"/>
+                            <constraint firstItem="8U3-BR-qy3" firstAttribute="height" secondItem="980-V5-6OI" secondAttribute="height" id="ord-2z-W10"/>
                             <constraint firstItem="980-V5-6OI" firstAttribute="trailing" secondItem="f0H-7L-UTN" secondAttribute="trailing" id="v3A-aD-sOi"/>
+                            <constraint firstItem="8U3-BR-qy3" firstAttribute="top" secondItem="980-V5-6OI" secondAttribute="bottom" id="vmE-XS-UG2"/>
+                            <constraint firstItem="f0H-7L-UTN" firstAttribute="trailing" secondItem="8U3-BR-qy3" secondAttribute="trailing" id="zmj-cM-1S0"/>
                         </constraints>
                         <viewLayoutGuide key="safeArea" id="f0H-7L-UTN"/>
                     </view>
                     <connections>
+                        <outlet property="actuarialDataLabel" destination="8U3-BR-qy3" id="qTd-K9-dWc"/>
+                        <outlet property="iconExplanationLabel" destination="s3e-Ky-zbm" id="Ir7-Rf-esQ"/>
                         <outlet property="tedTalkLabel" destination="980-V5-6OI" id="b48-QI-kds"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="RXU-y9-BcH" userLabel="First Responder" sceneMemberID="firstResponder"/>
-                <tapGestureRecognizer id="AXD-9q-v8e">
+                <tapGestureRecognizer id="AXD-9q-v8e" userLabel="tedTalkLabel Tap Recognizer">
                     <connections>
                         <action selector="tedTalkLabelTapped:" destination="M0p-6g-aWd" id="mRI-ZB-B9f"/>
+                    </connections>
+                </tapGestureRecognizer>
+                <tapGestureRecognizer id="wPz-sn-rHa" userLabel="actuarialDataLabel Tap Recognizer">
+                    <connections>
+                        <action selector="actuarialDataLabelTapped:" destination="M0p-6g-aWd" id="z4C-FR-eG2"/>
+                    </connections>
+                </tapGestureRecognizer>
+                <tapGestureRecognizer id="NN7-7l-4vF" userLabel="iconExplanationLabel Tap Recognizer">
+                    <connections>
+                        <action selector="iconExplanationLabelTapped:" destination="M0p-6g-aWd" id="L5N-mM-9Ch"/>
                     </connections>
                 </tapGestureRecognizer>
             </objects>
