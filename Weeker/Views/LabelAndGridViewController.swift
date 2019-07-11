@@ -39,11 +39,7 @@ class LabelAndGridViewController: UIViewController, UICollectionViewDataSource, 
                 self.performSegue(withIdentifier: "HomeVCToDOBVC", sender: self)
             }
         }
-        
-        // Makes clear that going back from DOBViewController cancels DOB change
-        let backItem = UIBarButtonItem(title: "Cancel", style: .plain, target: nil, action: nil)
-        navigationItem.backBarButtonItem = backItem
-        
+                
         activityIndicator.isHidden = true
         refreshLabel()
     }

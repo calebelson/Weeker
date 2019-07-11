@@ -20,7 +20,8 @@ class ThemeChangeTableView: UITableViewController {
         let cell = tableView.dequeueReusableCell(withIdentifier: "ThemeCell")
         
         cell?.textLabel?.text = names[indexPath.row]
-        cell?.textLabel?.textColor = ThemeManager.currentTheme().primaryColor
+        // Row's text match their color
+        cell?.textLabel?.textColor = Theme(rawValue: names[indexPath.row])?.primaryColor
         
         if "\(theme)" == names[indexPath.row] {
             cell?.accessoryType = .checkmark
@@ -51,6 +52,5 @@ class ThemeChangeTableView: UITableViewController {
         theme = ThemeManager.currentTheme()
         navigationController?.navigationBar.tintColor = theme.primaryColor
         tableView.tintColor = theme.primaryColor
-        tableView.reloadData()
     }
 }
