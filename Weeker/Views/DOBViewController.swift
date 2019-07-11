@@ -30,7 +30,7 @@ class DOBViewController: UIViewController, UITableViewDelegate, UITableViewDataS
         }
         
         let dateFormatter = DateFormatter()
-        dateFormatter.dateFormat = "YYYY-MM-DD"
+        dateFormatter.dateFormat = "yyyy-MM-dd"
         
         dateOfBirthPicker.maximumDate = Date()
         dateOfBirthPicker.setValue(false, forKey: "highlightsToday")
@@ -38,7 +38,7 @@ class DOBViewController: UIViewController, UITableViewDelegate, UITableViewDataS
         if let dob = UserDefaults(suiteName: "group.com.calebElson.Weeker")?.value(forKey: "syncDOB") {
             dateOfBirthPicker.setDate(dob as! Date, animated: false)
         } else {
-            let date = dateFormatter.date(from: "1995-06-15")
+            let date = dateFormatter.date(from: "1984-5-25")
             dateOfBirthPicker.setDate(date!, animated: false)
         }
     }

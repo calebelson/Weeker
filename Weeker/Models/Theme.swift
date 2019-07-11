@@ -12,13 +12,13 @@ import Foundation
 
 enum Theme: String {
     
-    case Default, GrayScale
+    case Default, Mono
     
     var primaryColor: UIColor {
         switch self {
         case .Default:
             return UIColor(named: "defaultPrimary")!
-        case .GrayScale:
+        case .Mono:
             return UIColor(named: "monoPrimary")!
         }
     }
@@ -27,7 +27,7 @@ enum Theme: String {
         switch self {
         case .Default:
             return UIColor(named: "defaultSecondary")!
-        case .GrayScale:
+        case .Mono:
             return UIColor(named: "monoSecondary")!
         }
     }
@@ -36,7 +36,7 @@ enum Theme: String {
         switch self {
         case .Default:
             return UIColor(named: "defaultPrimary")!
-        case .GrayScale:
+        case .Mono:
             return UIColor(named: "monoPrimary")!
         }
     }
@@ -45,8 +45,17 @@ enum Theme: String {
         switch self {
         case .Default:
             return UIColor(named: "defaultPrimary")!
-        case .GrayScale:
+        case .Mono:
             return UIColor(named: "monoPrimary")!
+        }
+    }
+    
+    var progressSecondaryColor: UIColor {
+        switch self {
+        case .Default:
+            return UIColor(named: "defaultSecondary")!
+        case .Mono:
+            return UIColor(named: "monoProgressSecondary")!
         }
     }
 }

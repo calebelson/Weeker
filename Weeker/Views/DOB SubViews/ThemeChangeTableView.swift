@@ -42,7 +42,7 @@ class ThemeChangeTableView: UITableViewController {
     }
     
     override func viewDidLoad() {
-        names = ["Default","GrayScale"]
+        names = ["Default","Mono"]
         // Checkmark loads as correct color
         tableView.tintColor = theme.primaryColor
     }

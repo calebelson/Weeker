@@ -30,9 +30,10 @@ class TodayViewController: UIViewController, NCWidgetProviding {
         // If an error is encountered, use NCUpdateResult.Failed
         // If there's no update required, use NCUpdateResult.NoData
         // If there's an update, use NCUpdateResult.NewData
+        let theme = ThemeManager.currentTheme()
         
-        lifeProgress.progressTintColor = ThemeManager.currentTheme().primaryColor
-        lifeProgress.trackTintColor = ThemeManager.currentTheme().secondaryColor
+        lifeProgress.progressTintColor = theme.primaryColor
+        lifeProgress.trackTintColor = theme.progressSecondaryColor
         
         // Checks if DOB has been set
         if let _ = UserDefaults(suiteName: "group.com.calebElson.Weeker")?.value(forKey: "syncDOB") {
@@ -48,6 +49,8 @@ class TodayViewController: UIViewController, NCWidgetProviding {
             livedAndLeftLabel.text = "Tap to set date of birth"
             lifeProgress.progress = 0
         }
+        
+        livedAndLeftLabel.textColor = theme.primaryColor
         
         completionHandler(NCUpdateResult.newData)
     }
