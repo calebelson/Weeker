@@ -8,12 +8,11 @@
 
 import UIKit
 
-class LabelAndGridViewController: UIViewController, UICollectionViewDataSource, UICollectionViewDelegate, UICollectionViewDelegateFlowLayout {
+class LabelAndGridViewController: UIViewController, UICollectionViewDataSource, UICollectionViewDelegate, UICollectionViewDelegateFlowLayout, UITableViewDelegate, UITableViewDataSource {
     
     // MARK: - Properties
     @IBOutlet var collectionView: UICollectionView!
-    @IBOutlet weak var infoLayerScrollView: UIScrollView!
-    @IBOutlet weak var livedAndLeftLabel: UILabel!
+    @IBOutlet weak var infoTableView: UITableView!
     @IBOutlet weak var activityIndicator: UIActivityIndicatorView!
     
     private var randomlyDecreasedAlpha = CGFloat()
@@ -21,7 +20,8 @@ class LabelAndGridViewController: UIViewController, UICollectionViewDataSource, 
     // Used to keep track of whether the current value in the collectionView has passed the user's current age
     private var ageReached = false
     private var theme = ThemeManager.currentTheme()
-    
+    private var infoLayerData = InfoLayerModel(header: nil, content: [])
+
     
     // MARK: - View Setup
     override func viewDidLoad() {
@@ -39,9 +39,10 @@ class LabelAndGridViewController: UIViewController, UICollectionViewDataSource, 
                 self.performSegue(withIdentifier: "HomeVCToDOBVC", sender: self)
             }
         }
-                
+        
         activityIndicator.isHidden = true
         refreshLabel()
+        refreshTableView()
     }
     
     // Refreshes in viewDidAppear due to differences in lifecycle between swiping back and hitting back button
@@ -51,6 +52,7 @@ class LabelAndGridViewController: UIViewController, UICollectionViewDataSource, 
             ageModel = AgeModel()
             refreshLabel()
             refreshCollectionView()
+            refreshTableView()
         }
         
         //        // Remove, for testing splash screen
@@ -60,7 +62,7 @@ class LabelAndGridViewController: UIViewController, UICollectionViewDataSource, 
     
     // MARK: - Refresh and Interaction Methods
     @IBAction func infoButtonPressed(_ sender: Any) {
-        infoLayerScrollView.isHidden = !infoLayerScrollView.isHidden
+        infoTableView.isHidden = !infoTableView.isHidden
     }
     
     func refreshLabel() {
@@ -74,16 +76,13 @@ class LabelAndGridViewController: UIViewController, UICollectionViewDataSource, 
         let range = (labelString as NSString).range(of: weeksLeftString)
         let attributedString = NSMutableAttributedString.init(string: labelString)
         attributedString.addAttribute(NSAttributedString.Key.foregroundColor, value: theme.primaryColor, range: range)
-        
-        livedAndLeftLabel.attributedText = attributedString
     }
     
     func refreshCollectionView() {
         collectionView.isHidden = true
-        livedAndLeftLabel.isHidden = true
         activityIndicator.color = theme.primaryColor
         activityIndicator.isHidden = false
-        infoLayerScrollView.isHidden = true
+        infoTableView.isHidden = true
         activityIndicator.startAnimating()
         
         refreshLabel()
@@ -94,11 +93,62 @@ class LabelAndGridViewController: UIViewController, UICollectionViewDataSource, 
         
         DispatchQueue.main.async {
             self.collectionView.isHidden = false
-            self.livedAndLeftLabel.isHidden = false
             self.activityIndicator.isHidden = true
-            self.infoLayerScrollView.isHidden = false
+            self.infoTableView.reloadData()
+            self.infoTableView.isHidden = false
             self.activityIndicator.stopAnimating()
         }
+    }
+    
+    // MARK: - InfoTableView setup
+    func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
+        return infoLayerData.content.count
+    }
+    
+    func tableView(_ tableView: UITableView, viewForHeaderInSection section: Int) -> UIView? {
+        let headerView =  UIView.init(frame: CGRect(x: 0, y: 0, width: tableView.frame.size.width, height: 30))
+        
+        let label = UILabel(frame: CGRect(x: 15, y: 0, width: headerView.frame
+            .width, height: headerView.frame.height))
+        label.textAlignment = .left
+        label.text = infoLayerData.header
+        label.font = UIFont.boldSystemFont(ofSize: 34)
+        label.textColor = theme.primaryColor
+        
+        headerView.addSubview(label)
+        
+        return headerView
+    }
+    
+    func tableView(_ tableView: UITableView, heightForHeaderInSection section: Int) -> CGFloat {
+        return 34
+    }
+    
+    func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
+        var cell = tableView.dequeueReusableCell(withIdentifier: "InfoContentCell")
+        
+        let cellData = infoLayerData.content[indexPath.row]
+        
+        
+        if cellData.subheader {
+            cell = tableView.dequeueReusableCell(withIdentifier: "InfoSubheaderCell")
+            cell?.textLabel?.textAlignment = .center
+            cell?.textLabel?.shadowColor = theme.primaryColor
+        } else {
+            cell?.detailTextLabel?.text = cellData.detailText
+            cell?.detailTextLabel?.textColor = theme.primaryColor
+        }
+        
+        cell?.textLabel?.text = cellData.mainText
+        cell?.textLabel?.textColor = theme.primaryColor
+        
+        return cell!
+    }
+    
+    func refreshTableView() {
+        let content: [(String, String?, Bool)] = [("Based on 90 year lifespan:", nil, true), ("Days Lived", "\(ageModel.daysLived)", false), ("Weeks Lived", "\(ageModel.weeksLived)", false), ("Weeks Left", "\(ageModel.weeksLeft)", false), ("Percent Lived", "\(ageModel.percentLived)",  false), ("Percent Left", "\(ageModel.percentLeft)",  false), ("Based on actuarial data:", nil, true), ("Life Span", "\(ageModel.actuarialLifeSpan)", false), ("Weeks Left", "\(ageModel.actuarialWeeksLeft)", false), ("Percent Lived", "\(ageModel.actuarialPercentLived)", false), ("Percent Left", "\(ageModel.actuarialPercentLeft)", false)]
+        
+        infoLayerData = InfoLayerModel(header: "Stats", content: content)
     }
     
 
@@ -117,7 +167,7 @@ class LabelAndGridViewController: UIViewController, UICollectionViewDataSource, 
     
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
         
-        randomlyDecreasedAlpha = CGFloat(Double.random(in: 0.25...0.5))
+        randomlyDecreasedAlpha = CGFloat(Double.random(in: 0.35...0.5))
         
         let cell = collectionView.dequeueReusableCell(withReuseIdentifier: "Cell", for: indexPath)
 
@@ -126,7 +176,7 @@ class LabelAndGridViewController: UIViewController, UICollectionViewDataSource, 
         }
         
         if ageReached {
-            cell.backgroundColor = theme.secondaryColor.withAlphaComponent(randomlyDecreasedAlpha)
+            cell.backgroundColor = theme.secondaryColor.withAlphaComponent(randomlyDecreasedAlpha*0.8)
             cell.layer.borderWidth = 0.75
             cell.layer.borderColor = theme.primaryColor.withAlphaComponent(randomlyDecreasedAlpha).cgColor
         } else {

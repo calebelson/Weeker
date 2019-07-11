@@ -18,7 +18,11 @@ struct AgeModel {
     let weeksLeft: Int
     let percentLived: Int
     let percentLeft: Int
-    
+
+    let actuarialLifeSpan: Int
+    let actuarialWeeksLeft: Int
+    let actuarialPercentLived: Int
+    let actuarialPercentLeft: Int
     
     init() {
         timeSinceDOB = Calendar.current.dateComponents([.year, .weekOfYear], from: dateOfBirth, to: Date())
@@ -32,6 +36,13 @@ struct AgeModel {
         // Prevents above 100% life lived
         percentLived = min(daysLived*100/Int(Double(lifeSpan)*365.25), 100)
         percentLeft = 100 - percentLived
+        
+        // Actuarial
+        actuarialLifeSpan = actuarialTable[timeSinceDOB.year!]!
+        actuarialWeeksLeft = max((Int(Double(actuarialLifeSpan)*365.25) - daysLived)/7, 0)
+        actuarialPercentLived = min(daysLived*100/Int(Double(actuarialLifeSpan)*365.25), 100)
+        actuarialPercentLeft = 100 - actuarialPercentLived
+        
     }
     
     // [currentAge:lifeExpectancy]
