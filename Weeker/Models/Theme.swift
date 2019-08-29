@@ -50,6 +50,15 @@ enum Theme: String {
         }
     }
     
+    var progressPrimaryColor: UIColor {
+        switch self {
+        case .Default:
+            return UIColor(named: "defaultPrimary")!
+        case .Mono:
+            return UIColor(named: "monoProgressPrimary")!
+        }
+    }
+    
     var progressSecondaryColor: UIColor {
         switch self {
         case .Default:

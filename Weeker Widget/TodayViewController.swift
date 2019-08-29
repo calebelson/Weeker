@@ -32,7 +32,7 @@ class TodayViewController: UIViewController, NCWidgetProviding {
         // If there's an update, use NCUpdateResult.NewData
         let theme = ThemeManager.currentTheme()
         
-        lifeProgress.progressTintColor = theme.primaryColor
+        lifeProgress.progressTintColor = theme.progressPrimaryColor
         lifeProgress.trackTintColor = theme.progressSecondaryColor
         
         // Checks if DOB has been set
