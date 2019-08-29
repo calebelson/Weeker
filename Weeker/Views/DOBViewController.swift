@@ -50,6 +50,7 @@ class DOBViewController: UIViewController, UITableViewDelegate, UITableViewDataS
         }
         setupView()
         settingsTableView.reloadData()
+        navigationController?.navigationBar.titleTextAttributes = [NSAttributedString.Key.foregroundColor : theme.primaryColor]
     }
     
     func setupView() {

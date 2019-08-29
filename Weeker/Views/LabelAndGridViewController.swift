@@ -32,7 +32,6 @@ class LabelAndGridViewController: UIViewController, UICollectionViewDataSource, 
         collectionView?.register(UICollectionViewCell.self, forCellWithReuseIdentifier: "Cell")
         
         navigationController?.navigationBar.tintColor = theme.primaryColor
-        navigationController?.navigationBar.titleTextAttributes = [NSAttributedString.Key.foregroundColor : theme.primaryColor]
         
         // If no DOB set, shows DOBVC with cancel/back button hidden
         if UserDefaults(suiteName: "group.com.calebElson.Weeker")?.value(forKey: "syncDOB") == nil {
@@ -92,13 +91,21 @@ class LabelAndGridViewController: UIViewController, UICollectionViewDataSource, 
             self.collectionView.reloadData()
         }
         
-        DispatchQueue.main.async {
+        collectionView.performBatchUpdates(nil, completion: { _ in
             self.collectionView.isHidden = false
             self.activityIndicator.isHidden = true
             self.infoTableView.reloadData()
             self.infoTableView.isHidden = false
             self.activityIndicator.stopAnimating()
-        }
+        })
+        
+//        DispatchQueue.main.async {
+//            self.collectionView.isHidden = false
+//            self.activityIndicator.isHidden = true
+//            self.infoTableView.reloadData()
+//            self.infoTableView.isHidden = false
+//            self.activityIndicator.stopAnimating()
+//        }
     }
     
     // MARK: - InfoTableView setup

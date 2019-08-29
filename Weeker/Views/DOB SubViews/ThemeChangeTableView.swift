@@ -51,7 +51,6 @@ class ThemeChangeTableView: UITableViewController {
     func setupView() {
         theme = ThemeManager.currentTheme()
         navigationController?.navigationBar.tintColor = theme.primaryColor
-        navigationController?.navigationBar.titleTextAttributes = [NSAttributedString.Key.foregroundColor : theme.primaryColor]
         tableView.tintColor = theme.primaryColor
     }
 }
