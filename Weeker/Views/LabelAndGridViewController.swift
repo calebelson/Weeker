@@ -32,6 +32,7 @@ class LabelAndGridViewController: UIViewController, UICollectionViewDataSource, 
         collectionView?.register(UICollectionViewCell.self, forCellWithReuseIdentifier: "Cell")
         
         navigationController?.navigationBar.tintColor = theme.primaryColor
+        navigationController?.navigationBar.titleTextAttributes = [NSAttributedString.Key.foregroundColor : theme.primaryColor]
         
         // If no DOB set, shows DOBVC with cancel/back button hidden
         if UserDefaults(suiteName: "group.com.calebElson.Weeker")?.value(forKey: "syncDOB") == nil {
