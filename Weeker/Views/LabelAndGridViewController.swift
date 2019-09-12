@@ -14,6 +14,8 @@ class LabelAndGridViewController: UIViewController, UICollectionViewDataSource, 
     @IBOutlet var collectionView: UICollectionView!
     @IBOutlet weak var infoTableView: UITableView!
     @IBOutlet weak var activityIndicator: UIActivityIndicatorView!
+    @IBOutlet weak var infoButton: UIBarButtonItem!
+    @IBOutlet weak var settingsButton: UIBarButtonItem!
     
     private var randomlyDecreasedAlpha = CGFloat()
     private var ageModel = AgeModel()
@@ -21,6 +23,7 @@ class LabelAndGridViewController: UIViewController, UICollectionViewDataSource, 
     private var ageReached = false
     private var theme = ThemeManager.currentTheme()
     private var infoLayerData = InfoLayerModel(header: nil, content: [])
+    private var onlyOneSegue = true
 
     
     // MARK: - View Setup
@@ -50,13 +53,28 @@ class LabelAndGridViewController: UIViewController, UICollectionViewDataSource, 
         if ageModel.dateOfBirth != AgeModel().dateOfBirth || theme != ThemeManager.currentTheme() {
             theme = ThemeManager.currentTheme()
             ageModel = AgeModel()
-            refreshLabel()
             refreshCollectionView()
             refreshTableView()
         }
+    }
+    
+    override func viewWillAppear(_ animated: Bool) {
+        onlyOneSegue = true
         
-        //        // Remove, for testing splash screen
-        //        UserDefaults(suiteName: "group.com.calebElson.Weeker")?.removeObject(forKey: "syncDOB")
+        if ageModel.dateOfBirth != AgeModel().dateOfBirth || theme != ThemeManager.currentTheme() {
+            settingsButton.isEnabled = false
+            infoButton.isEnabled = false
+            onlyOneSegue = false
+        }
+    }
+    
+    override func shouldPerformSegue(withIdentifier identifier: String, sender: Any?) -> Bool {
+        if onlyOneSegue {
+            onlyOneSegue = false
+            return true
+        }
+        
+        return onlyOneSegue
     }
     
     
@@ -79,33 +97,41 @@ class LabelAndGridViewController: UIViewController, UICollectionViewDataSource, 
     }
     
     func refreshCollectionView() {
-        collectionView.isHidden = true
-        activityIndicator.color = theme.primaryColor
-        activityIndicator.isHidden = false
-        infoTableView.isHidden = true
-        activityIndicator.startAnimating()
-        
-        refreshLabel()
 
+        refreshCollectionViewHelper(beforeCollectionViewRefresh: true, completionHandler: {
+            DispatchQueue.main.async {
+                self.collectionView.reloadData()
+            }
+        })
         DispatchQueue.main.async {
-            self.collectionView.reloadData()
+            self.collectionView.performBatchUpdates(nil, completion: { _ in
+                print("batch updates")
+                
+                self.refreshCollectionViewHelper(beforeCollectionViewRefresh: false, completionHandler: nil)
+            })
+        }
+    }
+    
+    func refreshCollectionViewHelper(beforeCollectionViewRefresh: Bool, completionHandler: (() -> ())? = nil ) {
+        collectionView.isHidden = beforeCollectionViewRefresh
+        activityIndicator.isHidden = !beforeCollectionViewRefresh
+        infoTableView.isHidden = beforeCollectionViewRefresh
+        infoButton.isEnabled = !beforeCollectionViewRefresh
+        settingsButton.isEnabled = !beforeCollectionViewRefresh
+        activityIndicator.color = theme.primaryColor
+        
+        if beforeCollectionViewRefresh {
+            activityIndicator.startAnimating()
+            infoTableView.reloadData()
+            refreshLabel()
+        } else {
+            activityIndicator.stopAnimating()
+            onlyOneSegue = true
         }
         
-        collectionView.performBatchUpdates(nil, completion: { _ in
-            self.collectionView.isHidden = false
-            self.activityIndicator.isHidden = true
-            self.infoTableView.reloadData()
-            self.infoTableView.isHidden = false
-            self.activityIndicator.stopAnimating()
-        })
-        
-//        DispatchQueue.main.async {
-//            self.collectionView.isHidden = false
-//            self.activityIndicator.isHidden = true
-//            self.infoTableView.reloadData()
-//            self.infoTableView.isHidden = false
-//            self.activityIndicator.stopAnimating()
-//        }
+        if let completionHandler = completionHandler {
+            completionHandler()
+        }
     }
     
     // MARK: - InfoTableView setup
@@ -136,8 +162,7 @@ class LabelAndGridViewController: UIViewController, UICollectionViewDataSource, 
         var cell = tableView.dequeueReusableCell(withIdentifier: "InfoContentCell")
         
         let cellData = infoLayerData.content[indexPath.row]
-        
-        
+                
         if cellData.subheader {
             cell = tableView.dequeueReusableCell(withIdentifier: "InfoSubheaderCell")
             cell?.textLabel?.textAlignment = .center
@@ -175,7 +200,7 @@ class LabelAndGridViewController: UIViewController, UICollectionViewDataSource, 
     
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
         
-        randomlyDecreasedAlpha = CGFloat(Double.random(in: 0.35...0.5))
+        randomlyDecreasedAlpha = CGFloat.random(in: 0.35...0.5)
         
         let cell = collectionView.dequeueReusableCell(withReuseIdentifier: "Cell", for: indexPath)
 
@@ -184,9 +209,20 @@ class LabelAndGridViewController: UIViewController, UICollectionViewDataSource, 
         }
         
         if ageReached {
-            cell.backgroundColor = theme.secondaryColor.withAlphaComponent(randomlyDecreasedAlpha*0.8)
+            cell.backgroundColor = theme.secondaryColor.withAlphaComponent(randomlyDecreasedAlpha)
             cell.layer.borderWidth = 0.75
-            cell.layer.borderColor = theme.primaryColor.withAlphaComponent(randomlyDecreasedAlpha).cgColor
+                        
+            if #available(iOS 13.0, *) {
+                view.traitCollection.performAsCurrent {
+                    cell.layer.borderColor = theme.primaryColor.withAlphaComponent(randomlyDecreasedAlpha).cgColor
+                }
+            } else {
+                // Fallback on earlier versions
+                cell.layer.borderColor = theme.primaryColor.withAlphaComponent(randomlyDecreasedAlpha).cgColor
+            }
+            
+            
+
         } else {
             cell.layer.borderWidth = 0
             cell.backgroundColor = theme.primaryColor.withAlphaComponent(randomlyDecreasedAlpha)
@@ -194,7 +230,7 @@ class LabelAndGridViewController: UIViewController, UICollectionViewDataSource, 
         
         return cell
     }
-    
+        
     func numberOfSections(in collectionView: UICollectionView) -> Int {
         return ageModel.lifeSpan
     }
