@@ -3,15 +3,16 @@
 	archiveVersion = 1;
 	classes = {
 	};
-	objectVersion = 50;
+	objectVersion = 54;
 	objects = {
 
 /* Begin PBXBuildFile section */
+		C900335A2B56EBF600525053 /* GridView.swift in Sources */ = {isa = PBXBuildFile; fileRef = C90033592B56EBF600525053 /* GridView.swift */; };
 		C915544221E162A10075B725 /* AgeModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = C915544121E162A10075B725 /* AgeModel.swift */; };
 		C915544921E2D1540075B725 /* NotificationCenter.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = C915544821E2D1540075B725 /* NotificationCenter.framework */; };
 		C915544C21E2D1540075B725 /* TodayViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = C915544B21E2D1540075B725 /* TodayViewController.swift */; };
 		C915544F21E2D1540075B725 /* MainInterface.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = C915544D21E2D1540075B725 /* MainInterface.storyboard */; };
-		C915545321E2D1540075B725 /* Weeker Widget.appex in Embed App Extensions */ = {isa = PBXBuildFile; fileRef = C915544721E2D1540075B725 /* Weeker Widget.appex */; settings = {ATTRIBUTES = (RemoveHeadersOnCopy, ); }; };
+		C915545321E2D1540075B725 /* Weeker Widget.appex in Embed Foundation Extensions */ = {isa = PBXBuildFile; fileRef = C915544721E2D1540075B725 /* Weeker Widget.appex */; settings = {ATTRIBUTES = (RemoveHeadersOnCopy, ); }; };
 		C915545821E2DB730075B725 /* AgeModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = C915544121E162A10075B725 /* AgeModel.swift */; };
 		C91E775221B20DED00D2C16C /* DOBViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = C91E775121B20DED00D2C16C /* DOBViewController.swift */; };
 		C91E776921B21FE700D2C16C /* README.md in Resources */ = {isa = PBXBuildFile; fileRef = C91E776821B21FE700D2C16C /* README.md */; };
@@ -42,20 +43,21 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXCopyFilesBuildPhase section */
-		C915545721E2D1540075B725 /* Embed App Extensions */ = {
+		C915545721E2D1540075B725 /* Embed Foundation Extensions */ = {
 			isa = PBXCopyFilesBuildPhase;
 			buildActionMask = 2147483647;
 			dstPath = "";
 			dstSubfolderSpec = 13;
 			files = (
-				C915545321E2D1540075B725 /* Weeker Widget.appex in Embed App Extensions */,
+				C915545321E2D1540075B725 /* Weeker Widget.appex in Embed Foundation Extensions */,
 			);
-			name = "Embed App Extensions";
+			name = "Embed Foundation Extensions";
 			runOnlyForDeploymentPostprocessing = 0;
 		};
 /* End PBXCopyFilesBuildPhase section */
 
 /* Begin PBXFileReference section */
+		C90033592B56EBF600525053 /* GridView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GridView.swift; sourceTree = "<group>"; };
 		C915544121E162A10075B725 /* AgeModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AgeModel.swift; sourceTree = "<group>"; };
 		C915544721E2D1540075B725 /* Weeker Widget.appex */ = {isa = PBXFileReference; explicitFileType = "wrapper.app-extension"; includeInIndex = 0; path = "Weeker Widget.appex"; sourceTree = BUILT_PRODUCTS_DIR; };
 		C915544821E2D1540075B725 /* NotificationCenter.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = NotificationCenter.framework; path = System/Library/Frameworks/NotificationCenter.framework; sourceTree = SDKROOT; };
@@ -117,6 +119,7 @@
 				C9592C2921AC7E390077747F /* LabelAndGridViewController.swift */,
 				C91E775121B20DED00D2C16C /* DOBViewController.swift */,
 				C94C353822D6702100E02D80 /* DOB SubViews */,
+				C90033592B56EBF600525053 /* GridView.swift */,
 			);
 			path = Views;
 			sourceTree = "<group>";
@@ -227,7 +230,7 @@
 				C9592C2021AC7E390077747F /* Sources */,
 				C9592C2121AC7E390077747F /* Frameworks */,
 				C9592C2221AC7E390077747F /* Resources */,
-				C915545721E2D1540075B725 /* Embed App Extensions */,
+				C915545721E2D1540075B725 /* Embed Foundation Extensions */,
 			);
 			buildRules = (
 			);
@@ -245,8 +248,9 @@
 		C9592C1C21AC7E390077747F /* Project object */ = {
 			isa = PBXProject;
 			attributes = {
+				BuildIndependentTargetsInParallel = YES;
 				LastSwiftUpdateCheck = 1010;
-				LastUpgradeCheck = 1010;
+				LastUpgradeCheck = 1520;
 				ORGANIZATIONNAME = "Caleb Elson";
 				TargetAttributes = {
 					C915544621E2D1540075B725 = {
@@ -339,6 +343,7 @@
 				C9EA934022CEB4F500C557C0 /* Theme.swift in Sources */,
 				C915544221E162A10075B725 /* AgeModel.swift in Sources */,
 				C95D9CF022C2849500FDCB74 /* MKiCloudSync.m in Sources */,
+				C900335A2B56EBF600525053 /* GridView.swift in Sources */,
 				C94C353E22D7B54D00E02D80 /* InfoLayerModel.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -387,6 +392,7 @@
 				CLANG_ENABLE_MODULES = YES;
 				CODE_SIGN_ENTITLEMENTS = "Weeker Widget/Weeker Widget.entitlements";
 				CODE_SIGN_STYLE = Automatic;
+				CURRENT_PROJECT_VERSION = 2;
 				DEVELOPMENT_TEAM = 877B3XVSF5;
 				INFOPLIST_FILE = "Weeker Widget/Info.plist";
 				LD_RUNPATH_SEARCH_PATHS = (
@@ -394,6 +400,7 @@
 					"@executable_path/Frameworks",
 					"@executable_path/../../Frameworks",
 				);
+				MARKETING_VERSION = 1.2;
 				PRODUCT_BUNDLE_IDENTIFIER = "com.calebElson.Weeker.Weeker-Widget";
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SKIP_INSTALL = YES;
@@ -410,6 +417,7 @@
 				CLANG_ENABLE_MODULES = YES;
 				CODE_SIGN_ENTITLEMENTS = "Weeker Widget/Weeker Widget.entitlements";
 				CODE_SIGN_STYLE = Automatic;
+				CURRENT_PROJECT_VERSION = 2;
 				DEVELOPMENT_TEAM = 877B3XVSF5;
 				INFOPLIST_FILE = "Weeker Widget/Info.plist";
 				LD_RUNPATH_SEARCH_PATHS = (
@@ -417,6 +425,7 @@
 					"@executable_path/Frameworks",
 					"@executable_path/../../Frameworks",
 				);
+				MARKETING_VERSION = 1.2;
 				PRODUCT_BUNDLE_IDENTIFIER = "com.calebElson.Weeker.Weeker-Widget";
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SKIP_INSTALL = YES;
@@ -452,6 +461,7 @@
 				CLANG_WARN_OBJC_IMPLICIT_RETAIN_SELF = YES;
 				CLANG_WARN_OBJC_LITERAL_CONVERSION = YES;
 				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN_QUOTED_INCLUDE_IN_FRAMEWORK_HEADER = YES;
 				CLANG_WARN_RANGE_LOOP_ANALYSIS = YES;
 				CLANG_WARN_STRICT_PROTOTYPES = YES;
 				CLANG_WARN_SUSPICIOUS_MOVE = YES;
@@ -463,6 +473,7 @@
 				DEBUG_INFORMATION_FORMAT = dwarf;
 				ENABLE_STRICT_OBJC_MSGSEND = YES;
 				ENABLE_TESTABILITY = YES;
+				ENABLE_USER_SCRIPT_SANDBOXING = YES;
 				GCC_C_LANGUAGE_STANDARD = gnu11;
 				GCC_DYNAMIC_NO_PIC = NO;
 				GCC_NO_COMMON_BLOCKS = YES;
@@ -477,7 +488,7 @@
 				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
 				GCC_WARN_UNUSED_FUNCTION = YES;
 				GCC_WARN_UNUSED_VARIABLE = YES;
-				IPHONEOS_DEPLOYMENT_TARGET = 12.1;
+				IPHONEOS_DEPLOYMENT_TARGET = 17.0;
 				MTL_ENABLE_DEBUG_INFO = INCLUDE_SOURCE;
 				MTL_FAST_MATH = YES;
 				ONLY_ACTIVE_ARCH = YES;
@@ -513,6 +524,7 @@
 				CLANG_WARN_OBJC_IMPLICIT_RETAIN_SELF = YES;
 				CLANG_WARN_OBJC_LITERAL_CONVERSION = YES;
 				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN_QUOTED_INCLUDE_IN_FRAMEWORK_HEADER = YES;
 				CLANG_WARN_RANGE_LOOP_ANALYSIS = YES;
 				CLANG_WARN_STRICT_PROTOTYPES = YES;
 				CLANG_WARN_SUSPICIOUS_MOVE = YES;
@@ -524,6 +536,7 @@
 				DEBUG_INFORMATION_FORMAT = "dwarf-with-dsym";
 				ENABLE_NS_ASSERTIONS = NO;
 				ENABLE_STRICT_OBJC_MSGSEND = YES;
+				ENABLE_USER_SCRIPT_SANDBOXING = YES;
 				GCC_C_LANGUAGE_STANDARD = gnu11;
 				GCC_NO_COMMON_BLOCKS = YES;
 				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
@@ -532,7 +545,7 @@
 				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
 				GCC_WARN_UNUSED_FUNCTION = YES;
 				GCC_WARN_UNUSED_VARIABLE = YES;
-				IPHONEOS_DEPLOYMENT_TARGET = 12.1;
+				IPHONEOS_DEPLOYMENT_TARGET = 17.0;
 				MTL_ENABLE_DEBUG_INFO = NO;
 				MTL_FAST_MATH = YES;
 				SDKROOT = iphoneos;
@@ -550,13 +563,15 @@
 				CLANG_ENABLE_MODULES = YES;
 				CODE_SIGN_ENTITLEMENTS = Weeker/Weeker.entitlements;
 				CODE_SIGN_STYLE = Automatic;
+				CURRENT_PROJECT_VERSION = 1;
 				DEVELOPMENT_TEAM = 877B3XVSF5;
 				INFOPLIST_FILE = Weeker/Info.plist;
+				IPHONEOS_DEPLOYMENT_TARGET = 17.0;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
 				);
-				MARKETING_VERSION = 1.1;
+				MARKETING_VERSION = 2.0.0;
 				PRODUCT_BUNDLE_IDENTIFIER = com.calebElson.Weeker;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_OBJC_BRIDGING_HEADER = "Weeker/MKiCloudSync/Weeker-Bridging-Header.h";
@@ -574,13 +589,15 @@
 				CLANG_ENABLE_MODULES = YES;
 				CODE_SIGN_ENTITLEMENTS = Weeker/Weeker.entitlements;
 				CODE_SIGN_STYLE = Automatic;
+				CURRENT_PROJECT_VERSION = 1;
 				DEVELOPMENT_TEAM = 877B3XVSF5;
 				INFOPLIST_FILE = Weeker/Info.plist;
+				IPHONEOS_DEPLOYMENT_TARGET = 17.0;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
 				);
-				MARKETING_VERSION = 1.1;
+				MARKETING_VERSION = 2.0.0;
 				PRODUCT_BUNDLE_IDENTIFIER = com.calebElson.Weeker;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_OBJC_BRIDGING_HEADER = "Weeker/MKiCloudSync/Weeker-Bridging-Header.h";

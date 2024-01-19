@@ -104,9 +104,7 @@ class LabelAndGridViewController: UIViewController, UICollectionViewDataSource, 
             }
         })
         DispatchQueue.main.async {
-            self.collectionView.performBatchUpdates(nil, completion: { _ in
-                print("batch updates")
-                
+            self.collectionView.performBatchUpdates(nil, completion: { _ in                
                 self.refreshCollectionViewHelper(beforeCollectionViewRefresh: false, completionHandler: nil)
             })
         }
